@@ -56,7 +56,7 @@ namespace BobbleButt
                     GlobalData.productList[Convert.ToInt32(product)].Price = updatePrice;
                     GlobalData.productList[Convert.ToInt32(product)].Quantity = updateQuantity;
                     GlobalData.productList[Convert.ToInt32(product)].Image = InsertImage;
-                    Response.Redirect("ViewProduct.aspx");
+                    Response.Redirect("ManageProducts.aspx");
                 }
                 else
                 {

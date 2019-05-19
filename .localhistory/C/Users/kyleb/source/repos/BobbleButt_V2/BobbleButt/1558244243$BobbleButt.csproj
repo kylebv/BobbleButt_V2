@@ -144,8 +144,7 @@
     <Content Include="img\user_hover.png" />
     <Content Include="package.json" />
     <Content Include="PresentationLayer\About.aspx" />
-    <Content Include="PresentationLayer\Admin\ManageUsers.aspx" />
-    <Content Include="PresentationLayer\Admin\ManageOrders.aspx" />
+    <Content Include="PresentationLayer\Admin_Users.aspx" />
     <Content Include="PresentationLayer\Checkout.aspx" />
     <Content Include="PresentationLayer\Checkout_Confirm.aspx" />
     <Content Include="PresentationLayer\Checkout_Info.aspx" />
@@ -153,17 +152,17 @@
     <Content Include="PresentationLayer\EditProfile.aspx" />
     <Content Include="PresentationLayer\Login_Register.aspx" />
     <Content Include="PresentationLayer\Main.aspx" />
-    <Content Include="PresentationLayer\Admin\AddProduct.aspx" />
+    <Content Include="PresentationLayer\ManageItems.aspx" />
     <Content Include="PresentationLayer\Orders.aspx" />
     <Content Include="PresentationLayer\Payment.aspx" />
-    <Content Include="PresentationLayer\Admin\ManagePostage.aspx" />
-    <Content Include="PresentationLayer\Admin\UpdatePostage.aspx" />
+    <Content Include="PresentationLayer\PostageOptions.aspx" />
+    <Content Include="PresentationLayer\ProductPostage.aspx" />
     <Content Include="PresentationLayer\Products.aspx" />
     <Content Include="PresentationLayer\PurchaseProduct.aspx" />
     <Content Include="PresentationLayer\Registration.aspx" />
     <Content Include="PresentationLayer\SignOut.aspx" />
-    <Content Include="PresentationLayer\Admin\UpdateProduct.aspx" />
-    <Content Include="PresentationLayer\Admin\ManageProducts.aspx" />
+    <Content Include="PresentationLayer\Update.aspx" />
+    <Content Include="PresentationLayer\ViewProduct.aspx" />
     <Content Include="PresentationLayer\ViewSwitcher.ascx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -228,19 +227,12 @@
     <Compile Include="PresentationLayer\About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\ManageUsers.aspx.cs">
-      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\Admin_Users.aspx.cs">
+      <DependentUpon>Admin_Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\ManageUsers.aspx.designer.cs">
-      <DependentUpon>ManageUsers.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PresentationLayer\Admin\ManageOrders.aspx.cs">
-      <DependentUpon>ManageOrders.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PresentationLayer\Admin\ManageOrders.aspx.designer.cs">
-      <DependentUpon>ManageOrders.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\Admin_Users.aspx.designer.cs">
+      <DependentUpon>Admin_Users.aspx</DependentUpon>
     </Compile>
     <Compile Include="PresentationLayer\Checkout.aspx.cs">
       <DependentUpon>Checkout.aspx</DependentUpon>
@@ -291,12 +283,12 @@
     <Compile Include="PresentationLayer\Main.aspx.designer.cs">
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\AddProduct.aspx.cs">
-      <DependentUpon>AddProduct.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\ManageItems.aspx.cs">
+      <DependentUpon>ManageItems.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\AddProduct.aspx.designer.cs">
-      <DependentUpon>AddProduct.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\ManageItems.aspx.designer.cs">
+      <DependentUpon>ManageItems.aspx</DependentUpon>
     </Compile>
     <Compile Include="PresentationLayer\Orders.aspx.cs">
       <DependentUpon>Orders.aspx</DependentUpon>
@@ -319,19 +311,19 @@
     <Compile Include="PresentationLayer\Payment.aspx.designer.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\ManagePostage.aspx.cs">
-      <DependentUpon>ManagePostage.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\PostageOptions.aspx.cs">
+      <DependentUpon>PostageOptions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\ManagePostage.aspx.designer.cs">
-      <DependentUpon>ManagePostage.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\PostageOptions.aspx.designer.cs">
+      <DependentUpon>PostageOptions.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\UpdatePostage.aspx.cs">
-      <DependentUpon>UpdatePostage.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\ProductPostage.aspx.cs">
+      <DependentUpon>ProductPostage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\UpdatePostage.aspx.designer.cs">
-      <DependentUpon>UpdatePostage.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\ProductPostage.aspx.designer.cs">
+      <DependentUpon>ProductPostage.aspx</DependentUpon>
     </Compile>
     <Compile Include="PresentationLayer\Products.aspx.cs">
       <DependentUpon>Products.aspx</DependentUpon>
@@ -361,19 +353,19 @@
     <Compile Include="PresentationLayer\SignOut.aspx.designer.cs">
       <DependentUpon>SignOut.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\UpdateProduct.aspx.cs">
-      <DependentUpon>UpdateProduct.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\Update.aspx.cs">
+      <DependentUpon>Update.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\UpdateProduct.aspx.designer.cs">
-      <DependentUpon>UpdateProduct.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\Update.aspx.designer.cs">
+      <DependentUpon>Update.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\ManageProducts.aspx.cs">
-      <DependentUpon>ManageProducts.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\ViewProduct.aspx.cs">
+      <DependentUpon>ViewProduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PresentationLayer\Admin\ManageProducts.aspx.designer.cs">
-      <DependentUpon>ManageProducts.aspx</DependentUpon>
+    <Compile Include="PresentationLayer\ViewProduct.aspx.designer.cs">
+      <DependentUpon>ViewProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="PresentationLayer\ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

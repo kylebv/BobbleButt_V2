@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="PageHeader.Master" AutoEventWireup="true" CodeBehind="Orders.aspx.cs" Inherits="BobbleButt.Orders" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageOrders.aspx.cs" Inherits="BobbleButt.Orders" %>
 <%@Import namespace="BobbleButt" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -17,6 +17,7 @@
                             <th class="text-right">PRODUCTS</th>
                             <th class="text-right">DATE</th>
                             <th class="text-right">STATUS</th>
+                            <th class="text-right">UPDATE</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,7 +110,13 @@
                             <td class="qty"><p><%=o.Date %></p></td>
                             
                             <td class="unit"><p><%=o.Status %></td>
-                             </tr>
+                            <%string sent = "Mark as Sent";
+                                if (o.Status.Equals("Sent"))
+                                {
+                                    sent = "Mark as Processing";
+                                }%>
+                            <td class="qty"><input type="button" onclick="window.location.href='Orders.aspx?mode=toggleSent&order=<%=GlobalData.Orders.IndexOf(o)%>'; return false" class="btn btn-success" value="<%=sent %>" /></td>
+                        </tr>
                         <%}
                             }
                             else

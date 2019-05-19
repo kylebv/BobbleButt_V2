@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="PageHeader.Master" AutoEventWireup="true" CodeBehind="PostageOptions.aspx.cs" Inherits="BobbleButt.PostageOptions1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="ManagePostage.aspx.cs" Inherits="BobbleButt.PostageOptions1" %>
 <%@ Import Namespace="BobbleButt" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -48,10 +48,10 @@
                                 
                             </td>
                             <td class="text-right">
-                                <input type="button" class="btn btn-success" onclick="window.location.href='ProductPostage.aspx?postage=<%=GlobalData.postageList.IndexOf(p)%>'; return false" value="Update"/>
+                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdatePostage.aspx?postage=<%=GlobalData.postageList.IndexOf(p)%>'; return false" value="Update"/>
                             </td>
                             <td class="text-right">
-                                <input type="button" onclick="window.location.href='PostageOptions.aspx?delete=<%=GlobalData.postageList.IndexOf(p)%>'; return false" class="btn btn-danger" value="Delete"/>
+                                <input type="button" onclick="window.location.href='ManagePostage.aspx?delete=<%=GlobalData.postageList.IndexOf(p)%>'; return false" class="btn btn-danger" value="Delete"/>
                             </td>
                      </tr>
                         <% } %>
@@ -59,7 +59,7 @@
                     
                 </table>
                 
-                <input type="button" onClick="window.location.href = 'ProductPostage.aspx';return false" class="btn btn-success" value="Add New"/>
+                <input type="button" onClick="window.location.href = 'UpdatePostage.aspx';return false" class="btn btn-success" value="Add New"/>
         </div>
 
     </div>

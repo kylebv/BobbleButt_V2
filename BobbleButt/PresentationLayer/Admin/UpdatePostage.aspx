@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="PageHeader.Master" AutoEventWireup="true" CodeBehind="ProductPostage.aspx.cs" Inherits="BobbleButt.ProductPostage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="UpdatePostage.aspx.cs" Inherits="BobbleButt.ProductPostage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
     <div class="container login-container login-form-2 reg-form">
-            <h3>Postage Options</h3>
+            <h3>Add Postage Options</h3>
             <!-- Create textbox that takes up whole row for postage name -->
             <div class="form-group">
                     <div class="col-sm-12">

@@ -17,6 +17,7 @@
                             <th class="text-right">PRODUCTS</th>
                             <th class="text-right">DATE</th>
                             <th class="text-right">STATUS</th>
+                            <th class="text-right">UPDATE</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,7 +110,13 @@
                             <td class="qty"><p><%=o.Date %></p></td>
                             
                             <td class="unit"><p><%=o.Status %></td>
-                             </tr>
+                            <%string sent = "Mark as Sent";
+                                if (o.Status.Equals("Sent"))
+                                {
+                                    sent = "Mark as Processing";
+                                }%>
+                            <td class="qty"><input type="button" onclick="window.location.href='Orders.aspx?mode=toggleSent&order=<%=GlobalData.Orders.IndexOf(o)%>'; return false" class="btn btn-success" value="<%=sent %>" /></td>
+                        </tr>
                         <%}
                             }
                             else

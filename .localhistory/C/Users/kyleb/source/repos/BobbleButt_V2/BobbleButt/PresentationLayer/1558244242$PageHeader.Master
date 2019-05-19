@@ -67,18 +67,18 @@
         if (user!=null){%>
         <div class="dropdown">
   <asp:imagebutton id="imb_user" class="img-icon fa fa-shopping-cart" runat="server" imageurl="../img/user.png"
-            onmouseover="src='../img/user_hover.png';"
-            onmouseout="src='../img/user.png';"> 
+            onmouseover="src='img/user_hover.png';"
+            onmouseout="src='img/user.png';"> 
         </asp:imagebutton>
   <div class="dropdown-content">
       <a href="EditProfile.aspx">Edit Profile
       </a>
       <%if (user.IsAdmin)
           { %>
-    <a href="ManageUsers.aspx">Manage Users</a>
-    <a href="ManageProducts.aspx">Manage Products</a>
-    <a href="ManageOrders.aspx">Manage Orders</a>
-      <a href="ManagePostage.aspx">Manage Postage</a>
+    <a href="Admin_Users.aspx">Users</a>
+    <a href="ViewProduct.aspx">Items</a>
+    <a href="Orders.aspx">Orders</a>
+      <a href="ProductPostage.aspx">Postage Options</a>
       <%}
     else
     { %>
@@ -97,8 +97,8 @@
     <%}%>
     
     <asp:imagebutton id="imb_cart" class="img-icon" runat="server" imageurl="../img/cart.png"
-            onmouseover="src='../img/cart_hover.png';"
-            onmouseout="src='../img/cart.png';" OnClientClick="toggleCart();return false;"> 
+            onmouseover="src='img/cart_hover.png';"
+            onmouseout="src='img/cart.png';" OnClientClick="toggleCart();return false;"> 
         </asp:imagebutton>
     <% int cartCount = 0;
         if (cart != null)

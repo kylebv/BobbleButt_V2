@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="PageHeader.Master" AutoEventWireup="true" CodeBehind="Admin_Users.aspx.cs" Inherits="BobbleButt.Admin_Users" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="BobbleButt.Admin_Users" %>
 <%@Import namespace="BobbleButt" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

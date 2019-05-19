@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageItems.aspx.cs" Inherits="BobbleButt.ManageItems" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="AddProduct.aspx.cs" Inherits="BobbleButt.ManageItems" %>
 
 <%@ Import Namespace="BobbleButt" %>
 
@@ -42,7 +42,7 @@
                             <label>Description:</label>
                             <!-- Validators -->
                             <!-- Check if textbox is empty -->
-                            <asp:TextBox type="name" id="manageInsertDescription" class="form-control" runat="server" placeholder="Product Description" value=""/>
+                            <asp:TextBox type="name" id="manageInsertDescription" class="form-control" TextMode="MultiLine" Rows="4" runat="server" placeholder="Product Description" value=""/>
                         </div>
 
                         <!-- Input textbox for Price -->
@@ -55,10 +55,11 @@
                             <!-- Check field isn't empty -->
                             <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="manageInsertPrice" class="label-error" ErrorMessage="Price field cannot be empty"/>
                         </div>
+                        </div>
 
                         <!-- Image Upload -->
                         <div class="form-group">
-                                <label>Image (.png .jpg):</label>
+                                <label class="text-white">Image (.png .jpg):</label>
                             <!--Author:
                             Use:  To allow for an image to be uploaded
                             Website Name: ASP.net webform Tutorials

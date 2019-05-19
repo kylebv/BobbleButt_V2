@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="PageHeader.Master" AutoEventWireup="true" CodeBehind="ViewProduct.aspx.cs" Inherits="BobbleButt.ViewProduct" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageProducts.aspx.cs" Inherits="BobbleButt.ViewProduct" %>
 <%@ Import Namespace="BobbleButt" %>
 <asp:Content ID="ViewContent2" ContentPlaceHolderID="Main" runat="server">
     <script type="text/javascript">
@@ -81,12 +81,12 @@
 
                             <!-- Send product value back to ViewProduct so that product equals the value of current product  -->
                             <td class="text-left">
-                                <input type="button" class="btn btn-success" onclick="window.location.href='ViewProduct.aspx?mode=UpdateItem&product=<%=GlobalData.productList.IndexOf(p)%>'; return false" value="UPDATE"/>
+                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdateProduct.aspx?mode=UpdateItem&product=<%=GlobalData.productList.IndexOf(p)%>'; return false" value="UPDATE"/>
                             </td>
                             
                             <!-- Send back product value to ViewProduct -->
                             <td class="text-left">
-                                <input type="button" onclick="window.location.href='ViewProduct.aspx?mode=DeleteItem&product=<%=GlobalData.productList.IndexOf(p)%>'; return false" class="btn btn-danger" value="DELETE"/>
+                                <input type="button" onclick="window.location.href='ManageProducts.aspx?mode=DeleteItem&product=<%=GlobalData.productList.IndexOf(p)%>'; return false" class="btn btn-danger" value="DELETE"/>
                                 
                             </td>
                      </tr>
