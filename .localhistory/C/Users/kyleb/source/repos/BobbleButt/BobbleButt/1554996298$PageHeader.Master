@@ -1,0 +1,175 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PageHeader.master.cs" Inherits="BobbleButt.PageHeader" %>
+
+<%@ Import Namespace="BobbleButt" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>BobbleButt</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1" />
+    <link href="Content/bootstrap.min.css"
+          rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+    <link href="stylesheet.css" rel="stylesheet" />
+    <script type=text/javascript src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function toggleCart() {
+            
+                $("#CART").fadeToggle("fast", false);
+            
+        }
+    </script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+    
+<body>
+<form id="form1" runat="server">
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-expand-md navbar-dark bg-light">
+  <img src="img/bobblebuttlogo.png" class="img-fluid" style="max-width:8%"/>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="Main.aspx">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Products.aspx">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Contact.aspx">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="About.aspx">About</a>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0 mx-auto col-lg-6" style="float:left;">
+      <asp:TextBox runat="server" class="form-control mr-sm-2 col-lg-9" id="searchBar" placeholder="Search"/>
+      <asp:Button runat="server" OnClick="btnSearch_Click" class="btn btn-secondary my-2 my-sm-0 col-lg-2" Text="Search" />
+    </div>
+      <% User user = (User)Session["user"];
+          if (user != null)
+          {%>
+      <div class="user-heading">
+          Hello, <%=user.Email %>
+      </div>
+      <%} %>
+  </div>
+    <% 
+        if (user!=null){%>
+        <div class="dropdown">
+  <asp:imagebutton id="imb_user" class="img-icon fa fa-shopping-cart" runat="server" imageurl="img/user.png"
+            onmouseover="src='img/user_hover.png';"
+            onmouseout="src='img/user.png';"> 
+        </asp:imagebutton>
+  <div class="dropdown-content">
+      <a href="EditProfile.aspx">Edit Profile
+      </a>
+      <%if (user.IsAdmin)
+          { %>
+    <a href="#">Users</a>
+    <a href="#">Items</a>
+    <a href="#">Orders</a>
+      <a href="#">Postage Options</a>
+      <%}
+    else
+    { %>
+      <a href="#">Order History</a>
+      <%} %>
+      <a href="SignOut.aspx" onclick="">Sign Out</>
+  </div>
+</div>
+    <% } else {%>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="Login_Register.aspx">Sign In / Register</a>
+            </li>
+        </ul>
+
+    <%}%>
+    
+    <asp:imagebutton id="imb_cart" class="img-icon" runat="server" imageurl="img/cart.png"
+            onmouseover="src='img/cart_hover.png';"
+            onmouseout="src='img/cart.png';" OnClientClick="toggleCart();return false;"> 
+        </asp:imagebutton>
+    <% int cartCount = 0;
+        if (cart != null)
+        {
+            foreach(Product p in cart)
+            { cartCount += p.Quantity; }
+        }
+        string badgeClass;
+        if (user == null)
+        {
+            badgeClass = "headerBadge1";
+
+        }
+        else
+        {
+            badgeClass = "headerBadge2";
+        }
+        %>
+    
+    <span class="badge <%= badgeClass %>"><%=cartCount %></span>
+
+</nav>
+    <!--begin checkout menu-->
+    <div class="container">
+  <div id="CART" class="shopping-cart">
+    <div class="shopping-cart-header">
+      <i class="fa fa-shopping-cart cart-icon"></i><span class="badge"><%=cartCount%></span>
+      <div class="shopping-cart-total">
+        <span class="lighter-text">Total:</span>
+          <%  double total = 0.00;
+              if (cart != null)
+              {
+
+                  foreach (Product p in cart)
+                  {
+                      total += (p.Quantity * p.Price);
+                  }
+              }%>
+        <span class="main-color-text">$<%=total.ToString("F") %></span>
+      </div>
+    </div> <!--end shopping-cart-header -->
+
+    <ul class="shopping-cart-items">
+        <%if (cart != null)
+            {
+                
+                foreach (Product p in cart)
+                {%>
+      <li class="clearfix">
+        <img class="cart-image" src="<%=p.Image %>" alt="<%=p.Name %>" />
+        <span class="item-name"><%=p.Name %></span>
+        <span class="item-price">$<%=p.Price.ToString("F") %></span>
+        <span class="item-quantity">Quantity: <%=p.Quantity %></span>
+      </li>
+        <%}
+                } %>
+    </ul>
+
+    <a href="#" class="button">Checkout</a>
+  </div> <!--end shopping-cart -->
+</div> <!--end container -->
+    <asp:ContentPlaceHolder id="Main" runat="server">
+ </asp:ContentPlaceHolder>
+    <!-- Footer -->
+<footer class="page-footer font-small indigo">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright: BobbleButt.com
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+    </form>
+</body>
+</html>
+
+

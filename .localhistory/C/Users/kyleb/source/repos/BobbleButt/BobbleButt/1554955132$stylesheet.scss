@@ -1,0 +1,396 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+body { 
+}
+html, body {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 36px;
+    
+}
+$navbar-blue: #374799 ;
+.navbar-dark {
+    background: $navbar-blue !important;
+    color: #fcd303;
+}
+.img-icon {
+    max-width: 35px;
+    margin: 12px;
+
+}
+.reg-form{
+    max-width:60%
+}
+.badge {
+    background-color: red;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+$main-color: #6394F8;
+$light-text: #ABB0BE;
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+
+
+.lighter-text {
+    color: #ABB0BE;
+}
+
+.main-color-text {
+    color: $main-color;
+}
+
+nav {
+    .navbar-left
+
+{
+    float: left;
+}
+
+.navbar-right {
+    float: right;
+}
+
+ul {
+    
+    li
+
+{
+    display: inline;
+    padding-left: 20px;
+    a
+
+{
+    color: #777777;
+    text-decoration: none;
+    &:hover
+
+{
+    color: black;
+}
+
+}
+}
+}
+}
+
+.container {
+    margin: auto;
+    width: 80%;
+}
+
+.cart-image{
+    max-height:15%
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.product-list-img {
+    height: auto;
+    width: auto;
+    max-height: 300px;
+    max-width:300px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+
+.shopping-cart {
+    display:none;
+    margin: 10px 0;
+    float: right;
+    background: white;
+    width: 340px;
+    position: absolute;
+    right: 50px;
+    border-radius: 3px;
+    border: 1px solid #374799;
+    padding: 10px;
+    .shopping-cart-header
+
+{
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom: 15px;
+    .shopping-cart-total
+
+{
+    float: right;
+}
+
+}
+
+.shopping-cart-items {
+    padding-top: 20px;
+    list-style-type: none;
+    li
+
+{
+    margin-bottom: 18px;
+}
+
+img {
+    position:absolute;
+    left:20px;
+    margin-right: 20px;
+}
+
+.item-name {
+    display: block;
+    padding-top: 10px;
+    padding-left: 50px;
+    font-size: 16px;
+}
+
+.item-price {
+    color: $main-color;
+    margin-right: 8px;
+    padding-left: 50px;
+}
+
+.item-quantity {
+    color: $light-text;
+    padding-left:inherit;
+}
+
+}
+}
+
+.shopping-cart:after {
+    bottom: 100%;
+    left: 97%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #374799;
+    border-width: 8px;
+    margin-left: -8px;
+}
+
+.cart-icon {
+    color: #515783;
+    font-size: 24px;
+    margin-right: 7px;
+    float: left;
+}
+
+.button {
+    background: $main-color;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    display: block;
+    border-radius: 3px;
+    font-size: 16px;
+    margin: 25px 0 0px 0;
+    &:hover
+
+{
+    background: lighten($main-color, 3%);
+}
+
+}
+.signout {
+    text-align: center;
+    color: #58a51a;
+}
+.greenify {
+    background: white;
+    border: solid 3px #58a51a;
+}
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.login-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.login-form-1 {
+    padding: 5%;
+    background-color: white;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-1 h3 {
+    text-align: center;
+    color: #333;
+    padding-bottom: 50px;
+}
+.label-error{
+    color:red;
+}
+
+.login-form-2 {
+    padding: 5%;
+    background: $navbar-blue;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-2 h3 {
+    text-align: center;
+    color: #fff;
+    padding-bottom: 50px;
+}
+
+.login-container form {
+    padding: 10%;
+}
+
+.btnSubmit {
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+
+.login-form-1 .btnSubmit {
+    font-weight: 600;
+    color: #fff;
+    background-color: $navbar-blue;
+}
+
+.login-form-2 .btnSubmit {
+    font-weight: 600;
+    color: $navbar-blue;
+    background-color: #fff;
+}
+
+.login-form-2 .ForgetPwd {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.user-heading{
+    font-size:small;
+    padding-right:20px;
+}
+.headerBadge2 {
+    position: relative;
+    top: -40px;
+    right: 25px;
+}
+.headerBadge1 {
+    position: relative;
+    top: -15px;
+    right: 25px;
+}
+
+.login-form-1 .ForgetPwd {
+    color: $navbar-blue;
+    font-weight: 600;
+    text-decoration: none;
+}
+.form-control{
+    max-width:100%
+}
+.img-fixed-logo {
+    position: relative;
+    left: 42.5%;
+    top: 5%;
+    max-width: 15%
+}
+.blue{
+    background-color:$navbar-blue;
+}
+
+.contact-column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+}
+
+.contact-row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/*https://www.w3schools.com/howto/howto_css_image_center.asp */
+.contact-image-centre {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 150px;
+    max-width:50%;
+ 
+}
+.contact-text-contacts {
+    width: 100%;
+    text-align: center;
+    color: darkgray
+}
+
+.blue-text {
+    color: $navbar-blue;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+    height: 100%
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+    //padding-top: 20px;
+    background-color: #f1f1f1;
+    max-height: 100%;
+}
+
+.pad-from-navbar {
+    padding-top: 35px;
+}
+.pad-from-footer {
+    padding-bottom: 35px;
+}
+
