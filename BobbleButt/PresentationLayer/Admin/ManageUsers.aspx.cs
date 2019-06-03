@@ -16,10 +16,12 @@ namespace BobbleButt
             string email = Request.QueryString["user"];
             if (mode!=null)
             {
+                //Suspend a user
                 if (mode.Equals("toggleSuspend") && !((User)Session["user"]).Email.Equals(email))
                 {
                     GlobalData.userMap[email].IsSuspended = !GlobalData.userMap[email].IsSuspended;
                 }
+                //Delete a user
                 if(mode.Equals("delete")&&!((User)Session["user"]).Email.Equals(email))
                 {
                     GlobalData.userMap.Remove(email);

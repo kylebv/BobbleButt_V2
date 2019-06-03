@@ -23,7 +23,7 @@ namespace BobbleButt
         }
         protected void btnRegister_Click(object sender, System.EventArgs e)
         {
-
+            //Add user into list and log them in
             if (IsValid)
             {
 

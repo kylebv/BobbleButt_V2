@@ -22,12 +22,14 @@ namespace BobbleButt
         }
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            // Add new postage option
             if(postage==null)
             {
                 GlobalData.postageList.Add(new PostageOptions(namePostage.Text, Convert.ToInt64(pricePostage.Text)));
             }
             else
             {
+            //Update Postage 
                 GlobalData.postageList[Convert.ToInt32(postage)].Name = namePostage.Text;
                 GlobalData.postageList[Convert.ToInt32(postage)].Price = Convert.ToInt64(pricePostage.Text);
                 string s1, s2;

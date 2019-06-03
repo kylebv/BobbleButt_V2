@@ -1,5 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageProducts.aspx.cs" Inherits="BobbleButt.ViewProduct" %>
-<%@ Import Namespace="BobbleButt" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageProducts.aspx.cs" Inherits="BobbleButt.ViewProduct" %>
+<%@ Import Namespace="BobbleButt.BusinessLayer" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
 <asp:Content ID="ViewContent2" ContentPlaceHolderID="Main" runat="server">
     <script type="text/javascript">
         function addNew() {
@@ -7,10 +11,11 @@
               window.location.href = 'ManageItems.aspx';
         }
     </script>
+  
     <div id="viewItemlist">
     <div class="itemlist overflow-auto">
         <div style="min-width: 600px">
-           
+          
                 <table border="0">
                     <thead>
                         <tr>
@@ -28,11 +33,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                    
                     <% int count = 0;
-                        
-
+                        //@model IEnumerable<Week11_HighScore.Models.ScoreRecord>
                         //Goes through each product and adds them to the page 
-                        foreach (Product p in GlobalData.productList)
+                        //foreach (Product p in GlobalData.productList)
+                        //foreach (TestProduct p in TestProduct.GetProductDataBL)
+                        foreach (TestProduct p in TestProduct.GetProducts())
                         {
                             //Keeps track of the ID number for the page
                             count++;
@@ -41,7 +48,7 @@
                                 %>
                         <!-- Adds the product name to the page -->
                     <tr>
-                            <td class="no"><%=count %></td>
+                            <td class="no"><%=p.ID %></td>
                             <td class="text-left">
                                 <p><%=p.Name %></p>
                                 
@@ -81,12 +88,12 @@
 
                             <!-- Send product value back to ViewProduct so that product equals the value of current product  -->
                             <td class="text-left">
-                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdateProduct.aspx?mode=UpdateItem&product=<%=GlobalData.productList.IndexOf(p)%>'; return false" value="UPDATE"/>
+                                <!--<input type="button" class="btn btn-success" onclick="window.location.href='UpdateProduct.aspx?mode=UpdateItem&product=<%//=GlobalData.productList.IndexOf(p)%>'; return false" value="UPDATE"/>-->
                             </td>
                             
                             <!-- Send back product value to ViewProduct -->
                             <td class="text-left">
-                                <input type="button" onclick="window.location.href='ManageProducts.aspx?mode=DeleteItem&product=<%=GlobalData.productList.IndexOf(p)%>'; return false" class="btn btn-danger" value="DELETE"/>
+                                <!--<input type="button" onclick="window.location.href='ManageProducts.aspx?mode=DeleteItem&product=<%//=GlobalData.productList.IndexOf(p)%>'; return false" class="btn btn-danger" value="DELETE"/>-->
                                 
                             </td>
                      </tr>

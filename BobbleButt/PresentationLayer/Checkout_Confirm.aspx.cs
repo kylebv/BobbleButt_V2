@@ -19,6 +19,7 @@ namespace BobbleButt
                 order = (Order)Session["order"];
                 cart = (List<Product>)Session["cart"];
             }
+            // If cart/order is empty redirect to checkout
             else
             {
                 Response.Redirect("Checkout.aspx");
@@ -34,6 +35,7 @@ namespace BobbleButt
             {
                 foreach(Product p2 in GlobalData.productList)
                 {
+                    //Reduce stock based on quanity purchase
                     if(p2.Name.Equals(p.Name))
                     {
                         p2.Stock -= p.Quantity;
@@ -48,6 +50,7 @@ namespace BobbleButt
                 }
             }
             GlobalData.productList = temp;
+            //Remove items from cart and redirect to success purchase home/main page
             Session.Remove("order");
             Session.Remove("cart");
             Response.Redirect("Main.aspx?orderEmail=" + order.UserEmail);

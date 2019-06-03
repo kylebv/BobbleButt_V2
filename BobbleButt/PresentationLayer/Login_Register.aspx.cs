@@ -21,6 +21,7 @@ namespace BobbleButt
      
             if (GlobalData.userMap.ContainsKey(email))
             {
+                //User logged in
                 if(GlobalData.userMap[email].Password.Equals(pword)&&!GlobalData.userMap[email].IsSuspended)
                 {
                     Session.Add("user", GlobalData.userMap[email]);
@@ -43,12 +44,12 @@ namespace BobbleButt
                 string email = ((TextBox)FindControl("regEmail1")).Text;
                 string pword = ((TextBox)FindControl("regPassword1")).Text;
                 bool isAdmin = ((CheckBox)FindControl("chkAdmin")).Checked;
+                //If email already exists make error message visible
                 if (GlobalData.userMap.ContainsKey(email))
                 {
-                    
-                     ((Label)FindControl("errorMessage2")).Visible = true;
-                    
+                     ((Label)FindControl("errorMessage2")).Visible = true;   
                 }
+                // Create new user with informtaion provided
                 else
                 {
                     User temp = new User();

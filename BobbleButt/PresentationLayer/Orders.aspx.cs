@@ -21,6 +21,7 @@ namespace BobbleButt
             {
                 if (mode.Equals("toggleSent"))
                 {
+                    //Change status of order if admin changes the status
                     if (GlobalData.Orders[Convert.ToInt32(order)].Status.Equals("Processing"))
                     {
                         GlobalData.Orders[Convert.ToInt32(order)].Status = "Sent";

@@ -19,78 +19,84 @@
         <div class="container login-container">
             <div class="row">
                 <div class="col-md-6 login-form-1">
+                    <!-- Login fields displayed -->
                     <h3>Sign In</h3>
+                        <!-- Email -->
                         <div class="form-group">
                             <asp:TextBox TextMode="Email" id="logEmail" class="form-control" runat="server" placeholder="Your Email *" value="" />
                         </div>
-                    
+                        <!-- Password -->
                         <div class="form-group">
                             <asp:TextBox type="password" id="logPassword" runat="server" class="form-control" placeholder="Your Password *" value="" />
                         </div>
-                    
+                        <!-- Login button -->
                         <div class="form-group">
                             <asp:Button onclick="btnLogin_Click" causesvalidation="false" runat="server" class="btnSubmit" text="Login" />
                         </div>
-                        
+                        <!-- Error message shown for wrong user name or password -->
                         <div class="form-group">
                             <asp:Label ID="errorMessage" runat="server" Visible="false" class="label-error">Login failed. You may be suspended, or your details are incorrect.</asp:Label>
                         </div>
                 </div>
+                <!-- Register fields displayed -->
                 <div class="col-md-6 login-form-2">
                     <h3>Register</h3>
-                        <div class="form-group">
+                    <!-- Email -->
+                    <div class="form-group">
                             <asp:TextBox runat="server" TextMode="Email" id="regEmail1" class="form-control" placeholder="Your Email *" value="" />
-                                                        <asp:RequiredFieldValidator Enabled="false" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter an email" runat="server" controltovalidate="regEmail1"/>
-                        </div>
-                                        
+                            <asp:RequiredFieldValidator Enabled="false" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter an email" runat="server" controltovalidate="regEmail1"/>
+                    </div>
+                    <!-- Confirm email -->                    
                     <div class="form-group">
                             <asp:TextBox runat="server" TextMode="Email" id="regEmail2" class="form-control" placeholder="Re-enter Email *" value="" />
-                                                                                <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter an email" runat="server" controltovalidate="regEmail2"/>
-
-                        <asp:RegularExpressionValidator Display="Dynamic" ID="regexEmailValid" CssClass="label-error" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="regEmail1" ErrorMessage="Invalid Email Format"></asp:RegularExpressionValidator>
-<br />
-                    <asp:CompareValidator 
-                           ID="compareEmails" Display="Dynamic" Operator="Equal" runat="server"
-                           ValidationGroup="Validate" ControlToValidate="regEmail1"  
-                           ControlToCompare="regEmail2" CssClass="label-error" ErrorMessage="Emails do not match." SetFocusOnError="true">
-                    </asp:CompareValidator>
-                        </div>
-                    
-
-                        <div class="form-group">
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter an email" runat="server" controltovalidate="regEmail2"/>
+                            <asp:RegularExpressionValidator Display="Dynamic" ID="regexEmailValid" CssClass="label-error" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="regEmail1" ErrorMessage="Invalid Email Format"></asp:RegularExpressionValidator>
+                        <br />
+                        <!-- Check if email entered matches to original email entered -->
+                            <asp:CompareValidator 
+                                   ID="compareEmails" Display="Dynamic" Operator="Equal" runat="server"
+                                   ValidationGroup="Validate" ControlToValidate="regEmail1"  
+                                   ControlToCompare="regEmail2" CssClass="label-error" ErrorMessage="Emails do not match." SetFocusOnError="true">
+                            </asp:CompareValidator>
+                    </div>
+                    <!-- Password -->
+                     <div class="form-group">
                             <asp:TextBox TextMode="Password" runat="server" id="regPassword1" class="form-control" placeholder="Your Password *" value="" />
-                                                        <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a password" runat="server" controltovalidate="regPassword1"/>
-
-                        </div>
-                    
+                            <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a password" runat="server" controltovalidate="regPassword1"/>
+                     </div>
+                    <!-- Re-enter password -->
                     <div class="form-group">
                             <asp:TextBox  TextMode="Password" runat="server" id="regPassword2" class="form-control" placeholder="Re-enter Password *" value="" />
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a password" runat="server" controltovalidate="regPassword2"/>
-
-                        <asp:RegularExpressionValidator Display="Dynamic" ID="checkLength" CssClass="label-error" runat="server"
+                            <!-- Password length has to be 8 or greater -->
+                            <asp:RegularExpressionValidator Display="Dynamic" ID="checkLength" CssClass="label-error" runat="server"
                            ControlToValidate="regPassword1"
                            ErrorMessage="Minimum password length is 8"
                            ValidationExpression=".{8}.*" />
                         <br />
-                    <asp:CompareValidator
-                           ID="comparePasswords" Display="Dynamic" Operator="Equal" runat="server"
-                           ValidationGroup="Validate" ControlToValidate="regPassword1"  
-                           ControlToCompare="regPassword2" CssClass="label-error" ErrorMessage="Passwords do not match." SetFocusOnError="true">
-                    </asp:CompareValidator>
-                        </div>
+                            <!-- Check to see passwords match -->
+                            <asp:CompareValidator
+                                   ID="comparePasswords" Display="Dynamic" Operator="Equal" runat="server"
+                                   ValidationGroup="Validate" ControlToValidate="regPassword1"  
+                                   ControlToCompare="regPassword2" CssClass="label-error" ErrorMessage="Passwords do not match." SetFocusOnError="true">
+                            </asp:CompareValidator>
+                    </div>
+                    <!-- Register Button -->
                     <div class="form-group">
                             <asp:Button onclick="btnRegister_Click"  runat="server" class="btnSubmit" text="Register" />
-                        </div>
+                    </div>
+                    <!-- Checkbox to register as an admin -->
                     <div class="form-group">
                         <label class="ForgetPwd">Register as Admin?</label>
                         <asp:CheckBox runat="server" CssClass="btn" id="chkAdmin"/>
-                        </div>
-                    <div class="form-group">
-                            <asp:Label ID="errorMessage2" runat="server" Visible="false" class="label-error">Email already exists in our system.</asp:Label>
-                        </div>
+                    </div>
+                    <!-- Error message to display if email is already used--> 
+                     <div class="form-group">
+                         <asp:Label ID="errorMessage2" runat="server" Visible="false" class="label-error">Email already exists in our system.</asp:Label>
+                     </div>
                     
-        <asp:RequiredFieldValidator runat="server" controltovalidate="regEmail1"/>
-                        </div>
+                    <asp:RequiredFieldValidator runat="server" controltovalidate="regEmail1"/>
+                </div>
                 </div>
             </div>
     </form>

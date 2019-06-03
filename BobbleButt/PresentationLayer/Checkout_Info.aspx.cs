@@ -36,7 +36,9 @@ namespace BobbleButt
                 cart = (List<Product>)Session["cart"];
 
             }
+
             else { Response.Redirect("Checkout.aspx"); }
+            // Make paypal or credit card form visible on page laod
             if (!paypal.Checked)
             {
                 paypalForm.Visible = false;
@@ -51,6 +53,7 @@ namespace BobbleButt
         }
         protected void btnCheckout_Clicked(object sender, EventArgs e)
         {
+            // Order is payed for and is added to users orders
             if(IsValid)
             {
                 Order o = new Order(email.Text, firstName.Text, lastName.Text, phone.Text, streetAddress.Text, suburb.Text, postcode.Text, null, null, DdlPostage.SelectedIndex, ((List<Product>)Session["cart"]), "Processing", DateTime.Now.ToString());
@@ -68,8 +71,10 @@ namespace BobbleButt
         }
         protected void chk_Changed(object sender, EventArgs e)
         {
+            // Check to see which radio button was checked
             if(paypal.Checked)
             {
+                // Make paypal information visible and credit card information invisible
                 paypalForm.Visible = true;
                 cardForm.Visible = false;
                 valCardCvv.Enabled = false;
@@ -82,6 +87,7 @@ namespace BobbleButt
             }
             else if (credit.Checked)
             {
+                // Make credit information visible and paypal information invisible
                 paypalForm.Visible = false;
                 cardForm.Visible = true;
                 valCardCvv.Enabled = true;

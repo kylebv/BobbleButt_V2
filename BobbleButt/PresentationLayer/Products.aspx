@@ -19,6 +19,7 @@
         <div class="col">
             <div class="row">
                 <%int searchFailureCount = 0;
+                    //Get all the products in the list
                     foreach (Product p in GlobalData.productList)
                     {
                         if (Request.QueryString["search"] == null && Request.QueryString["category"] == null)
@@ -26,18 +27,23 @@
                    %>
                 <div class="col-12 col-md-6 col-lg-4 card-deck pad-from-footer">
                     <div class="card">
+                        <!-- Add image of product -->
                         <img class="product-list-img" src="<%=p.Image %>" alt="Card image cap">
                         <div class="card-body d-flex flex-column">
-                          
+                           <!-- Name of product -->
                            <h4 class="card-title"><a href="Products.aspx?mode=PurchaseProductPage&product=<%=GlobalData.productList.IndexOf(p) %>" title="View Product"><%=p.Name %></a></h4>
-                            
+                            <!-- Description of product -->
                             <p class="card-text"><%=p.Description %></p>
                             <div class="mt-auto">
+                                <!-- Product is in stock -->
                                 <%if ( p.Stock > 0)
                                     { %>
+                            <!-- Price of product -->
                             <p class="price-card">$<%=p.Price.ToString("F") %></p>
+                            <!-- Add to cart Button -->
                             <button type="submit"  value="Add to Cart" onclick="window.location.href='/Products.aspx?addItem=<%= GlobalData.productList.IndexOf(p) %>'; return false" class="btn btn-success shadow btn-block">Add to Cart</button>
                                 <%}
+                                    // Disable add to cart button if out of stock
                                     else
                                     { %>
                                 <p class="price-card">Out of Stock</p>

@@ -26,14 +26,14 @@
                     <% int count = 0;
                         
 
-                         
+                        
                         foreach (PostageOptions p in GlobalData.postageList)
                         {
                             count++;
 
                            
                                 %>
-
+                            <!-- Add postage name to table -->
                     <tr>
                             <td class="no"><%=count %></td>
                             <td class="text-right">
@@ -42,14 +42,16 @@
                             </td>
                             
                                 
-                           
+                           <!-- Add postage price -->
                             <td class="text-right">
                                 <p><%=p.Price.ToString("F") %></p>
                                 
                             </td>
+                            <!-- Update Button -->
                             <td class="text-right">
                                 <input type="button" class="btn btn-success" onclick="window.location.href='UpdatePostage.aspx?postage=<%=GlobalData.postageList.IndexOf(p)%>'; return false" value="Update"/>
                             </td>
+                            <!-- Delete Button -->
                             <td class="text-right">
                                 <input type="button" onclick="window.location.href='ManagePostage.aspx?delete=<%=GlobalData.postageList.IndexOf(p)%>'; return false" class="btn btn-danger" value="Delete"/>
                             </td>

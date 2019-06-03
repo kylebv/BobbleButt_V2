@@ -14,6 +14,7 @@ namespace BobbleButt
             string delete = Request.QueryString["delete"];
             if(delete!=null)
             {
+                //Delete a specific postage option
                 int index = Convert.ToInt32(delete);
                 GlobalData.postageList.RemoveAt(index);
             }

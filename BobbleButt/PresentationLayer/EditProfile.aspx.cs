@@ -11,6 +11,7 @@ namespace BobbleButt
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Place current user session information into textboxes 
             User user = (User)Session["user"];
             if (user==null)
             {
@@ -26,6 +27,7 @@ namespace BobbleButt
         }
         protected void btnConfirm_Click(object sender, System.EventArgs e)
         {
+            //Update/Change user information on submit
             if (IsValid)
             {
 
@@ -42,6 +44,7 @@ namespace BobbleButt
                 Response.Redirect("Main.aspx");
 
             }
+            // Error message displayed if fields are not correctly filled
             else
             {
                 ((Label)FindControl("errorMessage")).Visible = true;

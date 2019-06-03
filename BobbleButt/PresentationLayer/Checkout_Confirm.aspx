@@ -23,7 +23,9 @@
 
               <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
-                  <%int cartCount = 0; foreach(Product p in cart)
+                  <%int cartCount = 0;
+                      //Count of amount of items in the cart baed on products and quantity
+                      foreach (Product p in cart)
                       { cartCount += p.Quantity; } %>
                 <span class="badge badge-secondary badge-pill"><%=cartCount %></span>
               </h4>
@@ -31,30 +33,36 @@
                   <%double total = 0;
                       foreach (Product p in cart)
                       {
+                          // Total of checkout
                           total += p.Quantity * p.Price;%>
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
+                    <!-- Name and quantity of product  -->
                     <h6 class="my-0"><%=p.Name %></h6>
                     <small class="text-muted">Quantity: <%= p.Quantity %></small>
                   </div>
+                  <!-- Subtotal of individual product based on quantity -->
                   <span class="text-muted">$<%=(p.Quantity*p.Price).ToString("F") %></span>
                 </li>
                   <%} %>
                   <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
                     <h6 class="my-0">Postage</h6>
+                    <!-- Name and price of postage from postage list -->
                     <small class="text-muted"><%= GlobalData.postageList[order.PostOption].Name %></small>
                   </div>
                   <span class="text-muted">$<%=GlobalData.postageList[order.PostOption].Price.ToString("F") %></span>
                 </li>
+                  <!-- Adding the postage price on to the total checkout price -->
                   <%total += GlobalData.postageList[order.PostOption].Price; %>
             
+                <!-- Displaying total amount -->
                 <li class="list-group-item d-flex justify-content-between">
                   <span>Total (AUD)</span>
                   <strong>$<%=total.ToString("F") %></strong>
                 </li>
               </ul>
-
+          <!-- Button to finalize/confirm purchase -->
           <div class="mb-3 ">
                 <asp:Button runat="server" OnClick="btnConfirm_Click" class="btn btn-success btn-lg btn-block" text="Finalise Purchase"/>
                       </div>
@@ -62,7 +70,7 @@
             <div class="col-md-8 order-md-1">
               <h4 class="mb-3">Confirm Details</h4>
                 <br />
-
+                  <!-- Labels of required details and details of specific user making purchase -->
                   <div class="mb-3">
                     <label for="firstName"><strong>First name: </strong><%= order.FirstName %></label>
                 
@@ -70,9 +78,6 @@
                   <div class="mb-3">
                     <label for="lastName"><strong>Last name: </strong><%= order.LastName %></label>
                   </div>
-
-
-
 
                 <div class="mb-3">
                   <label for="email"><strong>Email: </strong><%= order.UserEmail %></label>
@@ -93,11 +98,13 @@
                 <div class="mb-3">
                   <label for="address"><strong>Street address: </strong><%= order.StreetAddress %></label>
                 </div>
+                <!-- Postage options and price displayed from a list -->
                 <div class="mb-3">
                   <label for="address"><strong>Postage: </strong><%= GlobalData.postageList[order.PostOption].Name %> ($<%= GlobalData.postageList[order.PostOption].Price.ToString("F") %>)</label>
                 </div>
 
                 <div class="mb-3">
+                    <!-- Checks to see if user is paying with paypal or credit card and display card number or card number accordingly -->
                     <% if(order.PaypalID!=null){ %>
                     <label for="address"><strong>Paypal ID: </strong><%= order.PaypalID %></label>
                     <%} %>

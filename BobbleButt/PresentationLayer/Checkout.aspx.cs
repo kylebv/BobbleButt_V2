@@ -24,6 +24,7 @@ namespace BobbleButt
             }
             if(Request.QueryString["delete"]!=null)
             {
+                //Deleting a product from the checkout
                 cart.RemoveAt(Convert.ToInt32(Request.QueryString["delete"]));
             }
             else if(Request.QueryString["item"] != null&& Request.QueryString["quantity"] != null)
@@ -32,7 +33,8 @@ namespace BobbleButt
                 {
                     cart[Convert.ToInt32(Request.QueryString["item"])].Quantity = Convert.ToInt32(Request.QueryString["quantity"]);
                 }
-                else if(Convert.ToInt32(quantity) == 0)
+                //If quantity is changed to 0 in checkout remove the product
+                else if (Convert.ToInt32(quantity) == 0)
                 {
                     cart.RemoveAt(Convert.ToInt32(item));
                 }
