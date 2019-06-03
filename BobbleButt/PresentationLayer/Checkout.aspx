@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="PageHeader.Master" AutoEventWireup="true" CodeBehind="Checkout.aspx.cs" Inherits="BobbleButt.Checkout" %>
 <%@ Import Namespace="BobbleButt" %>
+<%@ Import Namespace="BobbleButt.BusinessLayer" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         function updateQuantity(control, prod) {

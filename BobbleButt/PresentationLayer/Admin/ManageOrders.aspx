@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageOrders.aspx.cs" Inherits="BobbleButt.Orders" %>
-<%@Import namespace="BobbleButt" %>
+<%@ Import namespace="BobbleButt" %>
+<%@ Import Namespace="BobbleButt.BusinessLayer" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
@@ -21,15 +22,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% int count = 0;
-                            foreach (Order o in GlobalData.Orders)
+                        <%  foreach (Order o in orders)
                             {
-                                count++;
+
                                 //if there is only a mode display order list (if statement to filter out of lower else statements)
                                 if (user == null && order == null)
                                 {%>
                         <tr>
-                            <td class="no"><%=count %></td>
+                            <td class="no"><%=o.ID %></td>
                             <td class="text-left">
                                 <p><%=o.UserEmail %></p>
                                 

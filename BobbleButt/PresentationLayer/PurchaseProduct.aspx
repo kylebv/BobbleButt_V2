@@ -16,7 +16,7 @@
 				<div class="col-md-7">
                     <h3>
                     <!-- Labels for product name, description and price so that they can be altered with existing data in product list -->
-					<div><asp:Label runat="server"  id="productViewName" class="product-title" Text="Product Name"/><br/></div></h3>
+					<asp:Label runat="server"  id="productViewName" class="product-title" Text="Product Name"/><br/></h3>
 					<div><asp:Label runat="server"  id="productViewDescription" class="card-text" Text="Product Description"/></div>
 					<hr>
 					<div><asp:Label runat="server"  id="productViewPrice" Text="Product Price"/></div>
@@ -26,6 +26,7 @@
 					<div class="btn-group cart">
 						<asp:button runat="server" Text="Add to Cart" OnClick="btnAddToCart_Click" class="btn btn-success"/>
                     </div>
+                    <input type="hidden" id="productID" runat="server" />
 		
 				</div>
 			</div> 

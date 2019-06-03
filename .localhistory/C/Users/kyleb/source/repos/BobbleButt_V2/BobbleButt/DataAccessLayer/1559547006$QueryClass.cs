@@ -4,27 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Configuration;
+using BobbleButt.BusinessLayer;
 
 namespace BobbleButt.DataAccessLayer
 {
-    public class AdminViewProduct
+    public class QueryClass
     {
-        private String m_connectionString; 
+        private static String m_connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString;
 
-        public AdminViewProduct()
-        {
-            // grab connection string from web.config
-            m_connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnection"].ConnectionString; 
-        }
         // get product data from the database
-        public List<BusinessLayer.TestProduct> GetProductData()
+        public static List<Product> GetProductData()
         {
-            List<BusinessLayer.TestProduct> productData = new List<BusinessLayer.TestProduct>();
+            List<Product> productData = new List<Product>();
 
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "SELECT [Product.name],[ProductCategory.name],[stock],[description],[price],[image],[productID] FROM[Product].[dbo].[INFT3050A1] JOIN ProductCategory ON Product.productCategoryID=ProductCateogry.productCategoryID;";
+                string sql = "SELECT [Product.name] as productName,[ProductCategory.name] as categoryName,[stock],[description],[price],[image],[productID] FROM Product JOIN ProductCategory ON Product.productCategoryID=ProductCateogry.productCategoryID;";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
@@ -34,9 +30,9 @@ namespace BobbleButt.DataAccessLayer
                     //Reading data from the database and adding it to a list
                     while (reader.Read())
                     {
-                        BusinessLayer.TestProduct productD = new BusinessLayer.TestProduct();
-                        productD.Name = reader["Product.name"].ToString();
-                        productD.Category = reader["ProductCategory.name"].ToString(); 
+                        Product productD = new Product();
+                        productD.Name = reader["productName"].ToString();
+                        productD.Category = reader["categoryName"].ToString(); 
                         productD.Stock = (int)reader["stock"];
                         productD.Description = reader["description"].ToString();
                         productD.Price = (double)reader["price"];

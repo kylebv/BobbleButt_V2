@@ -34,17 +34,13 @@
                     </thead>
                     <tbody>
                     
-                    <% int count = 0;
-                        //@model IEnumerable<Week11_HighScore.Models.ScoreRecord>
+                    <%  //@model IEnumerable<Week11_HighScore.Models.ScoreRecord>
                         //Goes through each product and adds them to the page 
                         //foreach (Product p in GlobalData.productList)
                         //foreach (TestProduct p in TestProduct.GetProductDataBL)
-                        foreach (TestProduct p in TestProduct.GetProducts())
-                        {
-                            //Keeps track of the ID number for the page
-                            count++;
 
-                           
+                        foreach (Product p in products)
+                        {                   
                                 %>
                         <!-- Adds the product name to the page -->
                     <tr>

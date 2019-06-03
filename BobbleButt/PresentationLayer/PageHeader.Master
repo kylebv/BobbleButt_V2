@@ -1,6 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PageHeader.master.cs" Inherits="BobbleButt.PageHeader"%>
 
 <%@ Import Namespace="BobbleButt" %>
+<%@ Import Namespace="BobbleButt.BusinessLayer" %>
 
 <!DOCTYPE html>
 <html>

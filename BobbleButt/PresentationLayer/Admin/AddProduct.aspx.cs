@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BobbleButt.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -52,7 +53,7 @@ namespace BobbleButt
                     //Save image into project
                     FileUploadImg.SaveAs(Server.MapPath("~/../img/" + FileUploadImg.FileName));
                     //Add data inserted in globalData as a new product
-                    GlobalData.productList.Add(new Product(InsertCategory, InsertName, InsertStock, InsertDescription, InsertPrice, InsertImage, InsertQuantity));
+                    //GlobalData.productList.Add(new Product(InsertCategory, InsertName, InsertStock, InsertDescription, InsertPrice, InsertImage, InsertQuantity,0));
                     Response.Redirect("ManageProducts.aspx");
                 }
                 else

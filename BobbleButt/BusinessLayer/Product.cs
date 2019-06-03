@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BobbleButt
+namespace BobbleButt.BusinessLayer
 {
     public class Product:ICloneable
     {
@@ -15,7 +15,7 @@ namespace BobbleButt
             return this.MemberwiseClone();
         }
 
-        public Product(string category, string name, int stock, string description, double price, string image, int quantity)
+        public Product(string category, string name, int stock, string description, double price, string image, int quantity, int id, bool isDeleted)
         {
             Name = name;
             Description = description;
@@ -24,8 +24,11 @@ namespace BobbleButt
             Price = price;
             Category = category;
             Stock = stock;
+            ID = id;
+            IsDeleted = isDeleted;
         }
 
+        public bool IsDeleted { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
@@ -33,5 +36,6 @@ namespace BobbleButt
         public double Price { get; set; }
         public string Category {get; set;}
         public int Stock { get; set; }
+        public int ID { get; set; }
     }
 }

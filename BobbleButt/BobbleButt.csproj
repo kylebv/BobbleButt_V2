@@ -226,7 +226,7 @@
     <Compile Include="BusinessLayer\Product.cs" />
     <Compile Include="BusinessLayer\TestProduct.cs" />
     <Compile Include="BusinessLayer\User.cs" />
-    <Compile Include="DataAccessLayer\AdminViewProduct.cs" />
+    <Compile Include="DataAccessLayer\QueryClass.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
