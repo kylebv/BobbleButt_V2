@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageProducts.aspx.cs" Inherits="BobbleButt.ManageProducts" %>
-<%@ Import Namespace="BobbleButt.BusinessLayer"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageProducts.aspx.cs" Inherits="BobbleButt.ViewProduct" %>
+<%@ Import Namespace="BobbleButt.BusinessLayer" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -26,7 +26,7 @@
                             <th class="text-right">STOCK</th>
                             <th class="text-right">DESCRIPTION</th>
                             <th class="text-right">PRICE</th>
-                            <th class="text-right">IMAGE</th> 
+                            <th class="text-right">IMAGE</th>
                             <th class="text-right">UPDATE</th>
                             <th class="text-right">DELETE</th>
 
@@ -44,7 +44,7 @@
                                 %>
                         <!-- Adds the product name to the page -->
                     <tr>
-                            <td class="no"><%=p.ID  %></td>
+                            <td class="no"><%=p.ID %></td>
                             <td class="text-left">
                                 <p><%=p.Name %></p>
                                 
@@ -84,19 +84,12 @@
 
                             <!-- Send product value back to ViewProduct so that product equals the value of current product  -->
                             <td class="text-left">
-                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdateProduct.aspx?&product=<%=p.ID%>'; return false" value="UPDATE"/>
+                                <!--<input type="button" class="btn btn-success" onclick="window.location.href='UpdateProduct.aspx?mode=UpdateItem&product=<%//=GlobalData.productList.IndexOf(p)%>'; return false" value="UPDATE"/>-->
                             </td>
                             
                             <!-- Send back product value to ViewProduct -->
                             <td class="text-left">
-                                <%String s = "DELETE";
-                                    String cl = "btn-danger";
-                                    if (p.IsDeleted)
-                                    {
-                                        s = "RESTORE";
-                                        cl = "btn-success";
-                                    }%>
-                                <input type="button" onclick="window.location.href='ManageProducts.aspx?mode=toggleDelete&product=<%=p.ID%>'; return false" class="btn <%=cl%>" value="<%=s %>"/>
+                                <!--<input type="button" onclick="window.location.href='ManageProducts.aspx?mode=DeleteItem&product=<%//=GlobalData.productList.IndexOf(p)%>'; return false" class="btn btn-danger" value="DELETE"/>-->
                                 
                             </td>
                      </tr>

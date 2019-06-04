@@ -84,7 +84,7 @@
 
                             <!-- Send product value back to ViewProduct so that product equals the value of current product  -->
                             <td class="text-left">
-                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdateProduct.aspx?&product=<%=p.ID%>'; return false" value="UPDATE"/>
+                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdateProduct.aspx?mode=UpdateItem&product=<%=p.ID%>'; return false" value="UPDATE"/>
                             </td>
                             
                             <!-- Send back product value to ViewProduct -->

@@ -41,7 +41,7 @@
                             </td>
                             <td class="qty"><p><%=o.Date %></p></td>
                             
-                            <td class="unit"><p><%=o.Status %></p></td>
+                            <td class="unit"><p><%=o.Status %></td>
                             <%string sent = "Mark as Sent";
                                 if (o.Status.Equals("Sent"))
                                 {

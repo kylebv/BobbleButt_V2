@@ -38,10 +38,11 @@ namespace BobbleButt
 
                     QueryClass.OrderToggleSent(orderID);
                     orders = QueryClass.GetOrders();
+
                 }
             }
             //populates a single order if order exists in url
-            if(order!=null && mode==null)
+            if(order!=null)
             {
                 orders = new List<Order>();
                 orders.Add(QueryClass.GetOrder(orderID));

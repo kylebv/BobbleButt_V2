@@ -57,7 +57,6 @@
                     <label class="text-white">Image (.png or .jpg):</label>
                     <asp:Label runat="server" ID="fileName" />
                     <asp:FileUpload id="updateFileUploadImg" runat="server" /> <br/>
-                    <asp:Label runat="server" id="pID" Visible="false"/>
              </div>
 
                          <!-- Error message for Image Upload where wrong file type is uploaded -->

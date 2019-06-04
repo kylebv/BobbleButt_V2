@@ -48,64 +48,6 @@ namespace BobbleButt.DataAccessLayer
             return productData;
         }
 
-        // get product data from the database
-        public static List<Product> GetProductsIgnoreDelete()
-        {
-            List<Product> productData = new List<Product>();
-
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], isDeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    //Reading data from the database and adding it to a list
-                    while (reader.Read())
-                    {
-                        Product productD = new Product();
-                        productD.Name = reader["pname"].ToString();
-                        productD.Category = reader["pcname"].ToString();
-                        productD.Stock = (int)reader["stock"];
-                        productD.Description = reader["description"].ToString();
-                        productD.Price = Convert.ToDouble(reader["price"]);
-                        productD.Image = reader["image"].ToString();
-                        productD.ID = (int)reader["productID"];
-                        productD.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
-                        productD.Quantity = 1;
-                        productData.Add(productD);
-                    }
-                    connection.Close();
-                }
-            }
-            return productData;
-        }
-        // update a product's data in the db
-        public static void UpdateProduct(Product p)
-        {
-            List<Product> productData = new List<Product>();
-
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "UPDATE Product " +
-                    "SET name = '"+p.Name+"', description = '"+p.Description+"', price = "+p.Price+", image = '"+p.Image+"', stock = "+p.Stock+"," +
-                    "productCategoryID = (select productCategoryID FROM productcategory where name = '"+p.Category+"') " +
-                    "WHERE productID = "+p.ID;
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Read();
-                    connection.Close();
-                }
-            }
-        }
-
-
 
         // get product data from the database searching by category
         public static List<Product> GetProductsByCategory(String s)
@@ -212,45 +154,6 @@ namespace BobbleButt.DataAccessLayer
             return p;
         }
 
-        // set a product to deleted
-        public static void ToggleDeleteProduct(int id)
-        {
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "SELECT isDeleted FROM Product WHERE productID = " + id;
-                int deleted = -1;
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    //Reading data from the database and adding it to a list
-                    reader.Read();
-                    deleted = Convert.ToInt32(reader["isDeleted"]);
-                    connection.Close();
-                }
-                if(deleted==0)
-                {
-                    deleted = 1;
-                }
-                else if (deleted==1)
-                {
-                    deleted = 0;
-                }
-
-                sql = "UPDATE Product SET isDeleted = "+deleted+" WHERE productID = " + id;
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    connection.Close();
-                }
-            }
-        }
-
         // get the list of categories from the db
         public static List<String> GetCategories()
         {
@@ -281,7 +184,7 @@ namespace BobbleButt.DataAccessLayer
         public static List<Order> GetOrders()
         {
             List<Order> orders = new List<Order>();
-            List<int> orderNumbers = new List<int>();
+
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
@@ -299,12 +202,17 @@ namespace BobbleButt.DataAccessLayer
                     //Reading data from the database and adding it to a list
                     while (reader.Read())
                     {
-                        orderNumbers.Add((int)reader["orderID"]);
-                    }
-                    connection.Close();
-                    foreach (int i in orderNumbers)
-                    {
-                        orders.Add(QueryClass.GetOrder(i));
+                        Order o = new Order();
+                        o.UserEmail = reader["email"].ToString();
+                        o.FirstName = reader["firstName"].ToString();
+                        o.LastName = reader["lastName"].ToString();
+                        o.Phone = reader["oPhone"].ToString();
+                        o.StreetAddress = reader["oStreet"].ToString();
+                        o.Suburb = reader["oSuburb"].ToString();
+                        o.Postcode = reader["oPostcode"].ToString();
+                        o.PostOption = (int)reader["postID"];
+                        o.ID = (int)reader["orderID"];
+                        orders.Add(o);
                     }
                     connection.Close();
                 }
@@ -316,7 +224,6 @@ namespace BobbleButt.DataAccessLayer
         public static List<Order> GetOrdersByUser(String user)
         {
             List<Order> orders = new List<Order>();
-            List<int> orderNumbers = new List<int>();
 
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
@@ -336,13 +243,19 @@ namespace BobbleButt.DataAccessLayer
                     //Reading data from the database and adding it to a list
                     while (reader.Read())
                     {
-                        orderNumbers.Add((int)reader["orderID"]);
+                        Order o = new Order();
+                        o.UserEmail = reader["email"].ToString();
+                        o.FirstName = reader["firstName"].ToString();
+                        o.LastName = reader["lastName"].ToString();
+                        o.Phone = reader["oPhone"].ToString();
+                        o.StreetAddress = reader["oStreet"].ToString();
+                        o.Suburb = reader["oSuburb"].ToString();
+                        o.Postcode = reader["oPostcode"].ToString();
+                        o.PostOption = (int)reader["postID"];
+                        o.ID = (int)reader["orderID"];
+                        orders.Add(o);
                     }
                     connection.Close();
-                    foreach(int i in orderNumbers)
-                    {
-                        orders.Add(QueryClass.GetOrder(i));
-                    }
                 }
             }
             return orders;
@@ -357,7 +270,7 @@ namespace BobbleButt.DataAccessLayer
             {
                 // Get all data about product with product category name
                 string sql = "SELECT orderID, email, firstName, lastName, po.postageOptionsID as postID, status, o.streetAddress as oStreet, o.Suburb as oSuburb," +
-                    "o.postcode as oPostcode, o.phone as oPhone, o.date as oDate, o.status as oStatus " +
+                    "o.postcode as oPostcode, o.phone as oPhone " +
                     "FROM [Order] o " +
                     "JOIN [User] u ON o.userID = u.UserID " +
                     "JOIN PostageOptions po ON po.postageOptionsID = o.postageOptionsID where orderID = " + id;
@@ -376,18 +289,16 @@ namespace BobbleButt.DataAccessLayer
                     o.StreetAddress = reader["oStreet"].ToString();
                     o.Suburb = reader["oSuburb"].ToString();
                     o.Postcode = reader["oPostcode"].ToString();
-                    o.Date = reader["oDate"].ToString();
-                    o.Status = reader["oStatus"].ToString();
                     o.PostOption = (int)reader["postID"];
                     o.ID = (int)reader["orderID"];
-                    reader.Close();
+
                     //GETTHEPRODUCTS TOO
                 }
 
                 List<Product> pList = new List<Product>();
                 //get the list of all products in the order
                 sql = "SELECT orderID, op.productID as opproductID, op.quantity as opQuantity, p.name as pname, pc.name as pcname,[stock],p.description as pDescription,[price],[image] " +
-                    "FROM OrderProduct op JOIN Product p on p.productID = op.productID JOIN ProductCategory pc ON pc.productCategoryID = p.productCategoryID " +
+                    "FROM OrderProduct op JOIN Product p on p.productID = op.productID JOIN ProductCategory pc ON pc.productCateoryID = p.productCategoryID " +
                     "WHERE orderID = " + id;
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -435,7 +346,6 @@ namespace BobbleButt.DataAccessLayer
                     //get the current status
                     reader.Read();
                     newStatus = reader["status"].ToString();
-                    reader.Close();
                     
                 }
 
@@ -449,7 +359,7 @@ namespace BobbleButt.DataAccessLayer
                 }
 
 
-                sql = "UPDATE [Order] " +
+                sql = "UPDATE Order " +
                     "SET status = '" + newStatus + "' " +
                     "WHERE orderID = " + id;
 

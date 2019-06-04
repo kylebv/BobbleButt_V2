@@ -33,19 +33,12 @@ namespace BobbleButt
                 productUpdateDescription.Text = p.Description;
                 productUpdatePrice.Text = p.Price.ToString("F");
                 productUpdateQuantity.Text = p.Quantity.ToString();
-                pID.Text = p.ID.ToString();
-                fileName.Text = "Filename before the change: "+p.Image;
             }
         }
         protected void updateConfirmBtn_Clicked(object sender, System.EventArgs e)
         {
-            int productID = 0;
-            try
-            {
-                productID = Convert.ToInt32(pID.Text);
-            }
-            catch { }
-            p = QueryClass.GetProduct(productID);
+
+
             //Store updated values in variables
             string updateCategory = productUpdateCategory.Text;
             string updateName = productUpdateName.Text;
@@ -53,35 +46,18 @@ namespace BobbleButt
             string updateDescription = productUpdateDescription.Text;
             double updatePrice = Convert.ToDouble(productUpdatePrice.Text);
             int updateQuantity = Convert.ToInt32(productUpdateQuantity.Text);
-            string InsertImage;
-            if (updateFileUploadImg.HasFile)
-            {
-                InsertImage = "../img/" + Convert.ToString(updateFileUploadImg.FileName);
-            }
-            else
-            {
-                InsertImage = p.Image;
-            }
+            string InsertImage = "../img/" + Convert.ToString(updateFileUploadImg.FileName);
             //Checks to see if all the inputs are valid
             if (IsValid)
             {
-                if (updateFileUploadImg.HasFile) {
-                    //Checks to see if file type is an image
-                    if (updateFileUploadImg.PostedFile.ContentType == "image/jpeg" || updateFileUploadImg.PostedFile.ContentType == "image/png" || updateFileUploadImg.PostedFile.ContentType == "image/jpg")
-                    {
-                        //Make error message invisible if file type is correct
-                        updateImageFileError.Visible = false;
-                        //Save image to project
-                        updateFileUploadImg.SaveAs(Server.MapPath("~/img/" + updateFileUploadImg.FileName));
-                    }
-                    else
-                    {
-                        //make error message visbile
-                        updateImageFileError.Visible = true;
-                    }
-                }
-                if (!updateImageFileError.Visible)
+                //Checks to see if file type is an image
+                if (updateFileUploadImg.PostedFile.ContentType == "image/jpeg" || updateFileUploadImg.PostedFile.ContentType == "image/png" || updateFileUploadImg.PostedFile.ContentType == "image/jpg")
                 {
+                    //Make error message invisible if file type is correct
+                    updateImageFileError.Visible = false;
+                    //Save image to project
+                    updateFileUploadImg.SaveAs(Server.MapPath("~/../img/" + updateFileUploadImg.FileName));
+                    //Change dummy data in global data to equal to updated data 
                     p.Category = updateCategory;
                     p.Name = updateName;
                     p.Stock = updateStock;
@@ -91,6 +67,11 @@ namespace BobbleButt
                     p.Image = InsertImage;
                     QueryClass.UpdateProduct(p);
                     Response.Redirect("ManageProducts.aspx");
+                }
+                else
+                {
+                    //make error message visbile
+                    updateImageFileError.Visible = true;
                 }
             }
             

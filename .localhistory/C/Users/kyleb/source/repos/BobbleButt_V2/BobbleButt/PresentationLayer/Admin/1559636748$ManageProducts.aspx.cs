@@ -21,7 +21,7 @@ namespace BobbleButt
             //Get value of mode and product from when button is clicked to determine which button is clicked            
             mode = Request.QueryString["mode"];
             product = Request.QueryString["product"];
-            products = QueryClass.GetProductsIgnoreDelete();
+            products = QueryClass.GetProductData();
             int productID = 0;
             try
             {
@@ -35,8 +35,7 @@ namespace BobbleButt
                     //Delete an item depending on product which acts as index pointer
 
                     //query for deleting
-                    QueryClass.ToggleDeleteProduct(productID);
-                    products = QueryClass.GetProductsIgnoreDelete();
+                    GlobalData.productList.RemoveAt(Convert.ToInt32(product));
                 }
 
                 //if (mode.Equals("UpdateItem"))

@@ -41,13 +41,13 @@
                             </td>
                             <td class="qty"><p><%=o.Date %></p></td>
                             
-                            <td class="unit"><p><%=o.Status %></p></td>
+                            <td class="unit"><p><%=o.Status %></td>
                             <%string sent = "Mark as Sent";
                                 if (o.Status.Equals("Sent"))
                                 {
                                     sent = "Mark as Processing";
                                 }%>
-                            <td class="qty"><input type="button" onclick="window.location.href='ManageOrders.aspx?mode=toggleSent&order=<%=o.ID%>'; return false" class="btn btn-success" value="<%=sent %>" /></td>
+                            <td class="qty"><input type="button" onclick="window.location.href='ManageOrders.aspx?mode=toggleSent&order=<%=GlobalData.Orders.IndexOf(o)%>'; return false" class="btn btn-success" value="<%=sent %>" /></td>
                         </tr>
                         <%} %>
                     </tbody>

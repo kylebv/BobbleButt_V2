@@ -33,19 +33,13 @@ namespace BobbleButt
                 productUpdateDescription.Text = p.Description;
                 productUpdatePrice.Text = p.Price.ToString("F");
                 productUpdateQuantity.Text = p.Quantity.ToString();
-                pID.Text = p.ID.ToString();
                 fileName.Text = "Filename before the change: "+p.Image;
             }
         }
         protected void updateConfirmBtn_Clicked(object sender, System.EventArgs e)
         {
-            int productID = 0;
-            try
-            {
-                productID = Convert.ToInt32(pID.Text);
-            }
-            catch { }
-            p = QueryClass.GetProduct(productID);
+
+
             //Store updated values in variables
             string updateCategory = productUpdateCategory.Text;
             string updateName = productUpdateName.Text;
@@ -72,7 +66,7 @@ namespace BobbleButt
                         //Make error message invisible if file type is correct
                         updateImageFileError.Visible = false;
                         //Save image to project
-                        updateFileUploadImg.SaveAs(Server.MapPath("~/img/" + updateFileUploadImg.FileName));
+                        updateFileUploadImg.SaveAs(Server.MapPath("~/../img/" + updateFileUploadImg.FileName));
                     }
                     else
                     {

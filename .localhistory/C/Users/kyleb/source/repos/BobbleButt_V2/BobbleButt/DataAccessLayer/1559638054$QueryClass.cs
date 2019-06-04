@@ -83,28 +83,6 @@ namespace BobbleButt.DataAccessLayer
             }
             return productData;
         }
-        // update a product's data in the db
-        public static void UpdateProduct(Product p)
-        {
-            List<Product> productData = new List<Product>();
-
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "UPDATE Product " +
-                    "SET name = '"+p.Name+"', description = '"+p.Description+"', price = "+p.Price+", image = '"+p.Image+"', stock = "+p.Stock+"," +
-                    "productCategoryID = (select productCategoryID FROM productcategory where name = '"+p.Category+"') " +
-                    "WHERE productID = "+p.ID;
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Read();
-                    connection.Close();
-                }
-            }
-        }
-
 
 
         // get product data from the database searching by category

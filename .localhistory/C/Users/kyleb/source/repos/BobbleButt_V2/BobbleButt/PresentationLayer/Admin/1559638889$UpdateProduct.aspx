@@ -55,9 +55,9 @@
             <!-- Spot to upload images to update product image -->
             <div class="form-group">
                     <label class="text-white">Image (.png or .jpg):</label>
-                    <asp:Label runat="server" ID="fileName" />
                     <asp:FileUpload id="updateFileUploadImg" runat="server" /> <br/>
-                    <asp:Label runat="server" id="pID" Visible="false"/>
+                    <!-- Check if no file is selected -->
+                    <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="updateFileUploadImg" class="label-error label-error" ErrorMessage="No file selected"/>
              </div>
 
                          <!-- Error message for Image Upload where wrong file type is uploaded -->

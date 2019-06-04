@@ -38,6 +38,7 @@ namespace BobbleButt
 
                     QueryClass.OrderToggleSent(orderID);
                     orders = QueryClass.GetOrders();
+
                 }
             }
             //populates a single order if order exists in url

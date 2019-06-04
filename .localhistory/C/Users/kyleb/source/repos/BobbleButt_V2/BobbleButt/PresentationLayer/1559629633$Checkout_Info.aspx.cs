@@ -57,16 +57,16 @@ namespace BobbleButt
             // Order is payed for and is added to users orders
             if(IsValid)
             {
-               // Order o = new Order(email.Text, firstName.Text, lastName.Text, phone.Text, streetAddress.Text, suburb.Text, postcode.Text, null, null, DdlPostage.SelectedIndex, ((List<Product>)Session["cart"]), "Processing", DateTime.Now.ToString());
+                Order o = new Order(email.Text, firstName.Text, lastName.Text, phone.Text, streetAddress.Text, suburb.Text, postcode.Text, null, null, DdlPostage.SelectedIndex, ((List<Product>)Session["cart"]), "Processing", DateTime.Now.ToString());
                 if(paypal.Checked)
                 {
-                   // o.PaypalID = payPalEmail.Text;
+                    o.PaypalID = payPalEmail.Text;
                 }
                 else
                 {
-                   // o.CardNumber = card_number.Text;
-                }//
-                //Session.Add("order", o);
+                    o.CardNumber = card_number.Text;
+                }
+                Session.Add("order", o);
                 Response.Redirect("Checkout_Confirm.aspx");
             }
         }

@@ -23,33 +23,20 @@ namespace BobbleButt
             order = Request.QueryString["order"];
             user = Request.QueryString["user"];
             orders = QueryClass.GetOrders();
-            int orderID = 0;
-            try
-            {
-                orderID = Convert.ToInt32(order);
-            }
-            catch { }
-            //toggles sent if mode is toggleSent and order exists in url
+
             if (mode != null && order != null)
             {
                 if (mode.Equals("toggleSent"))
                 {
-                    //query for toggling sent
-
-                    QueryClass.OrderToggleSent(orderID);
-                    orders = QueryClass.GetOrders();
+                    if (GlobalData.Orders[Convert.ToInt32(order)].Status.Equals("Processing"))
+                    {
+                        GlobalData.Orders[Convert.ToInt32(order)].Status = "Sent";
+                    }
+                    else if (GlobalData.Orders[Convert.ToInt32(order)].Status.Equals("Sent"))
+                    {
+                        GlobalData.Orders[Convert.ToInt32(order)].Status = "Processing";
+                    }
                 }
-            }
-            //populates a single order if order exists in url
-            if(order!=null && mode==null)
-            {
-                orders = new List<Order>();
-                orders.Add(QueryClass.GetOrder(orderID));
-            }
-            //populates by user if there is a user url param
-            if(user!=null)
-            {
-                orders = QueryClass.GetOrdersByUser(user);
             }
         }
     }

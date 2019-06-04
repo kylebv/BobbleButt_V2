@@ -10,6 +10,6 @@
 namespace BobbleButt {
     
     
-    public partial class ManageProducts {
+    public partial class ViewProduct {
     }
 }

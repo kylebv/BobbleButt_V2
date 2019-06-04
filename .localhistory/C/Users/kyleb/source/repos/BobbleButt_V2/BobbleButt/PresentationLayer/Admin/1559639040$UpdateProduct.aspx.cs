@@ -33,19 +33,13 @@ namespace BobbleButt
                 productUpdateDescription.Text = p.Description;
                 productUpdatePrice.Text = p.Price.ToString("F");
                 productUpdateQuantity.Text = p.Quantity.ToString();
-                pID.Text = p.ID.ToString();
                 fileName.Text = "Filename before the change: "+p.Image;
             }
         }
         protected void updateConfirmBtn_Clicked(object sender, System.EventArgs e)
         {
-            int productID = 0;
-            try
-            {
-                productID = Convert.ToInt32(pID.Text);
-            }
-            catch { }
-            p = QueryClass.GetProduct(productID);
+
+
             //Store updated values in variables
             string updateCategory = productUpdateCategory.Text;
             string updateName = productUpdateName.Text;
@@ -54,7 +48,7 @@ namespace BobbleButt
             double updatePrice = Convert.ToDouble(productUpdatePrice.Text);
             int updateQuantity = Convert.ToInt32(productUpdateQuantity.Text);
             string InsertImage;
-            if (updateFileUploadImg.HasFile)
+            if (updateFileUploadImg.FileName != null)
             {
                 InsertImage = "../img/" + Convert.ToString(updateFileUploadImg.FileName);
             }
@@ -65,14 +59,14 @@ namespace BobbleButt
             //Checks to see if all the inputs are valid
             if (IsValid)
             {
-                if (updateFileUploadImg.HasFile) {
+                if (updateFileUploadImg.FileName != null) {
                     //Checks to see if file type is an image
                     if (updateFileUploadImg.PostedFile.ContentType == "image/jpeg" || updateFileUploadImg.PostedFile.ContentType == "image/png" || updateFileUploadImg.PostedFile.ContentType == "image/jpg")
                     {
                         //Make error message invisible if file type is correct
                         updateImageFileError.Visible = false;
                         //Save image to project
-                        updateFileUploadImg.SaveAs(Server.MapPath("~/img/" + updateFileUploadImg.FileName));
+                        updateFileUploadImg.SaveAs(Server.MapPath("~/../img/" + updateFileUploadImg.FileName));
                     }
                     else
                     {
