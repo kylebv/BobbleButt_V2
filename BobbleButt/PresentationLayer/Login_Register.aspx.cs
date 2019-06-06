@@ -12,11 +12,7 @@ namespace BobbleButt
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.Contents.Count == 0)
-            {
-                Session.Add("new session pls", "hooray");
-                Response.Redirect("Main.aspx?sessionTimeout=true");
-            }
+
         }
 
         protected void btnLogin_Click(object sender, System.EventArgs e)
@@ -42,19 +38,19 @@ namespace BobbleButt
                 string email = ((TextBox)FindControl("regEmail1")).Text;
                 string pword = ((TextBox)FindControl("regPassword1")).Text;
                 bool isAdmin = ((CheckBox)FindControl("chkAdmin")).Checked;
-                User u = QueryClass.GetUser(email, pword);
                 //If email already exists make error message visible
-                if (u.Email!=null)
+                if (GlobalData.userMap.ContainsKey(email))
                 {
                      ((Label)FindControl("errorMessage2")).Visible = true;   
                 }
                 // Create new user with informtaion provided
                 else
                 {
-                    u.Email = email;
-                    u.Password = pword;
-                    u.IsAdmin = isAdmin;
-                    Session.Add("tempUser", u);
+                    User temp = new User();
+                    temp.Email = email;
+                    temp.Password = pword;
+                    temp.IsAdmin = isAdmin;
+                    Session.Add("tempUser", temp);
                     Response.Redirect("Registration.aspx");
                 }
 
