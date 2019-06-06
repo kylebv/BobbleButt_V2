@@ -15,10 +15,6 @@ namespace BobbleButt
             adminEmailPopUp = Request.QueryString["confirmAdmin"];
             forgotEmailPopUp = Request.QueryString["forgotEmail"];
             orderer = Request.QueryString["orderEmail"];
-            if(Session.Contents.Count == 0)
-            {
-                Session.Add("startANewSessionPls", "hooray");
-            }
             //Display pop up message on main page
             if (orderer != null)
             {

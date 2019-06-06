@@ -23,26 +23,26 @@ namespace BobbleButt
         public PostageOptions PostOption { get; set; }
         public int ID { get; set; }
 
-        //public Order(string userEmail, string firstName, string lastName, string phone, string streetAddress, string suburb, string postcode, string cardNumber, string cardName, string cardCVC, string cardExpiryDate, string paypalID, PostageOptions postOption, int iD, List<Product> products, string status, string date)
-        //{
-        //    UserEmail = userEmail;
-        //    FirstName = firstName;
-        //    LastName = lastName;
-        //    Phone = phone;
-        //    StreetAddress = streetAddress;
-        //    Suburb = suburb;
-        //    Postcode = postcode;
-        //    CardNumber = cardNumber;
-        //    CardName = cardName;
-        //    CardCVC = cardCVC;
-        //    CardExpiryDate = cardExpiryDate;
-        //    PaypalID = paypalID;
-        //    PostOption = postOption;
-        //    ID = iD;
-        //    Products = products;
-        //    Status = status;
-        //    Date = date;
-        //}
+        public Order(string userEmail, string firstName, string lastName, string phone, string streetAddress, string suburb, string postcode, string cardNumber, string cardName, string cardCVC, string cardExpiryDate, string paypalID, PostageOptions postOption, int iD, List<Product> products, string status, string date)
+        {
+            UserEmail = userEmail;
+            FirstName = firstName;
+            LastName = lastName;
+            Phone = phone;
+            StreetAddress = streetAddress;
+            Suburb = suburb;
+            Postcode = postcode;
+            CardNumber = cardNumber;
+            CardName = cardName;
+            CardCVC = cardCVC;
+            CardExpiryDate = cardExpiryDate;
+            PaypalID = paypalID;
+            PostOption = postOption;
+            ID = iD;
+            Products = products;
+            Status = status;
+            Date = date;
+        }
 
         public List<Product> Products { get; set; }
         public string Status { get; set; }

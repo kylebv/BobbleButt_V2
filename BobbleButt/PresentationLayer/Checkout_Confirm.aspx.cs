@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Net.Mail; 
+using System.Net.Mail;
 
 namespace BobbleButt
 {
@@ -60,7 +60,7 @@ namespace BobbleButt
                          + "<th> $" + (p.Quantity * p.Price).ToString("F") + "</th>"
                          + "</tr>";
                     total += p.Quantity * p.Price;
-                }                
+                }
                 //Postage price and total product price
                 double finalTotal = order.PostOption.Price + total;
                 s += "<tr>"
@@ -93,68 +93,68 @@ namespace BobbleButt
                        + "Shipped To:" + firstName + " " + lastName + "\r\n" + streetAddress + ", " + suburb + "\r\n" + postCode
                        + "\r\n Invoice Date: " + orderDate + "Quantity: ";
                 foreach (Product p in products) { a += p.Quantity; }
-                        a += "Product Name: ";
+                a += "Product Name: ";
                 foreach (Product p in products) { a += p.Name; }
-                        a += "Price: ";
+                a += "Price: ";
                 foreach (Product p in products) { a += p.Price; }
-                        a += "Total Product Price: ";
-                foreach (Product p in products) { a += p.Price*p.Quantity; totalElse += p.Quantity * p.Price; }
+                a += "Total Product Price: ";
+                foreach (Product p in products) { a += p.Price * p.Quantity; totalElse += p.Quantity * p.Price; }
                 double finalTotal = order.PostOption.Price + total;
-                a+= "Postage Option: " + order.PostOption.Name + "\r\n Postage Price: " + order.PostOption.Price.ToString("F") + "TOTAL (AUD): " + totalElse.ToString("F"); 
+                a += "Postage Option: " + order.PostOption.Name + "\r\n Postage Price: " + order.PostOption.Price.ToString("F") + "TOTAL (AUD): " + totalElse.ToString("F");
                 return a;
             }
-                        
+
         }
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-                string cardNumber, cardName;
-                int cvc, count = 0;
-                DateTime expiryDate;
-                double totalPriceCost = 0, totalCheckout;
+            string cardNumber, cardName;
+            int cvc, count = 0;
+            DateTime expiryDate;
+            double totalPriceCost = 0, totalCheckout;
 
-                //Get user input for payment details
-                cardNumber = order.CardNumber;
-                cardName = order.CardName;
-                cvc = Convert.ToInt32(order.CardCVC);
-                expiryDate = Convert.ToDateTime(order.CardExpiryDate + "/1");
+            //Get user input for payment details
+            cardNumber = order.CardNumber;
+            cardName = order.CardName;
+            cvc = Convert.ToInt32(order.CardCVC);
+            expiryDate = Convert.ToDateTime(order.CardExpiryDate + "/1");
 
 
-                //Get total of products in checkout
-                foreach (Product p in cart)
+            //Get total of products in checkout
+            foreach (Product p in cart)
+            {
+                totalPriceCost += p.Quantity * p.Price;
+            }
+
+            //Total of checkout including postage
+            totalCheckout = totalPriceCost + order.PostOption.Price;
+
+
+            INFT3050.PaymentSystem.IPaymentSystem paymentSystem = INFT3050.PaymentSystem.INFT3050PaymentFactory.Create();
+
+            INFT3050.PaymentSystem.PaymentRequest payment = new INFT3050.PaymentSystem.PaymentRequest();
+
+            //User input being added to payment process
+            payment.CardName = cardName;
+            payment.CardNumber = cardNumber;
+            payment.CVC = cvc;
+            payment.Expiry = expiryDate;
+            payment.Amount = Convert.ToDecimal(totalCheckout);
+            payment.Description = "test";
+
+            var task = paymentSystem.MakePayment(payment);
+
+            //Keep repeating until the task has completed
+            while (count == 0)
+            {
+                if (task.IsCompleted)
                 {
-                    totalPriceCost += p.Quantity * p.Price;
-                }
+                    //Hide card invalid message
+                    lblCardMessage.Visible = false;
 
-                //Total of checkout including postage
-                totalCheckout = totalPriceCost + order.PostOption.Price;
-
-
-                INFT3050.PaymentSystem.IPaymentSystem paymentSystem = INFT3050.PaymentSystem.INFT3050PaymentFactory.Create();
-
-                INFT3050.PaymentSystem.PaymentRequest payment = new INFT3050.PaymentSystem.PaymentRequest();
-
-                //User input being added to payment process
-                payment.CardName = cardName;
-                payment.CardNumber = cardNumber;
-                payment.CVC = cvc;
-                payment.Expiry = expiryDate;
-                payment.Amount = Convert.ToDecimal(totalCheckout);
-                payment.Description = "test";
-
-                var task = paymentSystem.MakePayment(payment);
-
-                //Keep repeating until the task has completed
-                while (count == 0)
-                {
-                    if (task.IsCompleted)
+                    //Transaction was approved
+                    if (Convert.ToInt32(task.Result.TransactionResult) == 0)
                     {
-                        //Hide card invalid message
-                        lblCardMessage.Visible = false;
-                        
-                        //Transaction was approved
-                        if (Convert.ToInt32(task.Result.TransactionResult) == 0)
-                        {
                         order = (Order)Session["order"];
                         GlobalData.Orders.Add(order);
                         List<Product> temp = new List<Product>();
@@ -224,39 +224,39 @@ namespace BobbleButt
                         Session.Remove("cart");
                         Response.Redirect("Main.aspx?orderEmail=" + order.UserEmail);
                     }
-                        //Transaction was denied
-                        else if (Convert.ToInt32(task.Result.TransactionResult) == 1)
-                        {
-                            lblCardMessage.Text = "The card was denied";
-                            lblCardMessage.Visible = true;
-                        }
-                        //Transaction was invalid
-                        else if (Convert.ToInt32(task.Result.TransactionResult) == 2)
-                        {
-                            lblCardMessage.Text = "The card details were invalid";
-                            lblCardMessage.Visible = true;
-                        }
-                        //Transaction card expiry date was invalid
-                        else if (Convert.ToInt32(task.Result.TransactionResult) == 3)
-                        {
-                            lblCardMessage.Text = "The card Expiry Date was invalid";
-                            lblCardMessage.Visible = true;
-                        }
-                        //Transaction timed out
-                        else if (Convert.ToInt32(task.Result.TransactionResult) == 4)
-                        {
-                            lblCardMessage.Text = "The card details could not be processed due to Connection Failure";
-                            lblCardMessage.Visible = true;
-                        }
-                        //Will stop the while loop
-                        count = 1;
-                    }
-                    //Keep the count at 0 so the while loop continues
-                    else
+                    //Transaction was denied
+                    else if (Convert.ToInt32(task.Result.TransactionResult) == 1)
                     {
-                        count = 0;
+                        lblCardMessage.Text = "The card was denied";
+                        lblCardMessage.Visible = true;
                     }
+                    //Transaction was invalid
+                    else if (Convert.ToInt32(task.Result.TransactionResult) == 2)
+                    {
+                        lblCardMessage.Text = "The card details were invalid";
+                        lblCardMessage.Visible = true;
+                    }
+                    //Transaction card expiry date was invalid
+                    else if (Convert.ToInt32(task.Result.TransactionResult) == 3)
+                    {
+                        lblCardMessage.Text = "The card Expiry Date was invalid";
+                        lblCardMessage.Visible = true;
+                    }
+                    //Transaction timed out
+                    else if (Convert.ToInt32(task.Result.TransactionResult) == 4)
+                    {
+                        lblCardMessage.Text = "The card details could not be processed due to Connection Failure";
+                        lblCardMessage.Visible = true;
+                    }
+                    //Will stop the while loop
+                    count = 1;
                 }
+                //Keep the count at 0 so the while loop continues
+                else
+                {
+                    count = 0;
+                }
+            }
         }
 
     }

@@ -63,7 +63,19 @@ namespace BobbleButt
             // Order is payed for and is added to users orders
             if (IsValid)
             {
-                Order o = new Order(email.Text, firstName.Text, lastName.Text, phone.Text, streetAddress.Text, suburb.Text, postcode.Text, null, null, null, null, null, DdlPostage.SelectedIndex, ((List<Product>)Session["cart"]), "Processing", DateTime.Now.ToString());
+
+                Order o = new Order();
+                o.UserEmail = email.Text;
+                o.FirstName = firstName.Text;
+                o.LastName = lastName.Text;
+                o.Phone = phone.Text;
+                o.StreetAddress = streetAddress.Text;
+                o.Suburb = suburb.Text;
+                o.Postcode = postcode.Text;
+                o.PostOption = QueryClass.GetPostageOptionByName(DdlPostage.SelectedItem.Text);
+                o.Products = ((List<Product>)Session["cart"]);
+                o.Date = DateTime.Now.ToString();
+
                 if(paypal.Checked)
                 {
                    // o.PaypalID = payPalEmail.Text;

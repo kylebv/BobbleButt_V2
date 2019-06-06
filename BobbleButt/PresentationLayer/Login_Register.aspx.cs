@@ -51,6 +51,7 @@ namespace BobbleButt
                 // Create new user with informtaion provided
                 else
                 {
+                    
                     u.Email = email;
                     u.Password = pword;
                     u.IsAdmin = isAdmin;

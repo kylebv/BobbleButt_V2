@@ -93,11 +93,11 @@ namespace BobbleButt.DataAccessLayer
                 string sql = "UPDATE Product " +
                     "SET name = @name, description = @description, price = @price, image = @image, stock = @stock," +
                     "productCategoryID = (select productCategoryID FROM productcategory where name = @category) " +
-                    "WHERE productID = "+p.ID;
+                    "WHERE productID = " + p.ID;
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@name", p.Name);
-                    command.Parameters.AddWithValue("@description",p.Description);
+                    command.Parameters.AddWithValue("@description", p.Description);
                     command.Parameters.AddWithValue("@price", p.Price);
                     command.Parameters.AddWithValue("@image", p.Image);
                     command.Parameters.AddWithValue("@stock", p.Stock);
@@ -238,16 +238,16 @@ namespace BobbleButt.DataAccessLayer
                     deleted = Convert.ToInt32(reader["isDeleted"]);
                     connection.Close();
                 }
-                if(deleted==0)
+                if (deleted == 0)
                 {
                     deleted = 1;
                 }
-                else if (deleted==1)
+                else if (deleted == 1)
                 {
                     deleted = 0;
                 }
 
-                sql = "UPDATE Product SET isDeleted = "+deleted+" WHERE productID = " + id;
+                sql = "UPDATE Product SET isDeleted = " + deleted + " WHERE productID = " + id;
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
@@ -347,7 +347,7 @@ namespace BobbleButt.DataAccessLayer
                         orderNumbers.Add((int)reader["orderID"]);
                     }
                     connection.Close();
-                    foreach(int i in orderNumbers)
+                    foreach (int i in orderNumbers)
                     {
                         orders.Add(QueryClass.GetOrder(i));
                     }
@@ -418,7 +418,7 @@ namespace BobbleButt.DataAccessLayer
                     }
                     reader.Close();
                 }
-                
+
                 //get the list of all products in the order
                 o.PostOption = GetPostageOption(o.PostOption.ID);
                 using (SqlCommand command = new SqlCommand(sql, connection))
@@ -468,14 +468,14 @@ namespace BobbleButt.DataAccessLayer
                     reader.Read();
                     newStatus = reader["status"].ToString();
                     reader.Close();
-                    
+
                 }
 
-                if(newStatus.Equals("Sent"))
+                if (newStatus.Equals("Sent"))
                 {
                     newStatus = "Processing";
                 }
-                else if(newStatus.Equals("Processing"))
+                else if (newStatus.Equals("Processing"))
                 {
                     newStatus = "Sent";
                 }
@@ -485,10 +485,10 @@ namespace BobbleButt.DataAccessLayer
                     "SET status = '" + newStatus + "' " +
                     "WHERE orderID = " + id;
 
-                
+
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    SqlDataReader reader = command.ExecuteReader();                    
+                    SqlDataReader reader = command.ExecuteReader();
                 }
                 connection.Close();
             }
@@ -620,7 +620,7 @@ namespace BobbleButt.DataAccessLayer
                     command.Parameters.AddWithValue("@lastname", u.LastName);
                     command.Parameters.AddWithValue("@email", u.Email);
                     command.Parameters.AddWithValue("@password", u.Password);
-                    command.Parameters.AddWithValue("@dob",DateTime.Parse(u.DOB));
+                    command.Parameters.AddWithValue("@dob", DateTime.Parse(u.DOB));
                     command.Parameters.AddWithValue("@street", u.Street);
                     command.Parameters.AddWithValue("@suburb", u.Suburb);
                     command.Parameters.AddWithValue("@postcode", u.Postcode);
@@ -642,7 +642,7 @@ namespace BobbleButt.DataAccessLayer
             {
                 // Get all data about product with product category name
                 string sql = "INSERT INTO  Product (name, stock, description, price, image, isDeleted, productCategoryID) " +
-                    "VALUES (@name, @stock, @description, @price, @image, @isdeleted, "+
+                    "VALUES (@name, @stock, @description, @price, @image, @isdeleted, " +
                     "(select productCategoryID FROM productcategory where name = @category))";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {

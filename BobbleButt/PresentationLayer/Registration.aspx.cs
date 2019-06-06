@@ -58,7 +58,7 @@ namespace BobbleButt
                     user.Postcode = ((TextBox)FindControl("postCode")).Text;
                     user.DOB = ((TextBox)FindControl("birthDate")).Text;
                     user.Phone = ((TextBox)FindControl("firstName")).Text;
-                    QueryClass.AddUser(user);
+                    GlobalData.userMap.Add(user.Email, user);
 
                     //Accessing gmail account to send email
                     SmtpClient client = new SmtpClient();
