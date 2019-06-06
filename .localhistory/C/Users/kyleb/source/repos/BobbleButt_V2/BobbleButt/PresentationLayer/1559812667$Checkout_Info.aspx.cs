@@ -22,11 +22,7 @@ namespace BobbleButt
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.Contents.Count == 0)
-            {
-                Session.Add("new session pls", "hooray");
-                Response.Redirect("Main.aspx?sessionTimeout=true");
-            }
+
            
            
             cart = new List<Product>();

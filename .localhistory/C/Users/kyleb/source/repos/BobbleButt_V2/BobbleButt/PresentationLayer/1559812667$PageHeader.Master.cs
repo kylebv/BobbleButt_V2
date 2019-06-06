@@ -13,11 +13,6 @@ namespace BobbleButt
         protected List<Product> cart;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.Contents.Count == 0)
-            {
-                Session.Add("new session pls", "hooray");
-                Response.Redirect("Main.aspx?sessionTimeout=true");
-            }
             //Session.Add("cart", GlobalData.productList);
             cart = (List<Product>)Session["cart"];
             //Session.Add("user", GlobalData.userMap["adminuser@bobblebutt.com"]);

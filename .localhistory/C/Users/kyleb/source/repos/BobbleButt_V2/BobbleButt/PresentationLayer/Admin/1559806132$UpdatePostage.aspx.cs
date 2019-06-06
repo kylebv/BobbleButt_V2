@@ -25,8 +25,7 @@ namespace BobbleButt
             // Add new postage option
             if(postage==null)
             {
-
-                //GlobalData.postageList.Add(new PostageOptions(namePostage.Text, Convert.ToInt64(pricePostage.Text)));
+                GlobalData.postageList.Add(new PostageOptions(namePostage.Text, Convert.ToInt64(pricePostage.Text)));
             }
             else
             {

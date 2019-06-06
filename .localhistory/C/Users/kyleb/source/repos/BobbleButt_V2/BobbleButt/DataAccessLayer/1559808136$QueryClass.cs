@@ -416,9 +416,8 @@ namespace BobbleButt.DataAccessLayer
                         p.ID = (int)reader["opproductID"];
                         pList.Add(p);
                     }
-                    reader.Close();
                 }
-                
+                connection.Close();
                 //get the list of all products in the order
                 o.PostOption = GetPostageOption(o.PostOption.ID);
                 using (SqlCommand command = new SqlCommand(sql, connection))
@@ -610,7 +609,7 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "INSERT INTO [User] (firstName, lastName, email, password, DOB, street, suburb, postcode, phone, isAdmin, isSuspended, isDeleted) " +
+                string sql = "INSERT INTO [User] (firstName, lastName, email, password, DOB, street, suburb, postcode, phone, isAdmin, isSuspended, isDeleted " +
                     "VALUES (@firstname, @lastname, @email, @password, " +
                     "@dob, @street, @suburb, @postcode, @phone," +
                     " @isadmin, @issuspended,0 )";
@@ -619,8 +618,8 @@ namespace BobbleButt.DataAccessLayer
                     command.Parameters.AddWithValue("@firstname", u.FirstName);
                     command.Parameters.AddWithValue("@lastname", u.LastName);
                     command.Parameters.AddWithValue("@email", u.Email);
-                    command.Parameters.AddWithValue("@password", u.Password);
-                    command.Parameters.AddWithValue("@dob",DateTime.Parse(u.DOB));
+                    command.Parameters.AddWithValue("@password", u.Email);
+                    command.Parameters.AddWithValue("@dob", u.DOB);
                     command.Parameters.AddWithValue("@street", u.Street);
                     command.Parameters.AddWithValue("@suburb", u.Suburb);
                     command.Parameters.AddWithValue("@postcode", u.Postcode);
@@ -765,7 +764,6 @@ namespace BobbleButt.DataAccessLayer
                         o.Price = Convert.ToDouble(reader["price"]);
                         o.ETA = (int)reader["estimatedDays"];
                         o.Description = reader["description"].ToString();
-                        options.Add(o);
                     }
                     reader.Close();
                 }
@@ -812,7 +810,7 @@ namespace BobbleButt.DataAccessLayer
             {
                 // Get all data about product with product category name
                 string sql = "select postageOptionsID, name, price, estimatedDays, description, isDeleted " +
-                    "FROM PostageOptions WHERE postageOptionsID = @s";
+                    "FROM PostageOptions WHERE postageOptionID = @s";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@s", i);

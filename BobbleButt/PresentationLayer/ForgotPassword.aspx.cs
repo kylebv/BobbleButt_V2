@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
-
+using BobbleButt.DataAccessLayer;
 
 namespace BobbleButt.PresentationLayer
 {
@@ -36,11 +36,10 @@ namespace BobbleButt.PresentationLayer
 
         protected void btnContinue_Click(object sender, EventArgs e)
         {
-            //Go through all the user accounts registered
-            foreach (var u in GlobalData.userMap)
-            {
+            User u = QueryClass.GetUser(txtForgottenEmail.Text);
+
                 //Check if the user email they entered exists
-                if (txtForgottenEmail.Text == u.Value.Email)
+                if (u.Email!=null)
                 {
                     //Hide error message 
                     lblEmailMessage.Visible = false;
@@ -70,10 +69,10 @@ namespace BobbleButt.PresentationLayer
                     msg.To.Add(new MailAddress(txtForgottenEmail.Text));
                     msg.Subject = "Bobblehead - Account Password Retrieval";
                     //If html does not exist return non-html email
-                    msg.Body = GetForgotPasswordMessage(false, u.Value.Password);
+                    msg.Body = GetForgotPasswordMessage(false, u.Password);
 
                     //create an alternate HTML view that includes images and formatting 
-                    string html = GetForgotPasswordMessage(true, u.Value.Password);
+                    string html = GetForgotPasswordMessage(true, u.Password);
                     AlternateView view = AlternateView
                         .CreateAlternateViewFromString(
                             html, null, "text/html");
@@ -119,6 +118,6 @@ namespace BobbleButt.PresentationLayer
 
         }
         
-
-    }
+    
+    
 }

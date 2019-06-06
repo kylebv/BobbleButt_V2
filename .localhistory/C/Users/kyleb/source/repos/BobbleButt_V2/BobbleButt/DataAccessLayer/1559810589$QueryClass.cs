@@ -619,7 +619,7 @@ namespace BobbleButt.DataAccessLayer
                     command.Parameters.AddWithValue("@firstname", u.FirstName);
                     command.Parameters.AddWithValue("@lastname", u.LastName);
                     command.Parameters.AddWithValue("@email", u.Email);
-                    command.Parameters.AddWithValue("@password", u.Password);
+                    command.Parameters.AddWithValue("@password", u.Email);
                     command.Parameters.AddWithValue("@dob",DateTime.Parse(u.DOB));
                     command.Parameters.AddWithValue("@street", u.Street);
                     command.Parameters.AddWithValue("@suburb", u.Suburb);
