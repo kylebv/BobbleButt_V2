@@ -60,7 +60,7 @@ namespace BobbleButt
                          + "<th> $" + (p.Quantity * p.Price).ToString("F") + "</th>"
                          + "</tr>";
                     total += p.Quantity * p.Price;
-                }
+                }                
                 //Postage price and total product price
                 double finalTotal = order.PostOption.Price + total;
                 s += "<tr>"
@@ -93,14 +93,14 @@ namespace BobbleButt
                        + "Shipped To:" + firstName + " " + lastName + "\r\n" + streetAddress + ", " + suburb + "\r\n" + postCode
                        + "\r\n Invoice Date: " + orderDate + "Quantity: ";
                 foreach (Product p in products) { a += p.Quantity; }
-                a += "Product Name: ";
+                        a += "Product Name: ";
                 foreach (Product p in products) { a += p.Name; }
-                a += "Price: ";
+                        a += "Price: ";
                 foreach (Product p in products) { a += p.Price; }
-                a += "Total Product Price: ";
-                foreach (Product p in products) { a += p.Price * p.Quantity; totalElse += p.Quantity * p.Price; }
+                        a += "Total Product Price: ";
+                foreach (Product p in products) { a += p.Price*p.Quantity; totalElse += p.Quantity * p.Price; }
                 double finalTotal = order.PostOption.Price + total;
-                a += "Postage Option: " + order.PostOption.Name + "\r\n Postage Price: " + order.PostOption.Price.ToString("F") + "TOTAL (AUD): " + totalElse.ToString("F");
+                a+= "Postage Option: " + order.PostOption.Name + "\r\n Postage Price: " + order.PostOption.Price.ToString("F") + "TOTAL (AUD): " + totalElse.ToString("F"); 
                 return a;
             }
 
@@ -126,8 +126,8 @@ namespace BobbleButt
                 totalPriceCost += p.Quantity * p.Price;
             }
 
-            //Total of checkout including postage
-            totalCheckout = totalPriceCost + order.PostOption.Price;
+                //Total of checkout including postage
+                totalCheckout = totalPriceCost + order.PostOption.Price;
 
 
             INFT3050.PaymentSystem.IPaymentSystem paymentSystem = INFT3050.PaymentSystem.INFT3050PaymentFactory.Create();
