@@ -586,7 +586,7 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "INSERT INTO [User] (firstName, lastName, email, password, DOB, street, suburb, postcode, phone, isAdmin, isSuspended, isDeleted) " +
+                string sql = "INSERT INTO [User] (firstName, lastName, email, password, DOB, street, suburb, postcode, phone, isAdmin, isSuspended, isDeleted " +
                     "VALUES (@firstname, @lastname, @email, @password, " +
                     "@dob, @street, @suburb, @postcode, @phone," +
                     " @isadmin, @issuspended,0 )";

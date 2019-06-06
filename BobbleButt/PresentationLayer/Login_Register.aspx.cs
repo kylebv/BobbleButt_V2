@@ -10,11 +10,13 @@ namespace BobbleButt
 {
     public partial class Login_Register : System.Web.UI.Page
     {
-        private object ueryClass;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session.Contents.Count == 0)
+            {
+                Session.Add("new session pls", "hooray");
+                Response.Redirect("Main.aspx?sessionTimeout=true");
+            }
         }
 
         protected void btnLogin_Click(object sender, System.EventArgs e)
