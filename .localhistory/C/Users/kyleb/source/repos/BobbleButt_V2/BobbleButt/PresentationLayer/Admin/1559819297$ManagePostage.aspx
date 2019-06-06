@@ -63,7 +63,7 @@
                             }%>
                             <!-- Delete Button -->
                             <td class="text-right">
-                                <input type="button" onclick="window.location.href='ManagePostage.aspx?delete=<%=p.ID%>'; return false" class="btn <%=cl %>" value="<%=s %>"/>
+                                <input type="button" onclick="window.location.href='ManagePostage.aspx?delete=<%=p.Name%>'; return false" class="btn <%=cl %>" value="<%=s %>"/>
                             </td>
                      </tr>
                         <% } %>

@@ -39,7 +39,6 @@ namespace BobbleButt
             else
             {
                 //Update Postage 
-                o.ID = Convert.ToInt32(hiddenID.Text);
                 QueryClass.UpdatePostageOption(o);
             }
             Response.Redirect("ManagePostage.aspx");

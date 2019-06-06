@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
-
+using BobbleButt.DataAccessLayer;
 
 namespace BobbleButt.PresentationLayer
 {
@@ -36,89 +36,79 @@ namespace BobbleButt.PresentationLayer
 
         protected void btnContinue_Click(object sender, EventArgs e)
         {
-            //Go through all the user accounts registered
-            foreach (var u in GlobalData.userMap)
+            User u = QueryClass.GetUser(txtForgottenEmail.Text);
+
+            //Check if the user email they entered exists
+            if (u.Email != null)
             {
-                //Check if the user email they entered exists
-                if (txtForgottenEmail.Text == u.Value.Email)
+                //Hide error message 
+                lblEmailMessage.Visible = false;
+
+                // Author:  
+                // URL: https://stackoverflow.com/questions/4559011/sending-asp-net-email-through-gmail/4559071
+                // Date Used: 06/06/19
+                // Website Name: Stackover Flow forms
+                // Use: To send an email form gmail rather than using papercut
+                //---------------------------------------------------------------------------
+                //Accessing gmail account to send email
+                SmtpClient client = new SmtpClient();
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.EnableSsl = true;
+                client.Host = "smtp.gmail.com";
+                client.Port = 587;
+                System.Net.NetworkCredential credentials =
+                new System.Net.NetworkCredential("bobblehead276@gmail.com", "bhpassword");
+                client.UseDefaultCredentials = false;
+                client.Credentials = credentials;
+                //------------------------------------------------------------------------------
+
+
+                //Add email content including from, to, subject and body
+                MailMessage msg = new MailMessage();
+                msg.From = new MailAddress("bobblehead276@gmail.com");
+                msg.To.Add(new MailAddress(txtForgottenEmail.Text));
+                msg.Subject = "Bobblehead - Account Password Retrieval";
+                //If html does not exist return non-html email
+                msg.Body = GetForgotPasswordMessage(false, u.Password);
+
+                //create an alternate HTML view that includes images and formatting 
+                string html = GetForgotPasswordMessage(true, u.Password);
+                AlternateView view = AlternateView
+                    .CreateAlternateViewFromString(
+                        html, null, "text/html");
+
+                //Adding an image to the email
+                string imgPath = Server.MapPath("../img/bobblebuttlogo.png");
+                LinkedResource img = new LinkedResource(imgPath);
+                img.ContentId = "logoImage";
+                view.LinkedResources.Add(img);
+
+                //add the HTML view to the message and send
+                msg.AlternateViews.Add(view);
+
+                try
                 {
-                    //Hide error message 
-                    lblEmailMessage.Visible = false;
-
-                    // Author:  
-                    // URL: https://stackoverflow.com/questions/4559011/sending-asp-net-email-through-gmail/4559071
-                    // Date Used: 06/06/19
-                    // Website Name: Stackover Flow forms
-                    // Use: To send an email form gmail rather than using papercut
-                    //---------------------------------------------------------------------------
-                    //Accessing gmail account to send email
-                    SmtpClient client = new SmtpClient();
-                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    client.EnableSsl = true;
-                    client.Host = "smtp.gmail.com";
-                    client.Port = 587;
-                    System.Net.NetworkCredential credentials =
-                    new System.Net.NetworkCredential("bobblehead276@gmail.com", "bhpassword");
-                    client.UseDefaultCredentials = false;
-                    client.Credentials = credentials;
-                    //------------------------------------------------------------------------------
-
-
-                    //Add email content including from, to, subject and body
-                    MailMessage msg = new MailMessage();
-                    msg.From = new MailAddress("bobblehead276@gmail.com");
-                    msg.To.Add(new MailAddress(txtForgottenEmail.Text));
-                    msg.Subject = "Bobblehead - Account Password Retrieval";
-                    //If html does not exist return non-html email
-                    msg.Body = GetForgotPasswordMessage(false, u.Value.Password);
-
-                    //create an alternate HTML view that includes images and formatting 
-                    string html = GetForgotPasswordMessage(true, u.Value.Password);
-                    AlternateView view = AlternateView
-                        .CreateAlternateViewFromString(
-                            html, null, "text/html");
-
-                    //Adding an image to the email
-                    string imgPath = Server.MapPath("../img/bobblebuttlogo.png");
-                    LinkedResource img = new LinkedResource(imgPath);
-                    img.ContentId = "logoImage";
-                    view.LinkedResources.Add(img);
-
-                    //add the HTML view to the message and send
-                    msg.AlternateViews.Add(view);
-                    
-                    try
-                    {
-                        client.Send(msg);
-                        //Send to main page with pop message about sent email
-                        Response.Redirect("Main.aspx?forgotEmail=");
-                    }
-                    catch
-                    {
-                        //Display error message for email failing to send 
-                        lblEmailMessage.Text = "Error sending email";
-                        lblEmailMessage.Visible = true;
-                    }
-                    
-
+                    client.Send(msg);
+                    //Send to main page with pop message about sent email
+                    Response.Redirect("Main.aspx?forgotEmail=");
                 }
-                //Reveal error message if no email matches ones registered with bobblebutt 
-                else
+                catch
                 {
-                    lblEmailMessage.Text = "This email is not registered at Bobblehead"; 
+                    //Display error message for email failing to send 
+                    lblEmailMessage.Text = "Error sending email";
                     lblEmailMessage.Visible = true;
                 }
+
+
             }
-
-
-
-
-
-
-
-
+            //Reveal error message if no email matches ones registered with bobblebutt 
+            else
+            {
+                lblEmailMessage.Text = "This email is not registered at Bobblehead";
+                lblEmailMessage.Visible = true;
+            }
         }
-        
 
     }
+
 }

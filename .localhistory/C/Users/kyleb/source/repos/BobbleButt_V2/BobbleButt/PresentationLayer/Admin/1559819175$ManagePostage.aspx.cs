@@ -17,11 +17,9 @@ namespace BobbleButt
             options = QueryClass.GetPostageOptions();
             if(delete!=null)
             {
-                int i = 0;
-                try { i = Convert.ToInt32(delete); }
-                catch { }
-                QueryClass.ToggleDeletePostage(i);
-                options = QueryClass.GetPostageOptions();
+                //Delete a specific postage option
+                int index = Convert.ToInt32(delete);
+                GlobalData.postageList.RemoveAt(index);
             }
         }
     }

@@ -51,7 +51,6 @@ namespace BobbleButt
         {
             Products = new List<Product>();
             Status = "Processing";
-            PostOption = new PostageOptions();
         }
 
         public string Date { get; set; }

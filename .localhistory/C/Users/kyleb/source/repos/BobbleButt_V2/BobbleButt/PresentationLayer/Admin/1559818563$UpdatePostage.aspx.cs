@@ -14,6 +14,7 @@ namespace BobbleButt
         protected void Page_Load(object sender, EventArgs e)
         {
             postage = Request.QueryString["postage"];
+            int index = Convert.ToInt32(postage);
             if(postage!=null &&!IsPostBack)
             {
                 PostageOptions o = QueryClass.GetPostageOptionByName(postage);
@@ -39,7 +40,6 @@ namespace BobbleButt
             else
             {
                 //Update Postage 
-                o.ID = Convert.ToInt32(hiddenID.Text);
                 QueryClass.UpdatePostageOption(o);
             }
             Response.Redirect("ManagePostage.aspx");

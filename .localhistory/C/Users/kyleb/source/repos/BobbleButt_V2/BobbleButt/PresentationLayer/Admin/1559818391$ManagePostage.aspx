@@ -52,7 +52,7 @@
                             </td>
                             <!-- Update Button -->
                             <td class="text-right">
-                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdatePostage.aspx?postage=<%=p.Name%>'; return false" value="Update"/>
+                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdatePostage.aspx?postage=<%=p.ID%>'; return false" value="Update"/>
                             </td>
                         <%String s = "DELETE";
                             String cl = "btn-danger";

@@ -16,11 +16,11 @@ namespace BobbleButt
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Session["tempUser"] == null)
+            if (Session["tempUser"]==null)
             {
                 //Response.Redirect("Login_Register.aspx");
             }
-
+            
 
         }
         private string ConfirmAdminMessage(bool isHtml, string adminEmail, string firstName, string lastName)
@@ -33,7 +33,7 @@ namespace BobbleButt
                         + "<h3> Please confirm you are an admin in this email </h3>"
                         + "<p>Please click the button to confirm you are an admin "
                         + "<strong>" + firstName + " " + lastName + "</strong> associated with this email: <strong>" + adminEmail + "</strong></p></body></html>"
-                        + "<button type = 'button'> Confirm</button>";
+                        +"<button type = 'button'> Confirm</button>";
             //Text if html is not
             else
                 return "Please confirm you are an admin in this email \r\n"
@@ -58,7 +58,7 @@ namespace BobbleButt
                     user.Postcode = ((TextBox)FindControl("postCode")).Text;
                     user.DOB = ((TextBox)FindControl("birthDate")).Text;
                     user.Phone = ((TextBox)FindControl("firstName")).Text;
-                    QueryClass.AddUser(user);
+                    GlobalData.userMap.Add(user.Email, user);
 
                     //Accessing gmail account to send email
                     SmtpClient client = new SmtpClient();
@@ -103,9 +103,9 @@ namespace BobbleButt
                     {
                         lblRegEmail.Text = "Email could not be sent";
                         lblRegEmail.Visible = true;
-
+                        
                     }
-
+                    
                 }
                 //If user registered as non admin no email confirmation will be sent
                 else
@@ -125,9 +125,9 @@ namespace BobbleButt
                 }
 
 
-
+                
             }
-
+            
 
         }
     }

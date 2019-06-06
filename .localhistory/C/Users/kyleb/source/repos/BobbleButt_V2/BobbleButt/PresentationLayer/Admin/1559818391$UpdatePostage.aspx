@@ -16,7 +16,6 @@
             <!-- Create textbox for postage price -->
             <div class="form-group">
                 <div class="col-sm-12">
-                    <asp:Label Visible="false" runat="server" Text="" ID="hiddenID" />
                     <asp:TextBox runat="server" TextMode="Number" MaxLength="10" id="pricePostage" placeholder="Price" class="form-control"/>
                     <!-- Validators -->
                     <!-- Check if price is greater or equal to zero -->
