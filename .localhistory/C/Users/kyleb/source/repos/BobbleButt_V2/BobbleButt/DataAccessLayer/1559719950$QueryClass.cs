@@ -87,21 +87,16 @@ namespace BobbleButt.DataAccessLayer
         public static void UpdateProduct(Product p)
         {
             List<Product> productData = new List<Product>();
+
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
                 string sql = "UPDATE Product " +
-                    "SET name = @name, description = @description, price = @price, image = @image, stock = @stock," +
-                    "productCategoryID = (select productCategoryID FROM productcategory where name = @category) " +
+                    "SET name = '"+p.Name+"', description = '"+p.Description+"', price = "+p.Price+", image = '"+p.Image+"', stock = "+p.Stock+"," +
+                    "productCategoryID = (select productCategoryID FROM productcategory where name = '"+p.Category+"') " +
                     "WHERE productID = "+p.ID;
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@name", p.Name);
-                    command.Parameters.AddWithValue("@description",p.Description);
-                    command.Parameters.AddWithValue("@price", p.Price);
-                    command.Parameters.AddWithValue("@image", p.Image);
-                    command.Parameters.AddWithValue("@stock", p.Stock);
-                    command.Parameters.AddWithValue("@category", p.Category);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
@@ -120,10 +115,9 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], isDeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID where pc.name like '%'+@s+'%' and p.isDeleted = 0";
+                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], isDeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID where pc.name like '" + s + "' and p.isDeleted = 0";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@s", s);
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
@@ -157,11 +151,10 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], isDeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID where (pc.name like '%'+@s+'%'  " +
-                    "or p.name like '%'+@s+'%' or p.description like '%'+@s+'%' ) and p.isDeleted = 0";
+                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], isDeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID where (pc.name like '%" + s + "%' " +
+                    "or p.name like '%" + s + "%' or p.description like '%" + "%') and p.isDeleted = 0";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@s", s);
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
@@ -333,10 +326,9 @@ namespace BobbleButt.DataAccessLayer
                     "FROM [Order] o " +
                     "JOIN [User] u ON o.userID = u.UserID " +
                     "JOIN PostageOptions po ON po.postageOptionsID = o.postageOptionsID " +
-                    "WHERE u.email = @s";
+                    "WHERE u.email = '" + user + "'";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    command.Parameters.AddWithValue("@s", user);
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
@@ -467,362 +459,6 @@ namespace BobbleButt.DataAccessLayer
                     SqlDataReader reader = command.ExecuteReader();                    
                 }
                 connection.Close();
-            }
-        }
-
-
-        //checks user exists when logging in
-        public static User GetUser(String email, String password)
-        {
-            User u = new User();
-
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "select userID, firstName, lastName, email, DOB, password, street, suburb, postcode, phone, isAdmin, isSuspended, isDeleted from [User] where email = @email AND password = @password";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@email", email);
-                    command.Parameters.AddWithValue("@password", password);
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    //Reading data from the database and adding it to a list
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        u.FirstName = reader["firstName"].ToString();
-                        u.LastName = reader["lastName"].ToString();
-                        u.Email = email;
-                        u.Password = password;
-                        u.DOB = reader["DOB"].ToString();
-                        u.Street = reader["street"].ToString();
-                        u.Suburb = reader["suburb"].ToString();
-                        u.Postcode = reader["postcode"].ToString();
-                        u.Phone = reader["phone"].ToString();
-                        u.IsAdmin = Convert.ToBoolean(reader["isAdmin"]);
-                        u.IsSuspended = Convert.ToBoolean(reader["isSuspended"]);
-                        u.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
-                        u.ID = (int)reader["userID"];
-                    }
-                    connection.Close();
-                }
-            }
-            return u;
-        }
-
-        //retrieves user details
-        public static User GetUser(String email)
-        {
-            User u = new User();
-
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "select userID, firstName, lastName, email, DOB, password, street, suburb, postcode, phone, isAdmin, isSuspended, isDeleted from [User] where email = @s";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@s", email);
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    //Reading data from the database and adding it to a list
-                    reader.Read();
-                    u.FirstName = reader["firstName"].ToString();
-                    u.LastName = reader["lastName"].ToString();
-                    u.Email = email;
-                    u.Password = reader["password"].ToString();
-                    u.DOB = reader["DOB"].ToString();
-                    u.Street = reader["street"].ToString();
-                    u.Suburb = reader["suburb"].ToString();
-                    u.Postcode = reader["postcode"].ToString();
-                    u.Phone = reader["phone"].ToString();
-                    u.IsAdmin = Convert.ToBoolean(reader["isAdmin"]);
-                    u.IsSuspended = Convert.ToBoolean(reader["isSuspended"]);
-                    u.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
-                    u.ID = (int)reader["userID"];
-                    connection.Close();
-                }
-            }
-            return u;
-        }
-
-        //retrieves all user details
-        public static List<User> GetUsers()
-        {
-            List<User> users = new List<User>();
-            List<String> userEmails = new List<string>();
-
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "select email from [User]";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    //Reading data from the database and adding it to a list
-                    while (reader.Read())
-                    {
-                        userEmails.Add(reader["email"].ToString());
-                    }
-                    reader.Close();
-                }
-            }
-            foreach (String s in userEmails)
-            {
-                users.Add(GetUser(s));
-            }
-            return users;
-        }
-
-        //inserts a new user
-        public static void AddUser(User u)
-        {
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "INSERT INTO [User] (firstName, lastName, email, password, DOB, street, suburb, postcode, phone, isAdmin, isSuspended, isDeleted " +
-                    "VALUES (@firstname, @lastname, @email, @password, " +
-                    "@dob, @street, @suburb, @postcode, @phone," +
-                    " @isadmin, @issuspended,0 )";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@firstname", u.FirstName);
-                    command.Parameters.AddWithValue("@lastname", u.LastName);
-                    command.Parameters.AddWithValue("@email", u.Email);
-                    command.Parameters.AddWithValue("@password", u.Email);
-                    command.Parameters.AddWithValue("@dob", u.DOB);
-                    command.Parameters.AddWithValue("@street", u.Street);
-                    command.Parameters.AddWithValue("@suburb", u.Suburb);
-                    command.Parameters.AddWithValue("@postcode", u.Postcode);
-                    command.Parameters.AddWithValue("@phone", u.Phone);
-                    command.Parameters.AddWithValue("@isadmin", Convert.ToInt32(u.IsAdmin));
-                    command.Parameters.AddWithValue("@issuspended", Convert.ToInt32(u.IsSuspended));
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Close();
-                }
-            }
-        }
-
-        //inserts a new user
-        public static void AddProduct(Product p)
-        {
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "INSERT INTO  Product (name, stock, description, price, image, isDeleted, productCategoryID) " +
-                    "VALUES (@name, @stock, @description, @price, @image, @isdeleted, "+
-                    "(select productCategoryID FROM productcategory where name = @category))";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@name", p.Name);
-                    command.Parameters.AddWithValue("@stock", p.Stock);
-                    command.Parameters.AddWithValue("@description", p.Description);
-                    command.Parameters.AddWithValue("@price", p.Price);
-                    command.Parameters.AddWithValue("@image", p.Image);
-                    command.Parameters.AddWithValue("@isDeleted", p.IsDeleted);
-                    command.Parameters.AddWithValue("@category", p.Category);
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Close();
-                }
-            }
-        }
-
-        // set a user to deleted/undeleted
-        public static void ToggleDeleteUser(String email)
-        {
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "SELECT isDeleted FROM [User] WHERE email = @s";
-                int deleted = -1;
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@s", email);
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    //Reading data from the database and adding it to a list
-                    reader.Read();
-                    deleted = Convert.ToInt32(reader["isDeleted"]);
-                    connection.Close();
-                }
-                if (deleted == 0)
-                {
-                    deleted = 1;
-                }
-                else if (deleted == 1)
-                {
-                    deleted = 0;
-                }
-
-                sql = "UPDATE [User] SET isDeleted = " + deleted + " WHERE email = '" + email + "'";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    connection.Close();
-                }
-            }
-        }
-
-        // set a user to suspended/unsuspended
-        public static void ToggleSuspendUser(String email)
-        {
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "SELECT isSuspended FROM [User] WHERE email = @s";
-                int deleted = -1;
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@s", email);
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    //Reading data from the database and adding it to a list
-                    reader.Read();
-                    deleted = Convert.ToInt32(reader["isSuspended"]);
-                    connection.Close();
-                }
-                if (deleted == 0)
-                {
-                    deleted = 1;
-                }
-                else if (deleted == 1)
-                {
-                    deleted = 0;
-                }
-
-                sql = "UPDATE [User] SET isSuspended = " + deleted + " WHERE email = '" + email + "'";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    connection.Close();
-                }
-            }
-        }
-
-        //retrieve list of postage types
-        public static List<PostageOptions> GetPostageOptions()
-        {
-            List<PostageOptions> options = new List<PostageOptions>();
-
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "select postageOptionsID, name, price, estimatedDays, description " +
-                    "FROM PostageOptions";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    //Reading data from the database and adding it to a list
-                    while (reader.Read())
-                    {
-                        PostageOptions o = new PostageOptions();
-                        o.ID = (int)reader["postageOptionsID"];
-                        o.Name = reader["name"].ToString();
-                        o.Price = Convert.ToDouble(reader["price"]);
-                        o.ETA = (int)reader["estimatedDays"];
-                        o.Description = reader["description"].ToString();
-                    }
-                    reader.Close();
-                }
-            }
-            return options;
-        }
-
-        //retrieve list of postage types
-        public static List<PostageOptions> GetPostageOptionsByName(String s)
-        {
-            List<PostageOptions> options = new List<PostageOptions>();
-
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "select postageOptionsID, name, price, estimatedDays, description, isDeleted " +
-                    "FROM PostageOptions WHERE name = @s";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@s", s);
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    //Reading data from the database and adding it to a list
-                    while (reader.Read())
-                    {
-                        PostageOptions o = new PostageOptions();
-                        o.ID = (int)reader["postageOptionsID"];
-                        o.Name = reader["name"].ToString();
-                        o.Price = Convert.ToDouble(reader["price"]);
-                        o.ETA = (int)reader["estimatedDays"];
-                        o.Description = reader["description"].ToString();
-                        o.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
-                    }
-                    reader.Close();
-                }
-            }
-            return options;
-        }
-
-        //update an existing postage type
-        public static void UpdatePostageOption(PostageOptions o)
-        {
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "UPDATE PostageOptions" +
-                    "SET name = @name, price = @price, estimatedDays = @estimatedDays, description = @description " +
-                    "WHERE postageOptionsID = @poi";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@poi", o.ID);
-                    command.Parameters.AddWithValue("@name", o.Name);
-                    command.Parameters.AddWithValue("@price", o.Price);
-                    command.Parameters.AddWithValue("@estimatedDays", o.ETA);
-                    command.Parameters.AddWithValue("@description", o.Description);
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Close();
-                }
-            }
-        }
-
-        //create a new postage type
-        public static void AddPostageOption(PostageOptions o)
-        {
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                string sql = "INSERT INTO PostageOptions (name, price, estimatedDays, description, isDeleted) " +
-                    "VALUES (@name, @price, @estimatedDays, @description, 0)";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@name", o.Name);
-                    command.Parameters.AddWithValue("@price", o.Price);
-                    command.Parameters.AddWithValue("@estimatedDays", o.ETA);
-                    command.Parameters.AddWithValue("@description", o.Description);
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Close();
-                }
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BobbleButt.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -36,7 +37,7 @@ namespace BobbleButt
                 user.Postcode = ((TextBox)FindControl("postCode")).Text;
                 user.DOB = ((TextBox)FindControl("birthDate")).Text;
                 user.Phone = ((TextBox)FindControl("firstName")).Text;
-                GlobalData.userMap.Add(user.Email, user);
+                QueryClass.AddUser(user);
                 Session.Add("user", user);
                 Response.Redirect("Main.aspx");
                 

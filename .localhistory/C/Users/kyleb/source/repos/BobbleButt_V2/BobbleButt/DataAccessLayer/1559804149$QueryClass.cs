@@ -756,7 +756,7 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "select postageOptionsID, name, price, estimatedDays, description, isDeleted " +
+                string sql = "select postageOptionsID, name, price, estimatedDays, description " +
                     "FROM PostageOptions WHERE name = @s";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -774,7 +774,6 @@ namespace BobbleButt.DataAccessLayer
                         o.Price = Convert.ToDouble(reader["price"]);
                         o.ETA = (int)reader["estimatedDays"];
                         o.Description = reader["description"].ToString();
-                        o.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
                     }
                     reader.Close();
                 }
@@ -811,8 +810,8 @@ namespace BobbleButt.DataAccessLayer
         {
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
-                string sql = "INSERT INTO PostageOptions (name, price, estimatedDays, description, isDeleted) " +
-                    "VALUES (@name, @price, @estimatedDays, @description, 0)";
+                string sql = "INSERT INTO PostageOptions (name, price, estimatedDays, description) " +
+                    "VALUES (@name, @price, @estimatedDays, @description)";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@name", o.Name);

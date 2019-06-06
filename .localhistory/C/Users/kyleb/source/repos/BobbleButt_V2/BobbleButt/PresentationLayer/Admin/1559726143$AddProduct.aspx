@@ -3,7 +3,10 @@
 <%@ Import Namespace="BobbleButt" %>
 
 <asp:Content ID="manageModification" runat="server" ContentPlaceHolderID="Main"> 
-                <div class="container login-container login-form-2 reg-form">
+
+<div id="PaypalDiv" class="payment-container login-container" style="padding-bottom:35px">
+            <div class="row">
+                <div class="col-md-12 login-form-2 reg-form">
                     <h3>Product Management</h3>
                         <!-- Input textbox for inserting a new name -->
                         <div class="form-group">
@@ -17,8 +20,11 @@
                         <!-- Input textbox for inserting a new category -->
                         <div class="form-group">
                             <label>Category:</label>
-                            <asp:DropDownList id="manageInsertCategory" class="form-control" runat="server"></asp:DropDownList>
-                            </div>
+                            <asp:TextBox id="manageInsertCategory" class="form-control" runat="server" placeholder="Product Category" value=""/>
+                            <!-- Validators -->
+                            <!-- Check if textbox is empty -->
+                            <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="manageInsertCategory" class="label-error" ErrorMessage="Category field cannot be empty"/>
+                        </div>
 
                         <!-- Input textbox for inserting a new stock -->
                         <div class="form-group">
@@ -74,6 +80,8 @@
                         <div class="form-group">
                             <asp:Button runat="server" class="btnSubmit" text="Submit" OnClick="ManageInsertsSubmitBtn_Click"/>
                         </div>
+                </div>
+            </div>
 </div>
 
 

@@ -25,15 +25,11 @@ namespace BobbleButt
                 if (mode.Equals("toggleSuspend") && !((User)Session["user"]).Email.Equals(email))
                 {
                     QueryClass.ToggleSuspendUser(email);
-
-                    users = QueryClass.GetUsers();
                 }
                 //Delete a user
                 if(mode.Equals("delete")&&!((User)Session["user"]).Email.Equals(email))
                 {
                     QueryClass.ToggleDeleteUser(email);
-
-                    users = QueryClass.GetUsers();
                 }
             }
         }

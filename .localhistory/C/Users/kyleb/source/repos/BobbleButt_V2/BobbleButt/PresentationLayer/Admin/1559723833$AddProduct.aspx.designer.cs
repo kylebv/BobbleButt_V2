@@ -10,34 +10,34 @@
 namespace BobbleButt {
     
     
-    public partial class Update {
+    public partial class ManageItems {
         
         /// <summary>
-        /// productUpdateName control.
+        /// manageInsertName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox productUpdateName;
+        protected global::System.Web.UI.WebControls.TextBox manageInsertName;
         
         /// <summary>
-        /// productUpdateCategory control.
+        /// manageInsertCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox productUpdateCategory;
+        protected global::System.Web.UI.WebControls.TextBox manageInsertCategory;
         
         /// <summary>
-        /// productUpdateStock control.
+        /// manageInsertStock control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox productUpdateStock;
+        protected global::System.Web.UI.WebControls.TextBox manageInsertStock;
         
         /// <summary>
         /// stockValidator control.
@@ -49,22 +49,22 @@ namespace BobbleButt {
         protected global::System.Web.UI.WebControls.CompareValidator stockValidator;
         
         /// <summary>
-        /// productUpdateDescription control.
+        /// manageInsertDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox productUpdateDescription;
+        protected global::System.Web.UI.WebControls.TextBox manageInsertDescription;
         
         /// <summary>
-        /// productUpdatePrice control.
+        /// manageInsertPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox productUpdatePrice;
+        protected global::System.Web.UI.WebControls.TextBox manageInsertPrice;
         
         /// <summary>
         /// priceValidator control.
@@ -76,39 +76,39 @@ namespace BobbleButt {
         protected global::System.Web.UI.WebControls.CompareValidator priceValidator;
         
         /// <summary>
-        /// fileName control.
+        /// FileUploadImg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label fileName;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadImg;
         
         /// <summary>
-        /// updateFileUploadImg control.
+        /// insertImageFileError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload updateFileUploadImg;
+        protected global::System.Web.UI.WebControls.Label insertImageFileError;
         
         /// <summary>
-        /// pID control.
+        /// manageInsertQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pID;
+        protected global::System.Web.UI.WebControls.TextBox manageInsertQuantity;
         
         /// <summary>
-        /// updateImageFileError control.
+        /// quantityValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label updateImageFileError;
+        protected global::System.Web.UI.WebControls.CompareValidator quantityValidator;
     }
 }

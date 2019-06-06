@@ -55,15 +55,27 @@
             <!-- Spot to upload images to update product image -->
             <div class="form-group">
                     <label class="text-white">Image (.png or .jpg):</label>
-                    <asp:Label runat="server" ID="fileName" CssClass="text-white" />
+                    <asp:Label runat="server" ID="fileName" />
                     <asp:FileUpload id="updateFileUploadImg" runat="server" /> <br/>
-                    <asp:Label runat="server" id="pID" cssclass="label-error" Visible="false"/>
+                    <asp:Label runat="server" id="pID" Visible="false"/>
              </div>
 
                          <!-- Error message for Image Upload where wrong file type is uploaded -->
              <div class="form-group">
                    <asp:Label ID="updateImageFileError" runat="server" Visible="false" class="label-error">Wrong file type has been uploaded</asp:Label>
              </div>
+
+            <!-- Text box for updated quantity -->
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <asp:TextBox runat="server" type="number" id="productUpdateQuantity" placeholder="Product Quantity" class="form-control"/>
+                    <!-- Validators -->
+                    <!-- Check if value is greater or equal to zero -->
+                    <asp:CompareValidator Display="Dynamic" ID="quantityValidator" controlToValidate="productUpdateQuantity" runat="server" class="label-error" Operator="GreaterThanEqual" ValueToCompare="0" ErrorMessage="Quantity field is invalid, value must be greater or equal to zero"></asp:CompareValidator>
+                    <!-- Check if field is empty -->
+                    <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="productUpdateQuantity" class="label-error" ErrorMessage="Quantity field cannot be empty"/>
+                </div>
+            </div>
         
             <!-- What fields are required to fill out -->
             <div class="form-group">

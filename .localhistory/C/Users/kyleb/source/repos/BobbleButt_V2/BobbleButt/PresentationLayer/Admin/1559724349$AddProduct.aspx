@@ -1,9 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="AddProduct.aspx.cs" Inherits="BobbleButt.AddProduct" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="AddProduct.aspx.cs" Inherits="BobbleButt.ManageItems" %>
 
 <%@ Import Namespace="BobbleButt" %>
 
 <asp:Content ID="manageModification" runat="server" ContentPlaceHolderID="Main"> 
-                <div class="container login-container login-form-2 reg-form">
+
+<div id="PaypalDiv" class="payment-container login-container" style="padding-bottom:35px">
+            <div class="row">
+                <div class="col-md-12 login-form-1">
                     <h3>Product Management</h3>
                         <!-- Input textbox for inserting a new name -->
                         <div class="form-group">
@@ -17,8 +20,11 @@
                         <!-- Input textbox for inserting a new category -->
                         <div class="form-group">
                             <label>Category:</label>
-                            <asp:DropDownList id="manageInsertCategory" class="form-control" runat="server"></asp:DropDownList>
-                            </div>
+                            <asp:TextBox id="manageInsertCategory" class="form-control" runat="server" placeholder="Product Category" value=""/>
+                            <!-- Validators -->
+                            <!-- Check if textbox is empty -->
+                            <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="manageInsertCategory" class="label-error" ErrorMessage="Category field cannot be empty"/>
+                        </div>
 
                         <!-- Input textbox for inserting a new stock -->
                         <div class="form-group">
@@ -49,6 +55,7 @@
                             <!-- Check field isn't empty -->
                             <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="manageInsertPrice" class="label-error" ErrorMessage="Price field cannot be empty"/>
                         </div>
+                        </div>
 
                         <!-- Image Upload -->
                         <div class="form-group">
@@ -69,11 +76,24 @@
                         <div class="form-group">
                             <asp:Label ID="insertImageFileError" runat="server" Visible="false" class="label-error">Wrong file type has been uploaded</asp:Label>
                         </div>
+
+                        <!-- Textbox for quantity-->
+                        <div class="form-group">
+                            <label>Quantity:</label>
+                            <asp:TextBox type="number" id="manageInsertQuantity" class="form-control" runat="server" placeholder="Product Quantity" value=""/>
+                            <!-- Validators -->
+                            <!-- Check quantity is greater or equal to zero -->
+                            <asp:CompareValidator Display="Dynamic" ID="quantityValidator" controlToValidate="manageInsertQuantity" runat="server" class="label-error" Operator="GreaterThanEqual" ValueToCompare="0" ErrorMessage="Quantity field is invalid, value must be greater or equal to zero"></asp:CompareValidator>
+                            <!-- Check if field doesnt have an input -->
+                            <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="manageInsertQuantity" class="label-error" ErrorMessage="Quantity field cannot be empty"/>
+                        </div>
                         
                         <!-- Submission button -->
                         <div class="form-group">
                             <asp:Button runat="server" class="btnSubmit" text="Submit" OnClick="ManageInsertsSubmitBtn_Click"/>
                         </div>
+                </div>
+            </div>
 </div>
 
 

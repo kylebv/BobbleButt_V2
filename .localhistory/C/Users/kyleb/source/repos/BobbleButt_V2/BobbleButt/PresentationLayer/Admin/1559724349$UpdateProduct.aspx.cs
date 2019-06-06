@@ -32,6 +32,7 @@ namespace BobbleButt
                 productUpdateStock.Text = p.Stock.ToString();
                 productUpdateDescription.Text = p.Description;
                 productUpdatePrice.Text = p.Price.ToString("F");
+                productUpdateQuantity.Text = p.Quantity.ToString();
                 pID.Text = p.ID.ToString();
                 fileName.Text = "Filename before the change: "+p.Image;
             }
@@ -51,6 +52,7 @@ namespace BobbleButt
             int updateStock = Convert.ToInt32(productUpdateStock.Text);
             string updateDescription = productUpdateDescription.Text;
             double updatePrice = Convert.ToDouble(productUpdatePrice.Text);
+            int updateQuantity = Convert.ToInt32(productUpdateQuantity.Text);
             string InsertImage;
             if (updateFileUploadImg.HasFile)
             {
@@ -85,7 +87,7 @@ namespace BobbleButt
                     p.Stock = updateStock;
                     p.Description = updateDescription;
                     p.Price = updatePrice;
-                    p.Quantity = 1;
+                    p.Quantity = updateQuantity;
                     p.Image = InsertImage;
                     QueryClass.UpdateProduct(p);
                     Response.Redirect("ManageProducts.aspx");

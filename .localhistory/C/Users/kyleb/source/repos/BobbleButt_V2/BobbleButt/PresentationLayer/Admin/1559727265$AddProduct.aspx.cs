@@ -11,14 +11,8 @@ namespace BobbleButt
 {
     public partial class AddProduct : System.Web.UI.Page
     {
-        List<String> categories;
         protected void Page_Load(object sender, EventArgs e)
         {
-            categories = QueryClass.GetCategories();
-            foreach (String c in categories)
-            {
-                manageInsertCategory.Items.Add(c);
-            }
         }
         protected void ManageInsertsCancelBtn_Click(object sender, EventArgs e)
         {        
@@ -30,7 +24,7 @@ namespace BobbleButt
             Product p = new Product();
 
             //Get user input from textboxes and put them into variables
-            string InsertCategory = manageInsertCategory.SelectedItem.Text;
+            string InsertCategory = manageInsertCategory.Text;
             string InsertName = manageInsertName.Text;
             int InsertStock = Convert.ToInt32(manageInsertStock.Text);
             string InsertDescription = manageInsertDescription.Text;

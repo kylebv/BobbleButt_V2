@@ -57,7 +57,7 @@
                                 string cl = "btn-danger";
                                 if (u.IsDeleted)
                                 {
-                                    deleted = "RESTORE";
+                                    suspended = "RESTORE";
                                     cl = "btn-success";
                                 }%>
                             <!-- Button to suspend a user with text value equalling above string -->

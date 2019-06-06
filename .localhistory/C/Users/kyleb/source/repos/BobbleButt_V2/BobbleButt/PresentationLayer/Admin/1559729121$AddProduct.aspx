@@ -3,7 +3,7 @@
 <%@ Import Namespace="BobbleButt" %>
 
 <asp:Content ID="manageModification" runat="server" ContentPlaceHolderID="Main"> 
-                <div class="container login-container login-form-2 reg-form">
+                <div class="col-md-12 login-form-2 reg-form">
                     <h3>Product Management</h3>
                         <!-- Input textbox for inserting a new name -->
                         <div class="form-group">

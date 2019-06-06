@@ -8,7 +8,7 @@
     <script type="text/javascript">
         function addNew() {
               //Go to Insert new product page
-              window.location.href = 'AddProduct.aspx';
+              window.location.href = 'ManageItems.aspx';
         }
     </script>
   

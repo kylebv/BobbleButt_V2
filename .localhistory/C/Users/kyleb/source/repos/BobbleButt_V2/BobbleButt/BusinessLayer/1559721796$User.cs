@@ -11,7 +11,7 @@ namespace BobbleButt
         {
         }
 
-        public User(string firstName, string lastName, string email, string dOB, string password, string street, string suburb, string postcode, string phone, bool isAdmin, bool isSuspended, int id, bool deleted)
+        public User(string firstName, string lastName, string email, string dOB, string password, string street, string suburb, string postcode, string phone, bool isAdmin, bool isSuspended)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -24,10 +24,7 @@ namespace BobbleButt
             Phone = phone;
             IsAdmin = isAdmin;
             IsSuspended = isSuspended;
-            ID = id;
-            IsDeleted = deleted;
         }
-        public bool IsDeleted { get; set; }
         public bool IsSuspended { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -39,7 +36,6 @@ namespace BobbleButt
         public string Postcode { get; set; }
         public string Phone { get; set; }
         public bool IsAdmin { get; set; }
-        public int ID { get; set; }
 
     }
 }

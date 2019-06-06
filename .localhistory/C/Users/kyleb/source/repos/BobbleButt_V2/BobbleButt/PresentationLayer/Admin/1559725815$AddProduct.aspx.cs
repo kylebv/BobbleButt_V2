@@ -1,5 +1,4 @@
 ﻿using BobbleButt.BusinessLayer;
-using BobbleButt.DataAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,31 +10,23 @@ namespace BobbleButt
 {
     public partial class AddProduct : System.Web.UI.Page
     {
-        List<String> categories;
         protected void Page_Load(object sender, EventArgs e)
         {
-            categories = QueryClass.GetCategories();
-            foreach (String c in categories)
-            {
-                manageInsertCategory.Items.Add(c);
-            }
         }
         protected void ManageInsertsCancelBtn_Click(object sender, EventArgs e)
         {        
         }
         protected void ManageInsertsSubmitBtn_Click(object sender, EventArgs e)
         {
-            
-
-            Product p = new Product();
-
             //Get user input from textboxes and put them into variables
-            string InsertCategory = manageInsertCategory.SelectedItem.Text;
+            string InsertCategory = manageInsertCategory.Text ;
             string InsertName = manageInsertName.Text;
             int InsertStock = Convert.ToInt32(manageInsertStock.Text);
             string InsertDescription = manageInsertDescription.Text;
             double InsertPrice = Convert.ToDouble(manageInsertPrice.Text);
             string InsertImage = "../img/" + Convert.ToString(FileUploadImg.FileName);
+            
+
             // Checks to see if all fields  of user input are valid
             if (IsValid)
             {
@@ -61,15 +52,7 @@ namespace BobbleButt
                     //Save image into project
                     FileUploadImg.SaveAs(Server.MapPath("~/img/" + FileUploadImg.FileName));
                     //Add data inserted in globalData as a new product
-                    
-                    p.Category = InsertCategory;
-                    p.Name = InsertName;
-                    p.Stock = InsertStock;
-                    p.Description = InsertDescription;
-                    p.Price = InsertPrice;
-                    p.Quantity = 1;
-                    p.Image = InsertImage;
-                    QueryClass.AddProduct(p);
+                    //GlobalData.productList.Add(new Product(InsertCategory, InsertName, InsertStock, InsertDescription, InsertPrice, InsertImage, InsertQuantity,0));
                     Response.Redirect("ManageProducts.aspx");
                 }
                 else
