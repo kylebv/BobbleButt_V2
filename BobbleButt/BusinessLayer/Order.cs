@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BobbleButt.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,8 +21,9 @@ namespace BobbleButt
         public string CardExpiryDate { get; set; }
         public string PaypalID { get; set; }
         public int PostOption { get; set; }
+        public int ID { get; set; }
 
-        public Order(string userEmail, string firstName, string lastName, string phone, string streetAddress, string suburb, string postcode, string cardNumber, string cardName, string cardCVC, string cardExpiryDate, string paypalID, int postOption, List<Product> products, string status, string date)
+        public Order(string userEmail, string firstName, string lastName, string phone, string streetAddress, string suburb, string postcode, string cardNumber, string paypalID, int postOption, List<Product> products, string status, string date, int id)
         {
             UserEmail = userEmail;
             FirstName = firstName;
@@ -39,6 +41,7 @@ namespace BobbleButt
             Products = products;
             Status = status;
             Date = date;
+            ID = id;
         }
 
         public List<Product> Products { get; set; }

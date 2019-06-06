@@ -1,0 +1,114 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageProducts.aspx.cs" Inherits="BobbleButt.ManageProducts" %>
+<%@ Import Namespace="BobbleButt.BusinessLayer"%>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="ViewContent2" ContentPlaceHolderID="Main" runat="server">
+    <script type="text/javascript">
+        function addNew() {
+              //Go to Insert new product page
+              window.location.href = 'ManageItems.aspx';
+        }
+    </script>
+  
+    <div id="viewItemlist">
+    <div class="itemlist overflow-auto">
+        <div style="min-width: 600px">
+          
+                <table border="0">
+                    <thead>
+                        <tr>
+                            <!-- The names of all the headings in the table -->
+                            <th>ID #</th>
+                            <th class="text-left">NAME</th>
+                            <th class="text-right">CATEGORY</th>
+                            <th class="text-right">STOCK</th>
+                            <th class="text-right">DESCRIPTION</th>
+                            <th class="text-right">PRICE</th>
+                            <th class="text-right">IMAGE</th> 
+                            <th class="text-right">UPDATE</th>
+                            <th class="text-right">DELETE</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    <%  //@model IEnumerable<Week11_HighScore.Models.ScoreRecord>
+                        //Goes through each product and adds them to the page 
+                        //foreach (Product p in GlobalData.productList)
+                        //foreach (TestProduct p in TestProduct.GetProductDataBL)
+
+                        foreach (Product p in products)
+                        {                   
+                                %>
+                        <!-- Adds the product name to the page -->
+                    <tr>
+                            <td class="no"><%=p.ID  %></td>
+                            <td class="text-left">
+                                <p><%=p.Name %></p>
+                                
+                            </td>
+                            
+                                
+                           <!-- Adds product Category -->
+                            <td class="text-left">
+                                <p><%=p.Category %></p>
+                                
+                            </td>
+ 
+                            
+                            <!-- Adds product stock -->
+                            <td class="text-left">
+                                <p><%=p.Stock %></p>
+                                
+                            </td>
+                          
+                            <!-- Adds product description -->    
+                            <td class="text-left">
+                                <p><%=p.Description %></p>
+                            </td>
+                            
+                            <!-- Adds product price -->
+                            <td class="text-left">
+                                <p><%=p.Price %></p>
+                            </td>
+                                
+                         
+                            
+                            <!-- Image name NOT the actual image -->
+                            <td class="text-left">
+                                <p><%=p.Image %></p>
+                            </td>
+                            
+
+                            <!-- Send product value back to ViewProduct so that product equals the value of current product  -->
+                            <td class="text-left">
+                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdateProduct.aspx?mode=UpdateItem&product=<%=p.ID%>'; return false" value="UPDATE"/>
+                            </td>
+                            
+                            <!-- Send back product value to ViewProduct -->
+                            <td class="text-left">
+                                <%String s = "DELETE";
+                                    String cl = "btn-danger";
+                                    if (p.IsDeleted)
+                                    {
+                                        s = "RESTORE";
+                                        cl = "btn-success";
+                                    }%>
+                                <input type="button" onclick="window.location.href='ManageProducts.aspx?mode=toggleDelete&product=<%=p.ID%>'; return false" class="btn <%=cl%>" value="<%=s %>"/>
+                                
+                            </td>
+                     </tr>
+                        <% } %>
+</tbody>
+                 <!-- Add new item button -->  
+                </table>
+                
+                <input type="button" onClick="addNew()" class="btn btn-success" value="ADD NEW"/>
+        </div>
+
+    </div>
+</div>
+                            
+</asp:content>

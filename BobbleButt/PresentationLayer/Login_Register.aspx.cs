@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BobbleButt.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,19 +19,12 @@ namespace BobbleButt
         {
             string email = ((TextBox)FindControl("logEmail")).Text;
             string pword = ((TextBox)FindControl("logPassword")).Text;
-     
-            if (GlobalData.userMap.ContainsKey(email))
+            User u = QueryClass.GetUser(email, pword);
+            if (u.ID!=0)
             {
                 //User logged in
-                if(GlobalData.userMap[email].Password.Equals(pword)&&!GlobalData.userMap[email].IsSuspended)
-                {
-                    Session.Add("user", GlobalData.userMap[email]);
-                    Response.Redirect("Main.aspx");
-                }
-                else
-                {
-                    ((Label)FindControl("errorMessage")).Visible = true;
-                }
+                Session.Add("user", u);
+                Response.Redirect("Main.aspx");
             }
             else
             {

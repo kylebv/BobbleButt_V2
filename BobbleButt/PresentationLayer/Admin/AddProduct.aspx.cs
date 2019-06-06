@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BobbleButt.BusinessLayer;
+using BobbleButt.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,26 +9,33 @@ using System.Web.UI.WebControls;
 
 namespace BobbleButt
 {
-    public partial class ManageItems : System.Web.UI.Page
+    public partial class AddProduct : System.Web.UI.Page
     {
+        List<String> categories;
         protected void Page_Load(object sender, EventArgs e)
         {
+            categories = QueryClass.GetCategories();
+            foreach (String c in categories)
+            {
+                manageInsertCategory.Items.Add(c);
+            }
         }
         protected void ManageInsertsCancelBtn_Click(object sender, EventArgs e)
         {        
         }
         protected void ManageInsertsSubmitBtn_Click(object sender, EventArgs e)
         {
+            
+
+            Product p = new Product();
+
             //Get user input from textboxes and put them into variables
-            string InsertCategory = manageInsertCategory.Text ;
+            string InsertCategory = manageInsertCategory.SelectedItem.Text;
             string InsertName = manageInsertName.Text;
             int InsertStock = Convert.ToInt32(manageInsertStock.Text);
             string InsertDescription = manageInsertDescription.Text;
             double InsertPrice = Convert.ToDouble(manageInsertPrice.Text);
-            int InsertQuantity = Convert.ToInt32(manageInsertQuantity.Text);
             string InsertImage = "../img/" + Convert.ToString(FileUploadImg.FileName);
-            
-
             // Checks to see if all fields  of user input are valid
             if (IsValid)
             {
@@ -50,9 +59,17 @@ namespace BobbleButt
                         Pahe used: ManageItems.aspx.cs
                          */
                     //Save image into project
-                    FileUploadImg.SaveAs(Server.MapPath("~/../img/" + FileUploadImg.FileName));
+                    FileUploadImg.SaveAs(Server.MapPath("~/img/" + FileUploadImg.FileName));
                     //Add data inserted in globalData as a new product
-                    GlobalData.productList.Add(new Product(InsertCategory, InsertName, InsertStock, InsertDescription, InsertPrice, InsertImage, InsertQuantity));
+                    
+                    p.Category = InsertCategory;
+                    p.Name = InsertName;
+                    p.Stock = InsertStock;
+                    p.Description = InsertDescription;
+                    p.Price = InsertPrice;
+                    p.Quantity = 1;
+                    p.Image = InsertImage;
+                    QueryClass.AddProduct(p);
                     Response.Redirect("ManageProducts.aspx");
                 }
                 else

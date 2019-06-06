@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Checkout_Info.aspx.cs" Inherits="BobbleButt.Checkout_Info" %>
 <%@ Import Namespace="BobbleButt" %>
 <%@ Import Namespace="INFT3050.PaymentSystem" %>
+<%@ Import Namespace="BobbleButt.BusinessLayer" %>
 <!DOCTYPE html>
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BobbleButt.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -65,7 +66,7 @@ namespace BobbleButt
                 Order o = new Order(email.Text, firstName.Text, lastName.Text, phone.Text, streetAddress.Text, suburb.Text, postcode.Text, null, null, null, null, null, DdlPostage.SelectedIndex, ((List<Product>)Session["cart"]), "Processing", DateTime.Now.ToString());
                 if(paypal.Checked)
                 {
-                    o.PaypalID = payPalEmail.Text;
+                   // o.PaypalID = payPalEmail.Text;
                 }
                 else
                 {

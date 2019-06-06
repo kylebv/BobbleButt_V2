@@ -10,7 +10,7 @@
 namespace BobbleButt {
     
     
-    public partial class ManageItems {
+    public partial class AddProduct {
         
         /// <summary>
         /// manageInsertName control.
@@ -28,7 +28,7 @@ namespace BobbleButt {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox manageInsertCategory;
+        protected global::System.Web.UI.WebControls.DropDownList manageInsertCategory;
         
         /// <summary>
         /// manageInsertStock control.
@@ -92,23 +92,5 @@ namespace BobbleButt {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label insertImageFileError;
-        
-        /// <summary>
-        /// manageInsertQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox manageInsertQuantity;
-        
-        /// <summary>
-        /// quantityValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator quantityValidator;
     }
 }

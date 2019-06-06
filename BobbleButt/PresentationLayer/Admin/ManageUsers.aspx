@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="BobbleButt.Admin_Users" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../PageHeader.Master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="BobbleButt.ManageUsers" %>
 <%@Import namespace="BobbleButt" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -22,43 +22,48 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% int count = 0;
-                            // Will go through all the users existing and count them
-                            foreach (KeyValuePair<string,User> u in GlobalData.userMap)
+                        <%  foreach (User u in users)
                             {
-                                count++;%>
+                                %>
                         <tr>
                             <%--Add in the count for the ID coloumn for the amount of users existing--%>
-                            <td class="no"><%=count %></td>
+                            <td class="no"><%=u.ID %></td>
                             <!-- Add in the user emails to the email column -->
                             <td class="text-left">
-                                <p><%=u.Value.Email %></p>
+                                <p><%=u.Email %></p>
                                 
                             </td>
                             <td class="unit">
                                 <%
-    //Go through all the orders in a list and add them to the order coloumn for a specfic user
-    foreach (Order o in GlobalData.Orders) {
-        //Checks to see if the user email equals the current user email in table so that the orders are related to a user
-        if (o.UserEmail.Equals(u.Value.Email))
-        {%>
+                                    //Go through all the orders in a list and add them to the order coloumn for a specfic user
+                                    foreach (Order o in orders) {
+                                        //Checks to see if the user email equals the current user email in table so that the orders are related to a user
+                                        if (o.UserEmail.Equals(u.Email))
+                                        {%>
                                <!-- Take user to a new page with the order details listed -->
-                               <a href="Orders.aspx?order=<%=GlobalData.Orders.IndexOf(o) %>"><%=o.Date %></a><br />
+                               <a href="Orders.aspx?order=<%=o.ID %>"><%=o.Date %></a><br />
                                 <%} } %>
 
                             </td>
                             <!-- Display value of suspension "True" or "False" -->
-                            <td class="qty"><p><%=u.Value.IsSuspended %></p></td>
+                            <td class="qty"><p><%=u.IsSuspended %></p></td>
                             <!-- Value for button text  -->
                             <%string suspended = "Suspend";
-                                if (u.Value.IsSuspended)
+                                if (u.IsSuspended)
                                 {
                                     suspended = "Unsuspend";
+                                }
+                                string deleted = "DELETE";
+                                string cl = "btn-danger";
+                                if (u.IsDeleted)
+                                {
+                                    deleted = "RESTORE";
+                                    cl = "btn-success";
                                 }%>
                             <!-- Button to suspend a user with text value equalling above string -->
-                            <td class="unit"><input type="button" onclick="window.location.href='Admin_Users.aspx?mode=toggleSuspend&user=<%=u.Value.Email%>'; return false" class="btn btn-success" value="<%=suspended %>" /></td>
+                            <td class="unit"><input type="button" onclick="window.location.href='ManageUsers.aspx?mode=toggleSuspend&user=<%=u.Email%>'; return false" class="btn btn-success" value="<%=suspended %>" /></td>
                             <!-- Button to delete a user -->
-                            <td class="qty"><input type="button" onclick="window.location.href='Admin_Users.aspx?mode=delete&user=<%=u.Value.Email%>'; return false" class="btn btn-danger" value="Delete" /></td>
+                            <td class="qty"><input type="button" onclick="window.location.href='ManageUsers.aspx?mode=delete&user=<%=u.Email%>'; return false" class="btn <%=cl %>" value="<%=deleted %>" /></td>
                         </tr>
                         <%} %>
                        

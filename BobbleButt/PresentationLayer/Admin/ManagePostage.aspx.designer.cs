@@ -10,6 +10,6 @@
 namespace BobbleButt {
     
     
-    public partial class PostageOptions1 {
+    public partial class ManagePostage {
     }
 }

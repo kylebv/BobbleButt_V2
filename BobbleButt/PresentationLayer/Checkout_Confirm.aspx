@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Checkout_Confirm.aspx.cs" Inherits="BobbleButt.Checkout_Confirm" %>
 <%@ Import Namespace="BobbleButt" %>
+<%@ Import Namespace="BobbleButt.BusinessLayer" %>
 <!DOCTYPE html>
 
 

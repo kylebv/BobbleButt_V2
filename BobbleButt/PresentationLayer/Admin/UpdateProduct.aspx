@@ -22,7 +22,6 @@
                     <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="productUpdateCategory" class="label-error" ErrorMessage="Category field cannot be empty"/>
                 </div>
             </div>
-
             <!-- Textbox for stock -->
             <div class="form-group">
                 <div class="col-sm-4">
@@ -56,27 +55,15 @@
             <!-- Spot to upload images to update product image -->
             <div class="form-group">
                     <label class="text-white">Image (.png or .jpg):</label>
+                    <asp:Label runat="server" ID="fileName" CssClass="text-white" />
                     <asp:FileUpload id="updateFileUploadImg" runat="server" /> <br/>
-                    <!-- Check if no file is selected -->
-                    <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="updateFileUploadImg" class="label-error label-error" ErrorMessage="No file selected"/>
+                    <asp:Label runat="server" id="pID" cssclass="label-error" Visible="false"/>
              </div>
 
                          <!-- Error message for Image Upload where wrong file type is uploaded -->
              <div class="form-group">
                    <asp:Label ID="updateImageFileError" runat="server" Visible="false" class="label-error">Wrong file type has been uploaded</asp:Label>
              </div>
-
-            <!-- Text box for updated quantity -->
-            <div class="form-group">
-                <div class="col-sm-4">
-                    <asp:TextBox runat="server" type="number" id="productUpdateQuantity" placeholder="Product Quantity" class="form-control"/>
-                    <!-- Validators -->
-                    <!-- Check if value is greater or equal to zero -->
-                    <asp:CompareValidator Display="Dynamic" ID="quantityValidator" controlToValidate="productUpdateQuantity" runat="server" class="label-error" Operator="GreaterThanEqual" ValueToCompare="0" ErrorMessage="Quantity field is invalid, value must be greater or equal to zero"></asp:CompareValidator>
-                    <!-- Check if field is empty -->
-                    <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="productUpdateQuantity" class="label-error" ErrorMessage="Quantity field cannot be empty"/>
-                </div>
-            </div>
         
             <!-- What fields are required to fill out -->
             <div class="form-group">

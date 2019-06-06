@@ -76,6 +76,15 @@ namespace BobbleButt {
         protected global::System.Web.UI.WebControls.CompareValidator priceValidator;
         
         /// <summary>
+        /// fileName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label fileName;
+        
+        /// <summary>
         /// updateFileUploadImg control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace BobbleButt {
         protected global::System.Web.UI.WebControls.FileUpload updateFileUploadImg;
         
         /// <summary>
+        /// pID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label pID;
+        
+        /// <summary>
         /// updateImageFileError control.
         /// </summary>
         /// <remarks>
@@ -92,23 +110,5 @@ namespace BobbleButt {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label updateImageFileError;
-        
-        /// <summary>
-        /// productUpdateQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox productUpdateQuantity;
-        
-        /// <summary>
-        /// quantityValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator quantityValidator;
     }
 }

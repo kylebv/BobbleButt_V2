@@ -18,17 +18,17 @@ namespace BobbleButt.BusinessLayer
         public int ID { get; set; }
 
         //Data access
-        static DataAccessLayer.AdminViewProduct m_db;
+        //static DataAccessLayer.AdminViewProduct m_db;
 
         
         public TestProduct()
         {
-            m_db = new DataAccessLayer.AdminViewProduct();
+           // m_db = new DataAccessLayer.AdminViewProduct();
         }
-        public static List<TestProduct> GetProducts()
-        {
-            return m_db.GetProductData();
-        }
+        //public static List<TestProduct> GetProducts()
+        //{
+        //    return m_db.GetProductData();
+        //}
 
     }
 }
