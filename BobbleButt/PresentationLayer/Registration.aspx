@@ -81,6 +81,7 @@
             </div>
             <!-- Register Button --> 
             <asp:Button runat="server" OnClick="btnRegister_Click" class="btn btnSubmit btn-block" Text="Register"/>
+            <asp:label runat="server" ID="lblRegEmail" Visible="false" style="color:red;"> </asp:label>
         </div> 
         </form>
     </body>

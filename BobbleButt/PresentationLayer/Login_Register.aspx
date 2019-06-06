@@ -37,6 +37,10 @@
                         <div class="form-group">
                             <asp:Label ID="errorMessage" runat="server" Visible="false" class="label-error">Login failed. You may be suspended, or your details are incorrect.</asp:Label>
                         </div>
+                        <!-- Forgot Password link -->
+                        <div class="form-group">
+                              <asp:HyperLink id="forgotPasswordLink" NavigateUrl="/ForgotPassword.aspx" Text="Forgot your password?" runat="server"></asp:HyperLink>
+                        </div>
                 </div>
                 <!-- Register fields displayed -->
                 <div class="col-md-6 login-form-2">

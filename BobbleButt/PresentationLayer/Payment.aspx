@@ -75,7 +75,7 @@
             <div class="row">
                 <div class="col-md-12 login-form-1">
                         <div class="form-group">
-                            <label>Email:</label>
+                            <label id="test">Email:</label>
                             <asp:TextBox textmode="Email" id="paypalEmail" class="form-control" runat="server" placeholder="Email" value="" OnTextChanged="logEmail_TextChanged" />
                             <!--<asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="paypalEmail" class="label-error" ErrorMessage="Email field cannot be empty"/>-->
                         </div>

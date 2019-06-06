@@ -5,15 +5,60 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
     <script>
+    //Display the models when called
     function openModal() {
             $('#myModal').modal('show');
+        }
+    function openModalForgot() {
+            $('#myModalForgot').modal('show');
+        }
+    function openModalAdmin() {
+            $('#myModalAdmin').modal('show')
         }
         </script>
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="Main"> 
 
-    <div id="myModal" class="modal fade">
+<!-- A Pop up message that is displayed when a user trys to register as admin notifying them of an email -->
+<div id="myModalAdmin" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				
+                <h4 class="text-success text-center">Admin Confirmation</h4>
+			</div>
+			<div class="modal-body">
+				<p class="text-center">Please confirm you are an admin. Check your email!</p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-secondary btn-block" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- A Pop up message that is displayed when a user requests for an email to be sent with a password -->
+<div id="myModalForgot" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				
+                <h4 class="text-success text-center">Password Retrieval</h4>
+			</div>
+			<div class="modal-body">
+				<p class="text-center">The password linked to your account has been sent. Check your email!</p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-secondary btn-block" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- A pop up message about the order details forwarded to there email -->
+<div id="myModal" class="modal fade">
 	<div class="modal-dialog modal-confirm">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -21,7 +66,7 @@
                 <h4 class="text-success text-center">Order Confirmed!</h4>
 			</div>
 			<div class="modal-body">
-				<p class="text-center">Congratulations <%= orderer %>! Your order has been confirmed. Check your email for details.</p>
+				<p class="text-center">Congratulations <%= orderer %>! Your card was approved and order has been confirmed. Check your email for details.</p>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-secondary btn-block" data-dismiss="modal">OK</button>

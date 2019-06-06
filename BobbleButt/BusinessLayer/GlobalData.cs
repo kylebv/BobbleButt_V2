@@ -28,11 +28,11 @@ namespace BobbleButt
             categoryList.Add("DC");
             categoryList.Add("Marvel");
             Orders = new List<Order>();
-            Orders.Add(new Order("basicuser@bu.com", "kqqqqqqq", "kqqqqqqqqq", "0404040404", "123 fake st", "kqqqqq", "1234", null, "k@k.com",0, productList, "Processing", Convert.ToString(DateTime.Now)));
+            Orders.Add(new Order("basicuser@bu.com", "kqqqqqqq", "kqqqqqqqqq", "0404040404", "123 fake st", "kqqqqq", "1234", null, null, null, null, "k@k.com",0, productList, "Processing", Convert.ToString(DateTime.Now)));
 
-            Orders.Add(new Order("basicuser@bu.com", "kqqqqqqq", "kqqqqqqqqq", "0404040404", "123 fake st", "kqqqqq", "1234", null, "k@k.com",1, productList, "Processing", Convert.ToString(DateTime.Now)));
+            Orders.Add(new Order("basicuser@bu.com", "kqqqqqqq", "kqqqqqqqqq", "0404040404", "123 fake st", "kqqqqq", "1234", null, null, null, null, "k@k.com",1, productList, "Processing", Convert.ToString(DateTime.Now)));
 
-            Orders.Add(new Order("basicuser@bu.com", "kqqqqqqq", "kqqqqqqqqq", "0404040404", "123 fake st", "kqqqqq", "1234", null, "k@k.com",2, productList, "Processing", Convert.ToString(DateTime.Now)));
+            Orders.Add(new Order("basicuser@bu.com", "kqqqqqqq", "kqqqqqqqqq", "0404040404", "123 fake st", "kqqqqq", "1234", null, null, null, null, "k@k.com",2, productList, "Processing", Convert.ToString(DateTime.Now)));
             postageList = new List<PostageOptions>();
             postageList.Add(new PostageOptions("Regular", 5));
             postageList.Add(new PostageOptions("Registered", 10));

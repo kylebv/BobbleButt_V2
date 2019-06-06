@@ -36,7 +36,7 @@ namespace BobbleButt
                 s2 = namePostage.Text;
                 s1 = GlobalData.postageList[Convert.ToInt32(postage)].Name;
             }
-            Response.Redirect("PostageOptions.aspx");
+            Response.Redirect("ManagePostage.aspx");
         }
     }
 }

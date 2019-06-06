@@ -15,10 +15,13 @@ namespace BobbleButt
         public string Suburb { get; set; }
         public string Postcode { get; set; }
         public string CardNumber { get; set; }
+        public string CardName { get; set; }
+        public string CardCVC { get; set; }
+        public string CardExpiryDate { get; set; }
         public string PaypalID { get; set; }
         public int PostOption { get; set; }
 
-        public Order(string userEmail, string firstName, string lastName, string phone, string streetAddress, string suburb, string postcode, string cardNumber, string paypalID, int postOption, List<Product> products, string status, string date)
+        public Order(string userEmail, string firstName, string lastName, string phone, string streetAddress, string suburb, string postcode, string cardNumber, string cardName, string cardCVC, string cardExpiryDate, string paypalID, int postOption, List<Product> products, string status, string date)
         {
             UserEmail = userEmail;
             FirstName = firstName;
@@ -28,6 +31,9 @@ namespace BobbleButt
             Suburb = suburb;
             Postcode = postcode;
             CardNumber = cardNumber;
+            CardName = cardName;
+            CardCVC = cardCVC;
+            CardExpiryDate = cardExpiryDate; 
             PaypalID = paypalID;
             PostOption = postOption;
             Products = products;

@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44328</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -151,6 +151,7 @@
     <Content Include="PresentationLayer\Checkout_Info.aspx" />
     <Content Include="PresentationLayer\Contact.aspx" />
     <Content Include="PresentationLayer\EditProfile.aspx" />
+    <Content Include="PresentationLayer\ForgotPassword.aspx" />
     <Content Include="PresentationLayer\Login_Register.aspx" />
     <Content Include="PresentationLayer\Main.aspx" />
     <Content Include="PresentationLayer\Admin\AddProduct.aspx" />
@@ -212,7 +213,9 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -285,6 +288,13 @@
     </Compile>
     <Compile Include="PresentationLayer\EditProfile.aspx.designer.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="PresentationLayer\Login_Register.aspx.cs">
       <DependentUpon>Login_Register.aspx</DependentUpon>
@@ -461,7 +471,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59895</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59895/</IISUrl>
+          <IISUrl>https://localhost:44328/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

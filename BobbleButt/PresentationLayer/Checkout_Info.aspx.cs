@@ -9,6 +9,10 @@ namespace BobbleButt
 {
     public partial class Checkout_Info : System.Web.UI.Page
     {
+
+       
+
+
         protected List<Product> cart;
         protected void ddlPostage_Changed(object sender, EventArgs e)
         {
@@ -16,6 +20,8 @@ namespace BobbleButt
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+
+           
            
             cart = new List<Product>();
             
@@ -54,16 +60,20 @@ namespace BobbleButt
         protected void btnCheckout_Clicked(object sender, EventArgs e)
         {
             // Order is payed for and is added to users orders
-            if(IsValid)
+            if (IsValid)
             {
-                Order o = new Order(email.Text, firstName.Text, lastName.Text, phone.Text, streetAddress.Text, suburb.Text, postcode.Text, null, null, DdlPostage.SelectedIndex, ((List<Product>)Session["cart"]), "Processing", DateTime.Now.ToString());
+                Order o = new Order(email.Text, firstName.Text, lastName.Text, phone.Text, streetAddress.Text, suburb.Text, postcode.Text, null, null, null, null, null, DdlPostage.SelectedIndex, ((List<Product>)Session["cart"]), "Processing", DateTime.Now.ToString());
                 if(paypal.Checked)
                 {
                     o.PaypalID = payPalEmail.Text;
                 }
                 else
                 {
+                    //Adding card details to the order to access it on the next page
                     o.CardNumber = card_number.Text;
+                    o.CardName = card_name.Text;
+                    o.CardCVC = card_cvv.Text;
+                    o.CardExpiryDate = card_expiration.Text;   
                 }
                 Session.Add("order", o);
                 Response.Redirect("Checkout_Confirm.aspx");

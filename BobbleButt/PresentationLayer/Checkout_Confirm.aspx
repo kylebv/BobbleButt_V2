@@ -24,7 +24,7 @@
               <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
                   <%int cartCount = 0;
-                      //Count of amount of items in the cart baed on products and quantity
+                      //Count of amount of items in the cart based on products and quantity
                       foreach (Product p in cart)
                       { cartCount += p.Quantity; } %>
                 <span class="badge badge-secondary badge-pill"><%=cartCount %></span>
@@ -62,10 +62,14 @@
                   <strong>$<%=total.ToString("F") %></strong>
                 </li>
               </ul>
-          <!-- Button to finalize/confirm purchase -->
-          <div class="mb-3 ">
+             <!-- Button to finalize/confirm purchase -->
+             <div class="mb-3 ">
                 <asp:Button runat="server" OnClick="btnConfirm_Click" class="btn btn-success btn-lg btn-block" text="Finalise Purchase"/>
-                      </div>
+             </div>
+            <!-- An error label for when a card fails. The code behind will add text -->
+                <div class="col-md-12 mb-6">
+                     <asp:label id="lblCardMessage" Visible="false" runat="server" style="color:red;"></asp:label>
+                </div>
             </div>
             <div class="col-md-8 order-md-1">
               <h4 class="mb-3">Confirm Details</h4>
@@ -112,6 +116,8 @@
                     <label for="address"><strong>Card #: </strong>**** **** **** <%= order.CardNumber.Substring(11) %></label>
                     <%} %>
                 </div>
+                
+                
 
                 </div>
            

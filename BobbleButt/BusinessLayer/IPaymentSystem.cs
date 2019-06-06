@@ -52,5 +52,6 @@ namespace INFT3050.PaymentSystem
     public interface IPaymentSystem
     {
         Task<PaymentResult> MakePayment(PaymentRequest payment);
+
     }
 }

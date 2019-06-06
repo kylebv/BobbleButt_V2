@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Checkout_Info.aspx.cs" Inherits="BobbleButt.Checkout_Info" %>
 <%@ Import Namespace="BobbleButt" %>
+<%@ Import Namespace="INFT3050.PaymentSystem" %>
 <!DOCTYPE html>
 
 
@@ -45,9 +46,11 @@
               <%} %>
             
             <!-- Total of cart exlcluding postage -->
-            <li class="list-group-item d-flex justify-content-between">
+            <li class="list-group-item d-flex justify-content-between"> 
+                
               <span>Total (AUD)</span>
               <strong>$<%=total.ToString("F") %></strong>
+              
             </li>
           </ul>
             <!-- Postage options dropdown box -->
@@ -57,7 +60,7 @@
 
         <!-- Shipping address details -->
         <div class="col-md-8 order-md-1">
-          <h4 class="mb-3">Shipping address</h4
+          <h4 class="mb-3">Shipping address</h4>
 
             <!-- First and Last Name -->
             <div class="row">
@@ -151,24 +154,24 @@
                     <asp:TextBox runat="server" MaxLength="16" class="form-control" id="card_number" placeholder="" />
                       <!-- Validators for checking card number input and check for correct card format -->
                       <asp:RequiredFieldValidator ID="valCardNumber" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a card #" runat="server" controltovalidate="card_number"/>
-                      <asp:RegularExpressionValidator Display="Dynamic" ID="regexCardNumber" CssClass="label-error" runat="server" ValidationExpression="^[0-9]{16}$" ControlToValidate="card_number" ErrorMessage="Invalid Card Number"></asp:RegularExpressionValidator>
-                  </div>
-                </div>
+                      <asp:RegularExpressionValidator Display="Dynamic" ID="regexCardNumber" CssClass="label-error" runat="server" ValidationExpression="^\d{13,}$" ControlToValidate="card_number" ErrorMessage="Invalid Card Number"></asp:RegularExpressionValidator>
+                  </div>                                          <!--^[0-9]+$-->
+                </div>  
 
                 <!-- Expiration and CW -->
                 <div class="row">
                   <div class="col-md-3 mb-3">
                     <label for="card_expiration">Expiration</label>
-                    <asp:TextBox runat="server" MaxLength="5" class="form-control" id="card_expiration" placeholder="" />
+                    <asp:TextBox runat="server" MaxLength="10" class="form-control" id="card_expiration" placeholder="" />
                       <asp:RequiredFieldValidator ID="valCardExpiration" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter an expiration date" runat="server" controltovalidate="card_expiration"/>
-                      <asp:RegularExpressionValidator Display="Dynamic" ID="regexCardExpiration" CssClass="label-error" runat="server" ValidationExpression="^((0[1-9])|(1[0-2]))\/(\d{2})$" ControlToValidate="card_expiration" ErrorMessage="Invalid Date Format (mm/yy)"></asp:RegularExpressionValidator>
-                  </div>
-                  <div class="col-md-3 mb-3">
+                      <asp:RegularExpressionValidator Display="Dynamic" ID="regexCardExpiration" CssClass="label-error" runat="server" ValidationExpression="((19|20)\d\d)[- /.](0[1-9]|1[012])" ControlToValidate="card_expiration" ErrorMessage="Invalid Date Format (yyyy/mm)"></asp:RegularExpressionValidator>
+                  </div>                                
+                  <div class="col-md-3 mb-3">   
                     <label for="card_expiration">CVV</label>
                     <asp:TextBox runat="server" class="form-control" MaxLength="3" id="card_cvv" placeholder="" />
                       <asp:RequiredFieldValidator ID="valCardCvv" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a CVV #" runat="server" controltovalidate="card_cvv"/>
                                       <asp:RegularExpressionValidator Display="Dynamic" ID="regexCardCvv" CssClass="label-error" runat="server" ValidationExpression="^[0-9]{3}$" ControlToValidate="card_cvv" ErrorMessage="Invalid Cvv"></asp:RegularExpressionValidator>
-                  </div>
+                  </div>                
                 </div>
             </div>
 
@@ -188,7 +191,7 @@
                 </div>
              </div>
             <hr class="mb-4"/>
-            <asp:Button runat="server" OnClick="btnCheckout_Clicked" class="btn btn-success btn-lg btn-block" text="Continue to checkout"/>
+            <asp:Button runat="server" OnClick="btnCheckout_Clicked" class="btn btn-success btn-lg btn-block" text="Continue to checkout" CommandArgument="lblTotal"/>
         </div>
     </div>
         </form>

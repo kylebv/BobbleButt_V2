@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BobbleButt {
+namespace BobbleButt.PresentationLayer {
     
     
-    public partial class Checkout_Confirm {
+    public partial class ForgotPassword {
         
         /// <summary>
         /// form1 control.
@@ -22,12 +22,30 @@ namespace BobbleButt {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lblCardMessage control.
+        /// txtForgottenEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCardMessage;
+        protected global::System.Web.UI.WebControls.TextBox txtForgottenEmail;
+        
+        /// <summary>
+        /// valForgottenPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator valForgottenPassword;
+        
+        /// <summary>
+        /// lblEmailMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmailMessage;
     }
 }
