@@ -386,7 +386,7 @@ namespace BobbleButt.DataAccessLayer
                     o.Postcode = reader["oPostcode"].ToString();
                     o.Date = reader["oDate"].ToString();
                     o.Status = reader["oStatus"].ToString();
-                    o.PostOption.ID = (int)reader["postID"];
+                    o.PostOption = (int)reader["postID"];
                     o.ID = (int)reader["orderID"];
                     reader.Close();
                     //GETTHEPRODUCTS TOO
@@ -397,30 +397,6 @@ namespace BobbleButt.DataAccessLayer
                 sql = "SELECT orderID, op.productID as opproductID, op.quantity as opQuantity, p.name as pname, pc.name as pcname,[stock],p.description as pDescription,[price],[image] " +
                     "FROM OrderProduct op JOIN Product p on p.productID = op.productID JOIN ProductCategory pc ON pc.productCategoryID = p.productCategoryID " +
                     "WHERE orderID = " + id;
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    //Reads the products associated with the order and adds them into a list
-                    while (reader.Read())
-                    {
-                        Product p = new Product();
-                        p.Quantity = (int)reader["opQuantity"];
-                        p.Name = reader["pname"].ToString();
-                        p.Category = reader["pcname"].ToString();
-                        p.Description = reader["pDescription"].ToString();
-                        p.Image = reader["image"].ToString();
-                        p.Price = Convert.ToDouble(reader["price"].ToString());
-                        p.ID = (int)reader["opproductID"];
-                        pList.Add(p);
-                    }
-                    reader.Close();
-                }
-                
-                //get the list of all products in the order
-                o.PostOption = GetPostageOption(o.PostOption.ID);
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
 
@@ -619,8 +595,8 @@ namespace BobbleButt.DataAccessLayer
                     command.Parameters.AddWithValue("@firstname", u.FirstName);
                     command.Parameters.AddWithValue("@lastname", u.LastName);
                     command.Parameters.AddWithValue("@email", u.Email);
-                    command.Parameters.AddWithValue("@password", u.Password);
-                    command.Parameters.AddWithValue("@dob",DateTime.Parse(u.DOB));
+                    command.Parameters.AddWithValue("@password", u.Email);
+                    command.Parameters.AddWithValue("@dob", u.DOB);
                     command.Parameters.AddWithValue("@street", u.Street);
                     command.Parameters.AddWithValue("@suburb", u.Suburb);
                     command.Parameters.AddWithValue("@postcode", u.Postcode);
@@ -765,7 +741,6 @@ namespace BobbleButt.DataAccessLayer
                         o.Price = Convert.ToDouble(reader["price"]);
                         o.ETA = (int)reader["estimatedDays"];
                         o.Description = reader["description"].ToString();
-                        options.Add(o);
                     }
                     reader.Close();
                 }
@@ -774,9 +749,9 @@ namespace BobbleButt.DataAccessLayer
         }
 
         //retrieve list of postage types
-        public static PostageOptions GetPostageOptionByName(String s)
+        public static List<PostageOptions> GetPostageOptionsByName(String s)
         {
-            PostageOptions o = new PostageOptions();
+            List<PostageOptions> options = new List<PostageOptions>();
 
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
@@ -790,48 +765,21 @@ namespace BobbleButt.DataAccessLayer
 
                     SqlDataReader reader = command.ExecuteReader();
 
-                    reader.Read();
-                    o.ID = (int)reader["postageOptionsID"];
-                    o.Name = reader["name"].ToString();
-                    o.Price = Convert.ToDouble(reader["price"]);
-                    o.ETA = (int)reader["estimatedDays"];
-                    o.Description = reader["description"].ToString();
-                    o.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
-
+                    //Reading data from the database and adding it to a list
+                    while (reader.Read())
+                    {
+                        PostageOptions o = new PostageOptions();
+                        o.ID = (int)reader["postageOptionsID"];
+                        o.Name = reader["name"].ToString();
+                        o.Price = Convert.ToDouble(reader["price"]);
+                        o.ETA = (int)reader["estimatedDays"];
+                        o.Description = reader["description"].ToString();
+                        o.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
+                    }
                     reader.Close();
                 }
             }
-            return o;
-        }
-        //retrieve list of postage types
-        public static PostageOptions GetPostageOption(int i)
-        {
-            PostageOptions o = new PostageOptions();
-
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "select postageOptionsID, name, price, estimatedDays, description, isDeleted " +
-                    "FROM PostageOptions WHERE postageOptionsID = @s";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@s", i);
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    reader.Read();
-                    o.ID = (int)reader["postageOptionsID"];
-                    o.Name = reader["name"].ToString();
-                    o.Price = Convert.ToDouble(reader["price"]);
-                    o.ETA = (int)reader["estimatedDays"];
-                    o.Description = reader["description"].ToString();
-                    o.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
-
-                    reader.Close();
-                }
-            }
-            return o;
+            return options;
         }
 
         //update an existing postage type

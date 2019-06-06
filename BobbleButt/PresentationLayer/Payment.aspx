@@ -114,7 +114,7 @@
                         </div>
                         <div class="form-group">
                             <label>CSC:</label>
-                            <asp:TextBox runat="server" type="number" class="form-control" placeholder="CSC" id="creditCSC" MaxLength="4" minLength="3"/>
+                            <asp:TextBox runat="server" type="number" class="form-control" placeholder="CSC" id="creditCSC" maxLength="4" minLength="3"/>
                             <!--<asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="creditCSC" class="label-error" ErrorMessage="CSC field cannot be empty"/>-->
                         </div>
                     

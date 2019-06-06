@@ -1,5 +1,4 @@
 ﻿using BobbleButt.BusinessLayer;
-using BobbleButt.DataAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +21,7 @@ namespace BobbleButt
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.Contents.Count == 0)
-            {
-                Session.Add("new session pls", "hooray");
-                Response.Redirect("Main.aspx?sessionTimeout=true");
-            }
+
            
            
             cart = new List<Product>();
@@ -68,19 +63,7 @@ namespace BobbleButt
             // Order is payed for and is added to users orders
             if (IsValid)
             {
-
-                Order o = new Order();
-                o.UserEmail = email.Text;
-                o.FirstName = firstName.Text;
-                o.LastName = lastName.Text;
-                o.Phone = phone.Text;
-                o.StreetAddress = streetAddress.Text;
-                o.Suburb = suburb.Text;
-                o.Postcode = postcode.Text;
-                o.PostOption = QueryClass.GetPostageOptionByName(DdlPostage.SelectedItem.Text);
-                o.Products = ((List<Product>)Session["cart"]);
-                o.Date = DateTime.Now.ToString();
-
+                Order o = new Order(email.Text, firstName.Text, lastName.Text, phone.Text, streetAddress.Text, suburb.Text, postcode.Text, null, null, null, null, null, DdlPostage.SelectedIndex, -1, ((List<Product>)Session["cart"]), "Processing", DateTime.Now.ToString());
                 if(paypal.Checked)
                 {
                    // o.PaypalID = payPalEmail.Text;

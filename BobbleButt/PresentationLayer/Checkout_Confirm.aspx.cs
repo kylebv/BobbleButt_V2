@@ -56,30 +56,35 @@ namespace BobbleButt
                     s += "<tr>"
                          + "<th>" + p.Quantity + "</th>"
                          + "<th>" + p.Name + "</th>"
-                         + "<th> $" + p.Price.ToString("F") + "</th>"
-                         + "<th> $" + (p.Quantity * p.Price).ToString("F") + "</th>"
+                         + "<th> $" + p.Price + "</th>"
+                         + "<th> $" + p.Quantity * p.Price + "</th>"
                          + "</tr>";
                     total += p.Quantity * p.Price;
-                }                
+                }
+                string postageOptionName = ""; double postagePrice = 0;
+                //Find out which postage option was selected and give price and name
+                postageOptionName = Convert.ToString(GlobalData.postageList.ElementAt(postOption).Name);
+                postagePrice = GlobalData.postageList.ElementAt(postOption).Price; 
+                
                 //Postage price and total product price
-                double finalTotal = order.PostOption.Price + total;
+                double finalTotal = postagePrice + total;
                 s += "<tr>"
                     + "<th></th>"
                     + "<th></th>"
                     + "<th> Postage Option: </th>"
-                    + "<th>" + order.PostOption.Name + "</th>"
+                    + "<th>" + postageOptionName + "</th>"
                     + "</tr>";
                 s += "<tr>"
                     + "<th></th>"
                     + "<th></th>"
                     + "<th> Postage Cost: </th>"
-                    + "<th> $" + order.PostOption.Price.ToString("F") + "</th>"
+                    + "<th> $" + Convert.ToString(postagePrice) + "</th>"
                     + "</tr>";
                 s += "<tr>"
                     + "<th></th>"
                     + "<th></th>"
                     + "<th> <strong>TOTAL (AUD):</strong> </th>"
-                    + "<th> <strong>$" + finalTotal.ToString("F") + "</strong></th>"
+                    + "<th> <strong>$" + finalTotal + "</strong></th>"
                     + "</tr>";
                 s += "</table> </div>"
                 + "</body></html>";
@@ -91,16 +96,16 @@ namespace BobbleButt
                 double totalElse = 0;
                 String a = "Billed To: " + firstName + " " + lastName + "\r\n" + streetAddress + ", " + suburb + "\r\n" + postCode
                        + "Shipped To:" + firstName + " " + lastName + "\r\n" + streetAddress + ", " + suburb + "\r\n" + postCode
-                       + "\r\n Invoice Date: " + orderDate + "Quantity: ";
-                foreach (Product p in products) { a += p.Quantity; }
-                        a += "Product Name: ";
-                foreach (Product p in products) { a += p.Name; }
-                        a += "Price: ";
-                foreach (Product p in products) { a += p.Price; }
-                        a += "Total Product Price: ";
-                foreach (Product p in products) { a += p.Price*p.Quantity; totalElse += p.Quantity * p.Price; }
-                double finalTotal = order.PostOption.Price + total;
-                a+= "Postage Option: " + order.PostOption.Name + "\r\n Postage Price: " + order.PostOption.Price.ToString("F") + "TOTAL (AUD): " + totalElse.ToString("F"); 
+                       + "\r\n Invoice Date: " + orderDate + "Quantity: "; foreach (Product p in products) { a += p.Quantity; }
+                        a += "Product Name: "; foreach (Product p in products) { a += p.Name; }
+                        a += "Price: "; foreach (Product p in products) { a += p.Price; }
+                        a += "Total Product Price: "; foreach (Product p in products) { a += p.Price*p.Quantity; totalElse += p.Quantity * p.Price; }
+                string postageOptionName = ""; double postagePrice = 0;
+                //Find out which postage option was selected and give price and name
+                postageOptionName = Convert.ToString(GlobalData.postageList.ElementAt(postOption).Name);
+                postagePrice = GlobalData.postageList.ElementAt(postOption).Price;
+                double finalTotal = postagePrice + total;
+                a+= "Postage Option: " + postageOptionName + "\r\n Postage Price: " + postagePrice + "TOTAL (AUD): " + totalElse; 
                 return a;
             }
                         
@@ -127,7 +132,7 @@ namespace BobbleButt
                 }
 
                 //Total of checkout including postage
-                totalCheckout = totalPriceCost + order.PostOption.Price;
+                totalCheckout = totalPriceCost + GlobalData.postageList[order.PostOption].Price;
 
 
                 INFT3050.PaymentSystem.IPaymentSystem paymentSystem = INFT3050.PaymentSystem.INFT3050PaymentFactory.Create();
@@ -194,10 +199,10 @@ namespace BobbleButt
                         msg.To.Add(new MailAddress(order.UserEmail));
                         msg.Subject = "Bobblehead - Invoice";
                         //If html does not exist return non-html email
-                        msg.Body = invoiceMessage(false, order.FirstName, order.LastName, order.Postcode, order.StreetAddress, order.Suburb, order.PostOption.ID, order.Date, order.Products);
+                        msg.Body = invoiceMessage(false, order.FirstName, order.LastName, order.Postcode, order.StreetAddress, order.Suburb, order.PostOption, order.Date, order.Products);
 
                         //create an alternate HTML view that includes images and formatting 
-                        string html = invoiceMessage(true, order.FirstName, order.LastName, order.Postcode, order.StreetAddress, order.Suburb, order.PostOption.ID, order.Date, order.Products);
+                        string html = invoiceMessage(true, order.FirstName, order.LastName, order.Postcode, order.StreetAddress, order.Suburb, order.PostOption, order.Date, order.Products);
                         AlternateView view = AlternateView
                             .CreateAlternateViewFromString(
                                 html, null, "text/html");
