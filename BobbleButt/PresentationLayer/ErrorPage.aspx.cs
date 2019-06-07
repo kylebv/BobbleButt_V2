@@ -16,9 +16,9 @@ namespace BobbleButt.PresentationLayer
             {
                 lblErrorMessage.Text = "The page that you searched for could not be found. Please Navigate back to an appropriate page.";
             }
-            else if (Request.QueryString["handler"] == "500")
+            else if (Request.QueryString["handler"] == "503")
             {
-                lblErrorMessage.Text = "An internal server error has occured";
+                lblErrorMessage.Text = "Bobblehead service is unavaliable";
             }
             else
             {
