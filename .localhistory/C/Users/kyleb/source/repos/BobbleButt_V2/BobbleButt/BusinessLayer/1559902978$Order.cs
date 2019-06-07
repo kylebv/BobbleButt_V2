@@ -55,6 +55,5 @@ namespace BobbleButt
         }
 
         public string Date { get; set; }
-        public float Total { get; set; }
     }
 }

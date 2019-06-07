@@ -14,7 +14,7 @@ namespace BobbleButt
         protected List<Product> cart;
         protected void ddlPostage_Changed(object sender, EventArgs e)
         {
-            postPrice.InnerText= "Postage: $"+QueryClass.GetPostageOptionByName(DdlPostage.SelectedItem.Text).Price.ToString("F");
+            postPrice.InnerText= "Postage: $"+QueryClass.GetPostageOption(DdlPostage.SelectedIndex).Price.ToString("F");
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace BobbleButt
                     DdlPostage.Items.Add(li);
                 }
                 DdlPostage.SelectedIndex = 0;
-                postPrice.InnerText = "Postage: $" + QueryClass.GetPostageOptionByName(DdlPostage.SelectedItem.Text).Price.ToString("F"); }
+                postPrice.InnerText = "Postage: $" + QueryClass.GetPostageOption(DdlPostage.SelectedIndex+1).Price.ToString("F"); }
 
 
 
@@ -41,7 +41,7 @@ namespace BobbleButt
 
             }
 
-            else { Response.Redirect("Main"); }
+            else { Response.Redirect("Checkout"); }
             if(Session["user"]!=null)
             {
                 User u = (User)Session["user"];
@@ -88,7 +88,7 @@ namespace BobbleButt
 
                 if(paypal.Checked)
                 {
-                   o.PaypalID = payPalEmail.Text;
+                   // o.PaypalID = payPalEmail.Text;
                 }
                 else
                 {
@@ -99,7 +99,7 @@ namespace BobbleButt
                     o.CardExpiryDate = card_expiration.Text;   
                 }
                 Session.Add("order", o);
-                Response.Redirect("Checkout_Confirm");
+                Response.Redirect("Checkout_Confirmx");
             }
         }
         protected void chk_Changed(object sender, EventArgs e)

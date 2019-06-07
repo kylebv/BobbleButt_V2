@@ -26,23 +26,21 @@ namespace BobbleButt.DataAccessLayer
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+
+                    //Reading data from the database and adding it to a list
+                    while (reader.Read())
                     {
-                        //Reading data from the database and adding it to a list
-                        while (reader.Read())
-                        {
-                            Product productD = new Product();
-                            productD.Name = reader["pname"].ToString();
-                            productD.Category = reader["pcname"].ToString();
-                            productD.Stock = (int)reader["stock"];
-                            productD.Description = reader["description"].ToString();
-                            productD.Price = Convert.ToDouble(reader["price"]);
-                            productD.Image = reader["image"].ToString();
-                            productD.ID = (int)reader["productID"];
-                            productD.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
-                            productD.Quantity = 1;
-                            productData.Add(productD);
-                        }
+                        Product productD = new Product();
+                        productD.Name = reader["pname"].ToString();
+                        productD.Category = reader["pcname"].ToString();
+                        productD.Stock = (int)reader["stock"];
+                        productD.Description = reader["description"].ToString();
+                        productD.Price = Convert.ToDouble(reader["price"]);
+                        productD.Image = reader["image"].ToString();
+                        productD.ID = (int)reader["productID"];
+                        productD.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
+                        productD.Quantity = 1;
+                        productData.Add(productD);
                     }
                     connection.Close();
                 }
@@ -64,23 +62,21 @@ namespace BobbleButt.DataAccessLayer
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+
+                    //Reading data from the database and adding it to a list
+                    while (reader.Read())
                     {
-                        //Reading data from the database and adding it to a list
-                        while (reader.Read())
-                        {
-                            Product productD = new Product();
-                            productD.Name = reader["pname"].ToString();
-                            productD.Category = reader["pcname"].ToString();
-                            productD.Stock = (int)reader["stock"];
-                            productD.Description = reader["description"].ToString();
-                            productD.Price = Convert.ToDouble(reader["price"]);
-                            productD.Image = reader["image"].ToString();
-                            productD.ID = (int)reader["productID"];
-                            productD.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
-                            productD.Quantity = 1;
-                            productData.Add(productD);
-                        }
+                        Product productD = new Product();
+                        productD.Name = reader["pname"].ToString();
+                        productD.Category = reader["pcname"].ToString();
+                        productD.Stock = (int)reader["stock"];
+                        productD.Description = reader["description"].ToString();
+                        productD.Price = Convert.ToDouble(reader["price"]);
+                        productD.Image = reader["image"].ToString();
+                        productD.ID = (int)reader["productID"];
+                        productD.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
+                        productD.Quantity = 1;
+                        productData.Add(productD);
                     }
                     connection.Close();
                 }
@@ -131,23 +127,21 @@ namespace BobbleButt.DataAccessLayer
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+
+                    //Reading data from the database and adding it to a list
+                    while (reader.Read())
                     {
-                        //Reading data from the database and adding it to a list
-                        while (reader.Read())
-                        {
-                            Product productD = new Product();
-                            productD.Name = reader["pname"].ToString();
-                            productD.Category = reader["pcname"].ToString();
-                            productD.Stock = (int)reader["stock"];
-                            productD.Description = reader["description"].ToString();
-                            productD.Price = Convert.ToDouble(reader["price"]);
-                            productD.Image = reader["image"].ToString();
-                            productD.ID = (int)reader["productID"];
-                            productD.IsDeleted = Convert.ToBoolean(reader["pisDeleted"]);
-                            productD.Quantity = 1;
-                            productData.Add(productD);
-                        }
+                        Product productD = new Product();
+                        productD.Name = reader["pname"].ToString();
+                        productD.Category = reader["pcname"].ToString();
+                        productD.Stock = (int)reader["stock"];
+                        productD.Description = reader["description"].ToString();
+                        productD.Price = Convert.ToDouble(reader["price"]);
+                        productD.Image = reader["image"].ToString();
+                        productD.ID = (int)reader["productID"];
+                        productD.IsDeleted = Convert.ToBoolean(reader["pisDeleted"]);
+                        productD.Quantity = 1;
+                        productData.Add(productD);
                     }
                     connection.Close();
                 }
@@ -171,24 +165,21 @@ namespace BobbleButt.DataAccessLayer
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
 
-                        //Reading data from the database and adding it to a list
-                        while (reader.Read())
-                        {
-                            Product productD = new Product();
-                            productD.Name = reader["pname"].ToString();
-                            productD.Category = reader["pcname"].ToString();
-                            productD.Stock = (int)reader["stock"];
-                            productD.Description = reader["description"].ToString();
-                            productD.Price = Convert.ToDouble(reader["price"]);
-                            productD.Image = reader["image"].ToString();
-                            productD.ID = (int)reader["productID"];
-                            productD.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
-                            productD.Quantity = 1;
-                            productData.Add(productD);
-                        }
+                    //Reading data from the database and adding it to a list
+                    while (reader.Read())
+                    {
+                        Product productD = new Product();
+                        productD.Name = reader["pname"].ToString();
+                        productD.Category = reader["pcname"].ToString();
+                        productD.Stock = (int)reader["stock"];
+                        productD.Description = reader["description"].ToString();
+                        productD.Price = Convert.ToDouble(reader["price"]);
+                        productD.Image = reader["image"].ToString();
+                        productD.ID = (int)reader["productID"];
+                        productD.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
+                        productD.Quantity = 1;
+                        productData.Add(productD);
                     }
                     connection.Close();
                 }
@@ -210,21 +201,19 @@ namespace BobbleButt.DataAccessLayer
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        //Reading data from the database and adding it to a list
-                        reader.Read();
-                        p.Name = reader["pname"].ToString();
-                        p.Category = reader["pcname"].ToString();
-                        p.Stock = (int)reader["stock"];
-                        p.Description = reader["description"].ToString();
-                        p.Price = Convert.ToDouble(reader["price"]);
-                        p.Image = reader["image"].ToString();
-                        p.ID = (int)reader["productID"];
-                        p.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
-                        p.Quantity = 1;
-                        connection.Close();
-                    }
+
+                    //Reading data from the database and adding it to a list
+                    reader.Read();
+                    p.Name = reader["pname"].ToString();
+                    p.Category = reader["pcname"].ToString();
+                    p.Stock = (int)reader["stock"];
+                    p.Description = reader["description"].ToString();
+                    p.Price = Convert.ToDouble(reader["price"]);
+                    p.Image = reader["image"].ToString();
+                    p.ID = (int)reader["productID"];
+                    p.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
+                    p.Quantity = 1;
+                    connection.Close();
                 }
             }
             return p;
@@ -342,24 +331,26 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "SELECT orderID FROM [Order] o";
+                string sql = "SELECT orderID, email, firstName, lastName, po.postageOptionsID as postID, status, o.streetAddress as oStreet, o.Suburb as oSuburb," +
+                    "o.postcode as oPostcode, o.phone as oPhone " +
+                    "FROM [Order] o " +
+                    "JOIN [User] u ON o.userID = u.UserID " +
+                    "JOIN PostageOptions po ON po.postageOptionsID = o.postageOptionsID ";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+
+                    //Reading data from the database and adding it to a list
+                    while (reader.Read())
                     {
-                        //Reading data from the database and adding it to a list
-                        while (reader.Read())
-                        {
-                            orderNumbers.Add((int)reader["orderID"]);
-                        }
-                        connection.Close();
-                        foreach (int i in orderNumbers)
-                        {
-                            orders.Add(QueryClass.GetOrder(i));
-                        }
+                        orderNumbers.Add((int)reader["orderID"]);
+                    }
+                    connection.Close();
+                    foreach (int i in orderNumbers)
+                    {
+                        orders.Add(QueryClass.GetOrder(i));
                     }
                     connection.Close();
                 }
@@ -376,26 +367,28 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "SELECT orderID FROM [Order] o WHERE email = @s";
-
+                string sql = "SELECT orderID, email, firstName, lastName, po.postageOptionsID as postID, status, o.streetAddress as oStreet, o.Suburb as oSuburb," +
+                    "o.postcode as oPostcode, o.phone as oPhone " +
+                    "FROM [Order] o " +
+                    "JOIN [User] u ON o.userID = u.UserID " +
+                    "JOIN PostageOptions po ON po.postageOptionsID = o.postageOptionsID " +
+                    "WHERE u.email = @s";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@s", user);
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+
+                    //Reading data from the database and adding it to a list
+                    while (reader.Read())
                     {
-                        //Reading data from the database and adding it to a list
-                        while (reader.Read())
-                        {
-                            orderNumbers.Add((int)reader["orderID"]);
-                        }
-                        connection.Close();
-                        foreach (int i in orderNumbers)
-                        {
-                            orders.Add(QueryClass.GetOrder(i));
-                        }
+                        orderNumbers.Add((int)reader["orderID"]);
+                    }
+                    connection.Close();
+                    foreach (int i in orderNumbers)
+                    {
+                        orders.Add(QueryClass.GetOrder(i));
                     }
                 }
             }
@@ -413,30 +406,28 @@ namespace BobbleButt.DataAccessLayer
                 string sql = "SELECT orderID, email, firstName, lastName, po.postageOptionsID as postID, status, o.streetAddress as oStreet, o.Suburb as oSuburb," +
                     "o.postcode as oPostcode, o.phone as oPhone, o.date as oDate, o.status as oStatus " +
                     "FROM [Order] o " +
+                    "JOIN [User] u ON o.userID = u.UserID " +
                     "JOIN PostageOptions po ON po.postageOptionsID = o.postageOptionsID where orderID = " + id;
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        //Reading data from the database and adding it to a list
-                        reader.Read();
-                        o.UserEmail = reader["email"].ToString();
-                        o.FirstName = reader["firstName"].ToString();
-                        o.LastName = reader["lastName"].ToString();
-                        o.Phone = reader["oPhone"].ToString();
-                        o.StreetAddress = reader["oStreet"].ToString();
-                        o.Suburb = reader["oSuburb"].ToString();
-                        o.Postcode = reader["oPostcode"].ToString();
-                        o.Date = reader["oDate"].ToString();
-                        o.Status = reader["oStatus"].ToString();
-                        o.PostOption.ID = (int)reader["postID"];
-                        o.ID = (int)reader["orderID"];
-                    }
-                    reader.Close();
 
+                    //Reading data from the database and adding it to a list
+                    reader.Read();
+                    o.UserEmail = reader["email"].ToString();
+                    o.FirstName = reader["firstName"].ToString();
+                    o.LastName = reader["lastName"].ToString();
+                    o.Phone = reader["oPhone"].ToString();
+                    o.StreetAddress = reader["oStreet"].ToString();
+                    o.Suburb = reader["oSuburb"].ToString();
+                    o.Postcode = reader["oPostcode"].ToString();
+                    o.Date = reader["oDate"].ToString();
+                    o.Status = reader["oStatus"].ToString();
+                    o.PostOption.ID = (int)reader["postID"];
+                    o.ID = (int)reader["orderID"];
+                    reader.Close();
                     //GETTHEPRODUCTS TOO
                 }
 
@@ -450,25 +441,46 @@ namespace BobbleButt.DataAccessLayer
 
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+
+                    //Reads the products associated with the order and adds them into a list
+                    while (reader.Read())
                     {
-                        //Reads the products associated with the order and adds them into a list
-                        while (reader.Read())
-                        {
-                            Product p = new Product();
-                            p.Quantity = (int)reader["opQuantity"];
-                            p.Name = reader["pname"].ToString();
-                            p.Category = reader["pcname"].ToString();
-                            p.Description = reader["pDescription"].ToString();
-                            p.Image = reader["image"].ToString();
-                            p.Price = Convert.ToDouble(reader["price"].ToString());
-                            p.ID = (int)reader["opproductID"];
-                            pList.Add(p);
-                        }
+                        Product p = new Product();
+                        p.Quantity = (int)reader["opQuantity"];
+                        p.Name = reader["pname"].ToString();
+                        p.Category = reader["pcname"].ToString();
+                        p.Description = reader["pDescription"].ToString();
+                        p.Image = reader["image"].ToString();
+                        p.Price = Convert.ToDouble(reader["price"].ToString());
+                        p.ID = (int)reader["opproductID"];
+                        pList.Add(p);
                     }
                     reader.Close();
                 }
-                o.PostOption = GetPostageOption(o.PostOption.ID);
+                
+                //get the list of all products in the order
+               o.PostOption = GetPostageOption(o.PostOption.ID);
+                //using (SqlCommand command = new SqlCommand(sql, connection))
+                //{
+
+
+                //    SqlDataReader reader = command.ExecuteReader();
+
+                //    //Reads the products associated with the order and adds them into a list
+                //    while (reader.Read())
+                //    {
+                //        Product p = new Product();
+                //        p.Quantity = (int)reader["opQuantity"];
+                //        p.Name = reader["pname"].ToString();
+                //        p.Category = reader["pcname"].ToString();
+                //        p.Description = reader["pDescription"].ToString();
+                //        p.Image = reader["image"].ToString();
+                //        p.Price = Convert.ToDouble(reader["price"].ToString());
+                //        p.ID = (int)reader["opproductID"];
+                //        p.IsDeleted = Convert.ToBoolean(reader[""]);
+                //        pList.Add(p);
+                //    }
+                //}
                 connection.Close();
                 o.Products = pList;
             }
@@ -491,13 +503,12 @@ namespace BobbleButt.DataAccessLayer
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        //get the current status
-                        reader.Read();
-                        newStatus = reader["status"].ToString();
-                        reader.Close();
-                    }
+
+                    //get the current status
+                    reader.Read();
+                    newStatus = reader["status"].ToString();
+                    reader.Close();
+
                 }
 
                 if (newStatus.Equals("Sent"))
@@ -580,24 +591,22 @@ namespace BobbleButt.DataAccessLayer
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        //Reading data from the database and adding it to a list
-                        reader.Read();
-                        u.FirstName = reader["firstName"].ToString();
-                        u.LastName = reader["lastName"].ToString();
-                        u.Email = email;
-                        u.Password = reader["password"].ToString();
-                        u.DOB = reader["DOB"].ToString();
-                        u.Street = reader["street"].ToString();
-                        u.Suburb = reader["suburb"].ToString();
-                        u.Postcode = reader["postcode"].ToString();
-                        u.Phone = reader["phone"].ToString();
-                        u.IsAdmin = Convert.ToBoolean(reader["isAdmin"]);
-                        u.IsSuspended = Convert.ToBoolean(reader["isSuspended"]);
-                        u.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
-                        u.ID = (int)reader["userID"];
-                    }
+
+                    //Reading data from the database and adding it to a list
+                    reader.Read();
+                    u.FirstName = reader["firstName"].ToString();
+                    u.LastName = reader["lastName"].ToString();
+                    u.Email = email;
+                    u.Password = reader["password"].ToString();
+                    u.DOB = reader["DOB"].ToString();
+                    u.Street = reader["street"].ToString();
+                    u.Suburb = reader["suburb"].ToString();
+                    u.Postcode = reader["postcode"].ToString();
+                    u.Phone = reader["phone"].ToString();
+                    u.IsAdmin = Convert.ToBoolean(reader["isAdmin"]);
+                    u.IsSuspended = Convert.ToBoolean(reader["isSuspended"]);
+                    u.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
+                    u.ID = (int)reader["userID"];
                     connection.Close();
                 }
             }
@@ -786,20 +795,18 @@ namespace BobbleButt.DataAccessLayer
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
+
+                    //Reading data from the database and adding it to a list
+                    while (reader.Read())
                     {
-                        //Reading data from the database and adding it to a list
-                        while (reader.Read())
-                        {
-                            PostageOptions o = new PostageOptions();
-                            o.ID = (int)reader["postageOptionsID"];
-                            o.Name = reader["name"].ToString();
-                            o.Price = Convert.ToDouble(reader["price"]);
-                            o.ETA = (int)reader["estimatedDays"];
-                            o.Description = reader["description"].ToString();
-                            o.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
-                            options.Add(o);
-                        }
+                        PostageOptions o = new PostageOptions();
+                        o.ID = (int)reader["postageOptionsID"];
+                        o.Name = reader["name"].ToString();
+                        o.Price = Convert.ToDouble(reader["price"]);
+                        o.ETA = (int)reader["estimatedDays"];
+                        o.Description = reader["description"].ToString();
+                        o.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
+                        options.Add(o);
                     }
                     reader.Close();
                 }
@@ -823,17 +830,16 @@ namespace BobbleButt.DataAccessLayer
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        //Reading data from the database and adding it to a list
-                        reader.Read();
-                        o.ID = (int)reader["postageOptionsID"];
-                        o.Name = reader["name"].ToString();
-                        o.Price = Convert.ToDouble(reader["price"]);
-                        o.ETA = (int)reader["estimatedDays"];
-                        o.Description = reader["description"].ToString();
-                        o.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
-                    }
+
+                    //Reading data from the database and adding it to a list
+                    reader.Read();
+                    o.ID = (int)reader["postageOptionsID"];
+                    o.Name = reader["name"].ToString();
+                    o.Price = Convert.ToDouble(reader["price"]);
+                    o.ETA = (int)reader["estimatedDays"];
+                    o.Description = reader["description"].ToString();
+                    o.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
+                    
                     reader.Close();
                 }
             }
@@ -907,16 +913,15 @@ namespace BobbleButt.DataAccessLayer
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        o.ID = (int)reader["postageOptionsID"];
-                        o.Name = reader["name"].ToString();
-                        o.Price = Convert.ToDouble(reader["price"]);
-                        o.ETA = (int)reader["estimatedDays"];
-                        o.Description = reader["description"].ToString();
-                        o.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
-                    }
+
+                    reader.Read();
+                    o.ID = (int)reader["postageOptionsID"];
+                    o.Name = reader["name"].ToString();
+                    o.Price = Convert.ToDouble(reader["price"]);
+                    o.ETA = (int)reader["estimatedDays"];
+                    o.Description = reader["description"].ToString();
+                    o.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
+                    
                     reader.Close();
                 }
             }
@@ -963,67 +968,6 @@ namespace BobbleButt.DataAccessLayer
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Close();
-                }
-            }
-        }
-
-        //create a new order
-        public static void AddOrder(Order o)
-        {
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                string sql = "INSERT INTO  [Order] (email, postageOptionsID, status, streetAddress, suburb, postcode, phone, date, total, firstname, lastname) VALUES " +
-                    "(@email, @postageid, @status, @street, @suburb, @postcode, @phone, @date, @total, @firstname, @lastname)";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@email", o.UserEmail);
-                    command.Parameters.AddWithValue("@postageid", o.PostOption.ID);
-                    command.Parameters.AddWithValue("@status", "Processing");
-                    command.Parameters.AddWithValue("@street", o.StreetAddress);
-                    command.Parameters.AddWithValue("@suburb", o.Suburb);
-                    command.Parameters.AddWithValue("@postcode", o.Postcode);
-                    command.Parameters.AddWithValue("@phone", o.Phone);
-                    command.Parameters.AddWithValue("@date", o.Date);
-                    command.Parameters.AddWithValue("@total", o.Total);
-                    command.Parameters.AddWithValue("@firstname", o.FirstName);
-                    command.Parameters.AddWithValue("@lastname", o.LastName);
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Close();
-                }
-                sql = "Select IDENT_CURRENT('Order') as id;";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Read();
-                    o.ID=Convert.ToInt32(reader["id"]);
-                    reader.Close();
-                }
-                foreach (Product p in o.Products)
-                {
-                    sql = "INSERT INTO  [OrderProduct] (productID, orderID, quantity) VALUES " +
-                        "(@productid, @orderid, @quantity)";
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@productid", p.ID);
-                        command.Parameters.AddWithValue("@orderid", o.ID);
-                        command.Parameters.AddWithValue("@quantity", p.Quantity);
-                        SqlDataReader reader = command.ExecuteReader();
-                        reader.Close();
-                    }
-                }
-                foreach (Product p in o.Products)
-                {
-                    sql = "UPDATE Product " +
-                        "SET stock = stock - @quantity " +
-                        "WHERE productID = @pid";
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@pid", p.ID);
-                        command.Parameters.AddWithValue("@quantity", p.Quantity);
-                        SqlDataReader reader = command.ExecuteReader();
-                        reader.Close();
-                    }
                 }
             }
         }

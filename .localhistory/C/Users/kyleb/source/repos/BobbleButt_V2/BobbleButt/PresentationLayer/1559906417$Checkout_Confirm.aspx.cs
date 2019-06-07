@@ -14,8 +14,6 @@ namespace BobbleButt
     {
         protected Order order;
         protected List<Product> cart;
-        protected double total;
-        protected int cartCount;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,18 +21,11 @@ namespace BobbleButt
             {
                 order = (Order)Session["order"];
                 cart = (List<Product>)Session["cart"];
-                total = 0;
-                cartCount = 0;
-                foreach (Product p in cart)
-                {
-                    total += p.Quantity * p.Price;
-                    cartCount += p.Quantity;
-                }
             }
             // If cart/order is empty redirect to checkout
             else
             {
-                Response.Redirect("Main");
+                Response.Redirect("Checkout");
             }
         }
 
@@ -118,10 +109,6 @@ namespace BobbleButt
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (Session["cart"]==null])
-            {
-                Response.Redirect("Main");
-            }
             string cardNumber, cardName;
             int cvc, count = 0;
             DateTime expiryDate;

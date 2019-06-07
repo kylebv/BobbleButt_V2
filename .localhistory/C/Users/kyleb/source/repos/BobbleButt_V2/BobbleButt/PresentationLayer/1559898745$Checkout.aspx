@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         function updateQuantity(control, prod) {
-    window.location.href ="/Checkout?item="+prod+"&quantity="+document.getElementById(control).value;
+    window.location.href ="/Checkout.aspx?item="+prod+"&quantity="+document.getElementById(control).value;
   }
 </script>
 </asp:Content>
@@ -50,7 +50,7 @@
 							<!-- Buttons to refresh checkout page to get updated total or delete a product from checkout -->
                             <td class="actions" data-th="">
 								<button class="btn btn-info btn-sm" onclick="updateQuantity('q_<%=cart.IndexOf(p)%>', '<%=cart.IndexOf(p)%>'); return false"><i class="fa fa-refresh"></i></button>
-								<button class="btn btn-danger btn-sm" onclick="window.location.href='/Checkout?delete=<%=cart.IndexOf(p)%>';return false"><i class="fa fa-trash-o"></i></button>								
+								<button class="btn btn-danger btn-sm" onclick="window.location.href='/Checkout.aspx?delete=<%=cart.IndexOf(p)%>';return false"><i class="fa fa-trash-o"></i></button>								
 							</td>
 						</tr>
                         <%} %>
@@ -62,7 +62,7 @@
                             <!-- Total cost of checkout displayed using total variable calculated above -->
 							<td class="hidden-xs text-center"><strong>Total: $<%=total.ToString("F") %></strong></td>
 							<!-- Button/Link  to proceed to final steps of checkout -->
-                            <td><a href="Checkout_Info" class="btn btn-success btn-block">Checkout</a></td>
+                            <td><a href="Checkout_Info.aspx" class="btn btn-success btn-block">Checkout</a></td>
 						</tr>
 					</tfoot>
 				</table>

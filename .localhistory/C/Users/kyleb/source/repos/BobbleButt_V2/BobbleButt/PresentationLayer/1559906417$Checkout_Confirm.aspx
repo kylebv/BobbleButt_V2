@@ -24,13 +24,18 @@
 
               <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
-                  <%int  %>
+                  <%int cartCount = 0;
+                      //Count of amount of items in the cart based on products and quantity
+                      foreach (Product p in cart)
+                      { cartCount += p.Quantity; } %>
                 <span class="badge badge-secondary badge-pill"><%=cartCount %></span>
               </h4>
               <ul class="list-group mb-3">
                   <%double total = 0;
                       foreach (Product p in cart)
-                      {%>
+                      {
+                          // Total of checkout
+                          total += p.Quantity * p.Price;%>
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
                     <!-- Name and quantity of product  -->
@@ -109,7 +114,7 @@
                     <label for="address"><strong>Paypal ID: </strong><%= order.PaypalID %></label>
                     <%} %>
                     <% else{ %>
-                    <label for="address"><strong>Card #: </strong>**** **** **** <%= order.CardNumber.Substring(12) %></label>
+                    <label for="address"><strong>Card #: </strong>**** **** **** <%= order.CardNumber.Substring(11) %></label>
                     <%} %>
                 </div>
                 

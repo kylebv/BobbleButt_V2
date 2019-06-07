@@ -11,10 +11,14 @@ namespace BobbleButt
 {
     public partial class Checkout_Info : System.Web.UI.Page
     {
+
+       
+
+
         protected List<Product> cart;
         protected void ddlPostage_Changed(object sender, EventArgs e)
         {
-            postPrice.InnerText= "Postage: $"+QueryClass.GetPostageOptionByName(DdlPostage.SelectedItem.Text).Price.ToString("F");
+            postPrice.InnerText= "Postage: $"+GlobalData.postageList[DdlPostage.SelectedIndex].Price.ToString("F");
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,14 +28,14 @@ namespace BobbleButt
             cart = new List<Product>();
             
             if (!IsPostBack) {
-                foreach (PostageOptions po in QueryClass.GetPostageOptions())
+                foreach (PostageOptions po in GlobalData.postageList)
                 {
                     ListItem li = new ListItem();
                     li.Text = po.Name;
                     DdlPostage.Items.Add(li);
                 }
                 DdlPostage.SelectedIndex = 0;
-                postPrice.InnerText = "Postage: $" + QueryClass.GetPostageOptionByName(DdlPostage.SelectedItem.Text).Price.ToString("F"); }
+                postPrice.InnerText = "Postage: $" + GlobalData.postageList[DdlPostage.SelectedIndex].Price.ToString("F"); }
 
 
 
@@ -41,20 +45,7 @@ namespace BobbleButt
 
             }
 
-            else { Response.Redirect("Main"); }
-            if(Session["user"]!=null)
-            {
-                User u = (User)Session["user"];
-                email.Enabled = false;
-                email.Text = u.Email;
-                postcode.Text = u.Postcode;
-                suburb.Text = u.Suburb;
-                streetAddress.Text = u.Street;
-                phone.Text = u.Phone;
-                lastName.Text = u.LastName;
-                firstName.Text = u.FirstName;
-
-            }
+            else { Response.Redirect("Checkout"); }
             // Make paypal or credit card form visible on page laod
             if (!paypal.Checked)
             {
@@ -88,7 +79,7 @@ namespace BobbleButt
 
                 if(paypal.Checked)
                 {
-                   o.PaypalID = payPalEmail.Text;
+                   // o.PaypalID = payPalEmail.Text;
                 }
                 else
                 {
@@ -99,7 +90,7 @@ namespace BobbleButt
                     o.CardExpiryDate = card_expiration.Text;   
                 }
                 Session.Add("order", o);
-                Response.Redirect("Checkout_Confirm");
+                Response.Redirect("Checkout_Confirmx");
             }
         }
         protected void chk_Changed(object sender, EventArgs e)

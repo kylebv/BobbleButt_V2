@@ -41,7 +41,7 @@ namespace BobbleButt
 
             }
 
-            else { Response.Redirect("Main"); }
+            else { Response.Redirect("Checkout"); }
             if(Session["user"]!=null)
             {
                 User u = (User)Session["user"];
@@ -88,7 +88,7 @@ namespace BobbleButt
 
                 if(paypal.Checked)
                 {
-                   o.PaypalID = payPalEmail.Text;
+                   // o.PaypalID = payPalEmail.Text;
                 }
                 else
                 {

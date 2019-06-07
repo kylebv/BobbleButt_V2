@@ -24,13 +24,18 @@
 
               <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
-                  <%int  %>
+                  <%int cartCount = 0;
+                      //Count of amount of items in the cart based on products and quantity
+                      foreach (Product p in cart)
+                      { cartCount += p.Quantity; } %>
                 <span class="badge badge-secondary badge-pill"><%=cartCount %></span>
               </h4>
               <ul class="list-group mb-3">
                   <%double total = 0;
                       foreach (Product p in cart)
-                      {%>
+                      {
+                          // Total of checkout
+                          total += p.Quantity * p.Price;%>
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
                     <!-- Name and quantity of product  -->
@@ -45,12 +50,12 @@
                   <div>
                     <h6 class="my-0">Postage</h6>
                     <!-- Name and price of postage from postage list -->
-                    <small class="text-muted"><%= order.PostOption.Name %></small>
+                    <small class="text-muted"><%= GlobalData.postageList[order.PostOption].Name %></small>
                   </div>
-                  <span class="text-muted">$<%=order.PostOption.Price.ToString("F") %></span>
+                  <span class="text-muted">$<%=GlobalData.postageList[order.PostOption].Price.ToString("F") %></span>
                 </li>
                   <!-- Adding the postage price on to the total checkout price -->
-                  <%total += order.PostOption.Price; %>
+                  <%total += GlobalData.postageList[order.PostOption].Price; %>
             
                 <!-- Displaying total amount -->
                 <li class="list-group-item d-flex justify-content-between">
@@ -100,7 +105,7 @@
                 </div>
                 <!-- Postage options and price displayed from a list -->
                 <div class="mb-3">
-                  <label for="address"><strong>Postage: </strong><%= order.PostOption.Name %> ($<%= order.PostOption.Price.ToString("F") %>)</label>
+                  <label for="address"><strong>Postage: </strong><%= GlobalData.postageList[order.PostOption].Name %> ($<%= GlobalData.postageList[order.PostOption].Price.ToString("F") %>)</label>
                 </div>
 
                 <div class="mb-3">
@@ -109,7 +114,7 @@
                     <label for="address"><strong>Paypal ID: </strong><%= order.PaypalID %></label>
                     <%} %>
                     <% else{ %>
-                    <label for="address"><strong>Card #: </strong>**** **** **** <%= order.CardNumber.Substring(12) %></label>
+                    <label for="address"><strong>Card #: </strong>**** **** **** <%= order.CardNumber.Substring(11) %></label>
                     <%} %>
                 </div>
                 
