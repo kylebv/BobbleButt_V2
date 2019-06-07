@@ -24,7 +24,7 @@ namespace BobbleButt
             // If cart/order is empty redirect to checkout
             else
             {
-                Response.Redirect("Checkout.aspx");
+                Response.Redirect("Checkout");
             }
         }
 
@@ -222,7 +222,7 @@ namespace BobbleButt
                         //Remove items from cart and redirect to success purchase home/main page
                         Session.Remove("order");
                         Session.Remove("cart");
-                        Response.Redirect("Main.aspx?orderEmail=" + order.UserEmail);
+                        Response.Redirect("Main?orderEmail=" + order.UserEmail);
                     }
                     //Transaction was denied
                     else if (Convert.ToInt32(task.Result.TransactionResult) == 1)

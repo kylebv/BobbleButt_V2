@@ -16,7 +16,7 @@ namespace BobbleButt
             User user = (User)Session["user"];
             if (user==null)
             {
-                Response.Redirect("Login_Register.aspx");
+                Response.Redirect("Login_Register");
             }
             //this has to be done so that the page can have its data changed
             if (!IsPostBack)
@@ -35,7 +35,7 @@ namespace BobbleButt
         protected void btnConfirm_Click(object sender, System.EventArgs e)
         {
             //Update/Change user information on submit
-            if (IsValid && Convert.ToDateTime(birthDate)<DateTime.Now)
+            if (IsValid && Convert.ToDateTime(birthDate.Text)<DateTime.Now)
             {
 
                 User user = (User)Session["user"];
@@ -49,7 +49,7 @@ namespace BobbleButt
                 user.Phone = phoneNumber.Text;
                 QueryClass.UpdateUser(user);
                 Session["user"] = user;
-                Response.Redirect("Main.aspx");
+                Response.Redirect("Main");
 
             }
 

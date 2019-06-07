@@ -88,7 +88,7 @@ namespace BobbleButt
                     p.Quantity = 1;
                     p.Image = InsertImage;
                     QueryClass.UpdateProduct(p);
-                    Response.Redirect("ManageProducts.aspx");
+                    Response.Redirect("ManageProducts");
                 }
             }
             

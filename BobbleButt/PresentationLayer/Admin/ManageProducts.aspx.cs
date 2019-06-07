@@ -42,7 +42,7 @@ namespace BobbleButt
                 //if (mode.Equals("UpdateItem"))
                 //{
                 //    //Open up update page sending the product value so the correct product can be determined
-                //    Response.Redirect("Update.aspx?PassingValue=" + Server.UrlEncode(product));
+                //    Response.Redirect("Update?PassingValue=" + Server.UrlEncode(product));
 
                 //}
             }

@@ -45,7 +45,7 @@ namespace BobbleButt
 
             }
 
-            else { Response.Redirect("Checkout.aspx"); }
+            else { Response.Redirect("Checkout"); }
             // Make paypal or credit card form visible on page laod
             if (!paypal.Checked)
             {
@@ -90,7 +90,7 @@ namespace BobbleButt
                     o.CardExpiryDate = card_expiration.Text;   
                 }
                 Session.Add("order", o);
-                Response.Redirect("Checkout_Confirm.aspx");
+                Response.Redirect("Checkout_Confirmx");
             }
         }
         protected void chk_Changed(object sender, EventArgs e)

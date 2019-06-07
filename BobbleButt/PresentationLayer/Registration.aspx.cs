@@ -18,7 +18,7 @@ namespace BobbleButt
 
             if (Session["tempUser"] == null)
             {
-                //Response.Redirect("Login_Register.aspx");
+                //Response.Redirect("Login_Register");
             }
 
 
