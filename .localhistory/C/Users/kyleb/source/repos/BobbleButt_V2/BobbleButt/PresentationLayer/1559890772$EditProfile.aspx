@@ -6,9 +6,9 @@
             <h3>Edit Profile</h3>
             <!-- First Name -->
             <div class="form-group">
-                <asp:Label ID="errorMessage" runat="server" Visible="false" class="label-error">Please enter all required fields, and make sure birth date is correct</asp:Label>
+                <asp:Label ID="errorMessage" runat="server" Visible="false" class="label-error">Please enter all required fields</asp:Label>
                 <div class="col-sm-5">
-                    <asp:TextBox runat="server"  id="firstName" Text="" placeholder="First Name *" class="form-control" />
+                    <asp:TextBox runat="server"  id="firstName" placeholder="First Name *" class="form-control" />
                 </div>
             </div>
             <!-- Last Name -->

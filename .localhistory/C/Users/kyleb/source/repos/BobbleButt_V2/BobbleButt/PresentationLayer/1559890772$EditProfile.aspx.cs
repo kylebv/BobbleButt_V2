@@ -35,7 +35,7 @@ namespace BobbleButt
         protected void btnConfirm_Click(object sender, System.EventArgs e)
         {
             //Update/Change user information on submit
-            if (IsValid && Convert.ToDateTime(birthDate)<DateTime.Now)
+            if (IsValid)
             {
 
                 User user = (User)Session["user"];

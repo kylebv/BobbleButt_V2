@@ -41,7 +41,7 @@
                                         if (o.UserEmail.Equals(u.Email))
                                         {%>
                                <!-- Take user to a new page with the order details listed -->
-                               <a href="ManageOrders.aspx?order=<%=o.ID %>"><%=o.Date %></a><br />
+                               <a href="Orders.aspx?order=<%=o.ID %>"><%=o.Date %></a><br />
                                 <%} } %>
 
                             </td>

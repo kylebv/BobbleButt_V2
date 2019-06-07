@@ -46,11 +46,17 @@
                             </td>
                             <!-- Date of purchase -->
                             <td class="qty">                            
-                                <p><%=o.Date %></p></td>
+                                <a href="Orders.aspx?order=<%=o.ID %>"><%=o.Date %></a></td>
                             
                             <!-- Status of order -->
                             <td class="unit"><p><%=o.Status %></td>
-                            </tr>
+                            <%string sent = "Mark as Sent";
+                                if (o.Status.Equals("Sent"))
+                                {
+                                    sent = "Mark as Processing";
+                                }%>
+                            <td class="qty"><input type="button" onclick="window.location.href='Orders.aspx?mode=toggleSent&order=<%=o.ID%>'; return false" class="btn btn-success" value="<%=sent %>" /></td>
+                        </tr>
                         <%}%> 
                        
                     </tbody>

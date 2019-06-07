@@ -869,34 +869,6 @@ namespace BobbleButt.DataAccessLayer
                 }
             }
         }
-
-        //updates an existing user's basic deets
-        public static void UpdateUser(User u)
-        {
-            using (SqlConnection connection = new SqlConnection(m_connectionString))
-            {
-                // Get all data about product with product category name
-                string sql = "UPDATE [User] " +
-                    "SET firstName = @firstname, lastName = @lastname, DOB = @dob, street = @street, " +
-                    "suburb = @suburb, postcode = @postcode, phone = @phone " +
-                    "WHERE userID = @uid";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@firstName", u.FirstName);
-                    command.Parameters.AddWithValue("@lastname", u.LastName);
-                    command.Parameters.AddWithValue("@DOB", u.DOB);
-                    command.Parameters.AddWithValue("@street", u.Street);
-                    command.Parameters.AddWithValue("@suburb", u.Suburb);
-                    command.Parameters.AddWithValue("@postcode", u.Postcode);
-                    command.Parameters.AddWithValue("@phone", u.Phone);
-                    command.Parameters.AddWithValue("@uid", u.ID);
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Close();
-                }
-            }
-        }
         //retrieve list of postage types
         public static PostageOptions GetPostageOption(int s)
         {
