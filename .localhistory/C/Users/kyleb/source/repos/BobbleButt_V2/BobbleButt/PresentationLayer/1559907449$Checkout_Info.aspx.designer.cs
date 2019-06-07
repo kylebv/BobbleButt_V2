@@ -202,15 +202,6 @@ namespace BobbleButt {
         protected global::System.Web.UI.WebControls.RadioButton credit;
         
         /// <summary>
-        /// invisi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl invisi;
-        
-        /// <summary>
         /// paypal control.
         /// </summary>
         /// <remarks>

@@ -29,7 +29,6 @@ namespace BobbleButt
                 Postcode.Text = Convert.ToString(user.Postcode);
                 phoneNumber.Text = "" + user.Phone;
                 valBirthDate.ValueToCompare = DateTime.Now.ToShortDateString();
-                valBirthDateAfter.ValueToCompare = DateTime.Parse("1900-01-01").ToShortDateString();
             }
         }
 

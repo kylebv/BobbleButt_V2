@@ -44,7 +44,6 @@ namespace BobbleButt
             //Content if html is available 
             if (isHtml)
             {
-                DateTime dt = (DateTime.Now.AddDays(order.PostOption.ETA));
                 String s = "<html><head><title>Order Invoice"
                         + " </title></head>"
                         + "<body><img src=cid:logoImage style = 'width:50%;'>" + "<br />"
@@ -54,7 +53,6 @@ namespace BobbleButt
                         + "<div style = 'float: left; width: 50 %; padding: 5px; '><h4> Shipped To: </h4>"
                         + "<p>" + firstName + " " + lastName + "<br />" + streetAddress + ", " + suburb + "<br />" + postCode + "</p></div></div>"
                         + "<div style='float: left; width = 100%'><p><strong> Invoice Date: </strong>" + orderDate + "</p>"
-                        + "<p><strong> Arrival Date Estimate: "+dt.ToShortDateString()+"</strong></p>"
                         + "<table style='border-style: solid;'>"
                         + "<tr>"
                         + "<th><strong> Quantity </strong></th>"
@@ -120,7 +118,7 @@ namespace BobbleButt
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (Session["cart"]==null)
+            if (Session["cart"]==null])
             {
                 Response.Redirect("Main");
             }
@@ -172,7 +170,6 @@ namespace BobbleButt
                     if (Convert.ToInt32(task.Result.TransactionResult) == 0)
                     {
                         order = (Order)Session["order"];
-                        order.Total = Convert.ToInt32(total);
                         QueryClass.AddOrder(order);
                         //List<Product> temp = new List<Product>();
                         //foreach (Product p in order.Products)

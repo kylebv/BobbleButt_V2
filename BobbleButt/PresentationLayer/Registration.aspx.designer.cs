@@ -94,6 +94,24 @@ namespace BobbleButt {
         protected global::System.Web.UI.WebControls.TextBox birthDate;
         
         /// <summary>
+        /// valBirthDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator valBirthDate;
+        
+        /// <summary>
+        /// valBirthDateAfter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator valBirthDateAfter;
+        
+        /// <summary>
         /// phoneNumber control.
         /// </summary>
         /// <remarks>

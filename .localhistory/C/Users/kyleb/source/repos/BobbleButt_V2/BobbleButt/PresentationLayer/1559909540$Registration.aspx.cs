@@ -18,10 +18,9 @@ namespace BobbleButt
 
             if (Session["tempUser"] == null)
             {
-                Response.Redirect("Login_Register");
+                //Response.Redirect("Login_Register");
             }
-            valBirthDate.ValueToCompare = DateTime.Now.ToShortDateString();
-            valBirthDateAfter.ValueToCompare = DateTime.Parse("1900-01-01").ToShortDateString();
+
 
         }
         private string ConfirmAdminMessage(bool isHtml, string adminEmail, string firstName, string lastName)
@@ -45,7 +44,7 @@ namespace BobbleButt
         protected void btnRegister_Click(object sender, System.EventArgs e)
         {
             //Add user into list and log them in
-            if (IsValid && Convert.ToDateTime(birthDate.Text) > DateTime.Parse("1900-01-01"))
+            if (IsValid)
             {
                 user = (User)Session["tempUser"];
                 Session.Remove("tempUser");

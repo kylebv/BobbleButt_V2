@@ -10,7 +10,16 @@
 namespace BobbleButt {
     
     
-    public partial class EditProfile {
+    public partial class Registration {
+        
+        /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
         /// errorMessage control.
@@ -85,24 +94,6 @@ namespace BobbleButt {
         protected global::System.Web.UI.WebControls.TextBox birthDate;
         
         /// <summary>
-        /// valBirthDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator valBirthDate;
-        
-        /// <summary>
-        /// valBirthDateAfter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator valBirthDateAfter;
-        
-        /// <summary>
         /// phoneNumber control.
         /// </summary>
         /// <remarks>
@@ -119,5 +110,14 @@ namespace BobbleButt {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator regexPhone;
+        
+        /// <summary>
+        /// lblRegEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRegEmail;
     }
 }

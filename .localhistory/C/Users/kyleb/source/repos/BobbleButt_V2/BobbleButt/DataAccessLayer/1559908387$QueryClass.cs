@@ -411,7 +411,7 @@ namespace BobbleButt.DataAccessLayer
             {
                 // Get all data about product with product category name
                 string sql = "SELECT orderID, email, firstName, lastName, po.postageOptionsID as postID, status, o.streetAddress as oStreet, o.Suburb as oSuburb," +
-                    "o.postcode as oPostcode, o.phone as oPhone, o.date as oDate, o.status as oStatus, total " +
+                    "o.postcode as oPostcode, o.phone as oPhone, o.date as oDate, o.status as oStatus " +
                     "FROM [Order] o " +
                     "JOIN PostageOptions po ON po.postageOptionsID = o.postageOptionsID where orderID = " + id;
                 using (SqlCommand command = new SqlCommand(sql, connection))
@@ -433,7 +433,6 @@ namespace BobbleButt.DataAccessLayer
                         o.Date = reader["oDate"].ToString();
                         o.Status = reader["oStatus"].ToString();
                         o.PostOption.ID = (int)reader["postID"];
-                        o.Total = Convert.ToInt32(reader["total"]);
                         o.ID = (int)reader["orderID"];
                     }
                     reader.Close();

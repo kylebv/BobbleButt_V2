@@ -24,6 +24,7 @@
 
               <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
+                  <%int  %>
                 <span class="badge badge-secondary badge-pill"><%=cartCount %></span>
               </h4>
               <ul class="list-group mb-3">

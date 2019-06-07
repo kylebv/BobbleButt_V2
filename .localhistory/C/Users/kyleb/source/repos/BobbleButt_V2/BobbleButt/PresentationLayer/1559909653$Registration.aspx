@@ -64,7 +64,7 @@
                     <asp:TextBox textmode="Date" runat="server" id="birthDate" class="form-control"/>
                     <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a birth date" runat="server" controltovalidate="birthDate"/>
                     <asp:CompareValidator ID="valBirthDate" Operator="LessThan" CssClass="label-error" type="String" ControltoValidate="birthDate" ErrorMessage="Birth date is invalid" runat="server" />
-                    <asp:CompareValidator ID="valBirthDateAfter" Operator="GreaterThan" CssClass="label-error" type="String" ControltoValidate="birthDate" ErrorMessage="Birth date is invalid" runat="server" />
+                    <asp:CompareValidator ID="valBirthDateAfter" Visible="false" Operator="GreaterThan" CssClass="label-error" type="String" ControltoValidate="birthDate" ErrorMessage="Birth date is invalid" runat="server" />
             
                 </div>
             </div>

@@ -18,8 +18,7 @@ namespace BobbleButt
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //we needed to unimplement paypal
-            invisi.Visible = false;
+
            
            
             cart = new List<Product>();

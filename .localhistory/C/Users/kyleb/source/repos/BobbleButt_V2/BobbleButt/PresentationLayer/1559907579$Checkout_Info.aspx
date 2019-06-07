@@ -135,10 +135,10 @@
                 <asp:radiobutton GroupName="gp" OnCheckedChanged="chk_Changed" autopostback="true" runat="server" id="credit" class="" checked="true"/>
                 <label class="" for="credit">Credit card</label>
               </div>
-              <div class="" id="invisi" runat="server">
+              <%--<div class="">
                 <asp:radiobutton GroupName="gp" AutoPostBack="true" OnCheckedChanged="chk_Changed" runat="server" id="paypal" class="" />
                 <label class="" for="paypal">Paypal</label>
-              </div>
+              </div>--%>
             </div>
            
             <div id="cardForm" runat="server">

@@ -16,6 +16,7 @@
                             <th>ID #</th>
                             <th class="text-left">USER EMAIL</th>
                             <th class="text-right">PRODUCTS</th>
+                            <th class="text-right">TOTAL ($)</th>
                             <th class="text-right">DATE</th>
                             <th class="text-right">STATUS</th>
                             <th class="text-right">UPDATE</th>
@@ -39,6 +40,9 @@
                                 <%}  %>
 
                             </td>
+                            <!-- total of purchase -->
+                            <td class="qty"><p><%=o.Total %></p></td>
+
                             <td class="qty"><p><%=o.Date %></p></td>
                             
                             <td class="unit"><p><%=o.Status %></p></td>

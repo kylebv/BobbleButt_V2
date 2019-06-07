@@ -44,7 +44,6 @@
                     <asp:TextBox textmode="Date" runat="server" id="birthDate" class="form-control"/>
                 </div>
                 <asp:CompareValidator ID="valBirthDate" Operator="LessThan" CssClass="label-error" type="String" ControltoValidate="birthDate" ErrorMessage="Birth date is invalid" runat="server" />
-                <asp:CompareValidator ID="valBirthDateAfter" Operator="GreaterThan" CssClass="label-error" type="String" ControltoValidate="birthDate" ErrorMessage="Birth date is invalid" runat="server" />
             </div>
             <!-- Phone Number -->
             <div class="form-group">
