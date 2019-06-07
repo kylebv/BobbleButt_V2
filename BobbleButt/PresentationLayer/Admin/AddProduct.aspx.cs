@@ -70,7 +70,7 @@ namespace BobbleButt
                     p.Quantity = 1;
                     p.Image = InsertImage;
                     QueryClass.AddProduct(p);
-                    Response.Redirect("ManageProducts.aspx");
+                    Response.Redirect("ManageProducts");
                 }
                 else
                 {

@@ -67,13 +67,13 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">First name</label>
-                <asp:TextBox runat="server"  id="firstName" class="form-control" placeholder="First name *"/>
+                <asp:TextBox runat="server"  id="firstName" class="form-control" placeholder="First name *" MaxLength="30"/>
                   <!-- validator to check for first name input -->
                   <asp:RequiredFieldValidator ID="valFirstName" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a first name" runat="server" controltovalidate="firstName"/>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">Last name</label>
-                <asp:TextBox runat="server" class="form-control" id="lastName" placeholder="Last name *"/>
+                <asp:TextBox runat="server" class="form-control" id="lastName" placeholder="Last name *" MaxLength="30"/>
                   <!-- Validator to check for last name input -->
                   <asp:RequiredFieldValidator ID="valLastName" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a last name" runat="server" controltovalidate="lastName"/>
               </div>
@@ -82,7 +82,7 @@
             <!-- Email -->
             <div class="mb-3">
               <label for="email">Email</label>
-              <asp:TextBox runat="server" TextMode="Email" class="form-control" id="email" placeholder="you@example.com *"/>
+              <asp:TextBox runat="server" class="form-control" id="email" placeholder="you@example.com *" MaxLength="80"/>
                 <!-- Validators to check for email input and correct email formatting -->
                 <asp:RequiredFieldValidator ID="valEmail" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter an email address" runat="server" controltovalidate="email"/>
                 <asp:RegularExpressionValidator Display="Dynamic" ID="regexEmail" CssClass="label-error" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="email" ErrorMessage="Invalid Email Format"></asp:RegularExpressionValidator>
@@ -91,7 +91,7 @@
             <!-- Phone Number -->
             <div class="mb-3">
               <label for="phone">Phone number</label>
-              <asp:TextBox runat="server" TextMode="Number" MaxLength="10" class="form-control" id="phone" placeholder="0412345678 *"/>
+              <asp:TextBox runat="server" MaxLength="10" class="form-control" id="phone" placeholder="0412345678 *"/>
                 <!-- Validators to check for phone number input and that input are numbers/digits -->
                 <asp:RequiredFieldValidator ID="valPhone" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a phone number" runat="server" controltovalidate="phone"/>
                 <asp:RegularExpressionValidator Display="Dynamic" ID="regexPhone" CssClass="label-error" runat="server" ValidationExpression="^[0-9]{10}$" ControlToValidate="phone" ErrorMessage="Invalid Phone Number"></asp:RegularExpressionValidator> 
@@ -100,7 +100,7 @@
             <!-- Street Address -->
             <div class="mb-3">
               <label for="address">Street address</label>
-              <asp:TextBox runat="server" class="form-control" id="streetAddress" placeholder="1234 Main St *" />
+              <asp:TextBox runat="server" class="form-control" id="streetAddress" placeholder="1234 Main St *" MaxLength="80"/>
                 <!-- Validator to check for street address input -->
                 <asp:RequiredFieldValidator ID="valStreetAddress" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a street address" runat="server" controltovalidate="streetAddress"/>
             </div>
@@ -113,13 +113,13 @@
             <div class="row">
               <div class="col-md-7 mb-3">
               <label for="suburb">Suburb</label>
-              <asp:TextBox runat="server" class="form-control" id="suburb" placeholder="Suburb *"/>
+              <asp:TextBox runat="server" class="form-control" id="suburb" placeholder="Suburb *" MaxLength="30"/>
                   <!-- Validator to check for suburb input -->
                   <asp:RequiredFieldValidator ID="valSuburb" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a suburb" runat="server" controltovalidate="suburb"/>
               </div>
               <div class="col-md-5 mb-3">
                 <label for="postcode">Postcode</label>
-              <asp:TextBox runat="server" TextMode="Number" MaxLength="4" class="form-control" id="postcode" placeholder="1234 *"/>
+              <asp:TextBox runat="server" MaxLength="4" class="form-control" id="postcode" placeholder="1234 *"/>
                   <!-- Validators for postcode input and  check if postcode format is correct -->
                   <asp:RequiredFieldValidator ID="valPostcode" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a postcode" runat="server" controltovalidate="postcode"/>
                   <asp:RegularExpressionValidator Display="Dynamic" ID="regexPoscode" CssClass="label-error" runat="server" ValidationExpression="^(0[289][0-9]{2})|([1345689][0-9]{3})|(2[0-8][0-9]{2})|(290[0-9])|(291[0-4])|(7[0-4][0-9]{2})|(7[8-9][0-9]{2})$" ControlToValidate="postcode" ErrorMessage="Invalid Postcode"></asp:RegularExpressionValidator>

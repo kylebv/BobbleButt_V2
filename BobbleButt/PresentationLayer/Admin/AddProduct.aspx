@@ -8,7 +8,7 @@
                         <!-- Input textbox for inserting a new name -->
                         <div class="form-group">
                             <label>Name:</label>
-                            <asp:TextBox id="manageInsertName" class="form-control" runat="server" placeholder="Product Name" value=""/>
+                            <asp:TextBox id="manageInsertName" class="form-control" runat="server" placeholder="Product Name" value="" MaxLength="40"/>
                             <!-- Validators -->
                             <!-- Check if textbox is empty -->
                             <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="manageInsertName" class="label-error" ErrorMessage="Name field cannot be empty"/>
@@ -23,12 +23,13 @@
                         <!-- Input textbox for inserting a new stock -->
                         <div class="form-group">
                             <label>Stock:</label>
-                            <asp:TextBox type="number" id="manageInsertStock" class="form-control" runat="server" placeholder="Product Stock" value=""/> 
+                            <asp:TextBox id="manageInsertStock" class="form-control" runat="server" placeholder="Product Stock" value="" MaxLength="7"/> 
                             <!-- Validators -->
                             <!-- Check if stock is greater or equal to zero -->
                             <asp:CompareValidator Display="Dynamic" ID="stockValidator" controlToValidate="manageInsertStock" runat="server" class="label-error" Operator="GreaterThanEqual" ValueToCompare="0" ErrorMessage="Stock field is invalid (Integer greater or equal to zero)"></asp:CompareValidator>
                             <!-- Check if field is empty -->
                             <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="manageInsertStock" class="label-error" ErrorMessage="Stock field cannot be empty"/>
+                            <asp:RegularExpressionValidator Display="Dynamic" ID="regexStock" CssClass="label-error" runat="server" ValidationExpression="^\d+$" ControlToValidate="manageInsertStock" ErrorMessage="Stock must be a number "></asp:RegularExpressionValidator>
                         </div>
                         
                         <!-- Input textbox for description -->
@@ -42,12 +43,13 @@
                         <!-- Input textbox for Price -->
                         <div class="form-group">
                             <label>Price:</label>
-                            <asp:TextBox type="number" id="manageInsertPrice" class="form-control" runat="server" placeholder="Product Price" value=""/>
+                            <asp:TextBox id="manageInsertPrice" class="form-control" runat="server" placeholder="Product Price" value="" MaxLength="9"/>
                             <!-- Validators -->
                             <!-- Check price is greater or equal to 0 -->
                             <asp:CompareValidator Display="Dynamic" ID="priceValidator" controlToValidate="manageInsertPrice" runat="server" class="label-error" Operator="GreaterThanEqual" ValueToCompare="0" ErrorMessage="Price field is invalid, value must be greater or equal to zero"></asp:CompareValidator>
                             <!-- Check field isn't empty -->
                             <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="manageInsertPrice" class="label-error" ErrorMessage="Price field cannot be empty"/>
+                            <asp:RegularExpressionValidator Display="Dynamic" ID="regexPrice" CssClass="label-error" runat="server" ValidationExpression="^\$?(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$" ControlToValidate="manageInsertPrice" ErrorMessage="Price must be a number "></asp:RegularExpressionValidator>
                         </div>
 
                         <!-- Image Upload -->
@@ -74,9 +76,6 @@
                         <div class="form-group">
                             <asp:Button runat="server" class="btnSubmit" text="Submit" OnClick="ManageInsertsSubmitBtn_Click"/>
                         </div>
-</div>
-
-
-
+                </div>
 </asp:Content>
 

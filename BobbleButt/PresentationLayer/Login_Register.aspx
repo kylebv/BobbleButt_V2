@@ -23,11 +23,12 @@
                     <h3>Sign In</h3>
                         <!-- Email -->
                         <div class="form-group">
-                            <asp:TextBox TextMode="Email" id="logEmail" class="form-control" runat="server" placeholder="Your Email *" value="" />
+                            <asp:TextBox id="logEmail" class="form-control" runat="server" placeholder="Your Email *" value="" maxLength="80"/>
+                            <asp:RegularExpressionValidator Display="Dynamic" ID="RegularExpressionValidator1" CssClass="label-error" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="logEmail" ErrorMessage="Invalid Email Format"></asp:RegularExpressionValidator>
                         </div>
                         <!-- Password -->
                         <div class="form-group">
-                            <asp:TextBox type="password" id="logPassword" runat="server" class="form-control" placeholder="Your Password *" value="" />
+                            <asp:TextBox type="password" id="logPassword" runat="server" class="form-control" placeholder="Your Password *" value="" Maxlength="30"/>
                         </div>
                         <!-- Login button -->
                         <div class="form-group">
@@ -39,7 +40,7 @@
                         </div>
                         <!-- Forgot Password link -->
                         <div class="form-group">
-                              <asp:HyperLink id="forgotPasswordLink" NavigateUrl="/ForgotPassword.aspx" Text="Forgot your password?" runat="server"></asp:HyperLink>
+                              <asp:HyperLink id="forgotPasswordLink" NavigateUrl="/ForgotPassword" Text="Forgot your password?" runat="server"></asp:HyperLink>
                         </div>
                 </div>
                 <!-- Register fields displayed -->
@@ -47,12 +48,12 @@
                     <h3>Register</h3>
                     <!-- Email -->
                     <div class="form-group">
-                            <asp:TextBox runat="server" TextMode="Email" id="regEmail1" class="form-control" placeholder="Your Email *" value="" />
+                            <asp:TextBox runat="server" TextMode="Email" id="regEmail1" class="form-control" placeholder="Your Email *" value="" MaxLength="80"/>
                             <asp:RequiredFieldValidator Enabled="false" Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter an email" runat="server" controltovalidate="regEmail1"/>
                     </div>
                     <!-- Confirm email -->                    
                     <div class="form-group">
-                            <asp:TextBox runat="server" TextMode="Email" id="regEmail2" class="form-control" placeholder="Re-enter Email *" value="" />
+                            <asp:TextBox runat="server" TextMode="Email" id="regEmail2" class="form-control" placeholder="Re-enter Email *" value="" MaxLength="80"/>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter an email" runat="server" controltovalidate="regEmail2"/>
                             <asp:RegularExpressionValidator Display="Dynamic" ID="regexEmailValid" CssClass="label-error" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="regEmail1" ErrorMessage="Invalid Email Format"></asp:RegularExpressionValidator>
                         <br />
@@ -65,12 +66,12 @@
                     </div>
                     <!-- Password -->
                      <div class="form-group">
-                            <asp:TextBox TextMode="Password" runat="server" id="regPassword1" class="form-control" placeholder="Your Password *" value="" />
+                            <asp:TextBox TextMode="Password" runat="server" id="regPassword1" class="form-control" placeholder="Your Password *" value="" MaxLength="30"/>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a password" runat="server" controltovalidate="regPassword1"/>
                      </div>
                     <!-- Re-enter password -->
                     <div class="form-group">
-                            <asp:TextBox  TextMode="Password" runat="server" id="regPassword2" class="form-control" placeholder="Re-enter Password *" value="" />
+                            <asp:TextBox  TextMode="Password" runat="server" id="regPassword2" class="form-control" placeholder="Re-enter Password *" value="" MaxLength="30"/>
                             <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a password" runat="server" controltovalidate="regPassword2"/>
                             <!-- Password length has to be 8 or greater -->
                             <asp:RegularExpressionValidator Display="Dynamic" ID="checkLength" CssClass="label-error" runat="server"
@@ -100,6 +101,8 @@
                      </div>
                     
                     <asp:RequiredFieldValidator runat="server" controltovalidate="regEmail1"/>
+
+
                 </div>
                 </div>
             </div>

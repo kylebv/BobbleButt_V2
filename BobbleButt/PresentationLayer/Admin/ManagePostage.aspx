@@ -52,7 +52,7 @@
                             </td>
                             <!-- Update Button -->
                             <td class="text-right">
-                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdatePostage.aspx?postage=<%=p.Name%>'; return false" value="Update"/>
+                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdatePostage?postage=<%=p.Name%>'; return false" value="Update"/>
                             </td>
                         <%String s = "DELETE";
                             String cl = "btn-danger";
@@ -63,7 +63,7 @@
                             }%>
                             <!-- Delete Button -->
                             <td class="text-right">
-                                <input type="button" onclick="window.location.href='ManagePostage.aspx?delete=<%=p.ID%>'; return false" class="btn <%=cl %>" value="<%=s %>"/>
+                                <input type="button" onclick="window.location.href='ManagePostage?delete=<%=p.ID%>'; return false" class="btn <%=cl %>" value="<%=s %>"/>
                             </td>
                      </tr>
                         <% } %>
@@ -71,7 +71,7 @@
                     
                 </table>
                 
-                <input type="button" onClick="window.location.href = 'UpdatePostage.aspx';return false" class="btn btn-success" value="Add New"/>
+                <input type="button" onClick="window.location.href = 'UpdatePostage';return false" class="btn btn-success" value="Add New"/>
         </div>
 
     </div>

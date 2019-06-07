@@ -17,12 +17,13 @@
             <div class="form-group">
                 <div class="col-sm-12">
                     <asp:Label Visible="false" runat="server" Text="" ID="hiddenID" />
-                    <asp:TextBox runat="server" TextMode="Number" MaxLength="10" id="pricePostage" placeholder="Price" class="form-control"/>
+                    <asp:TextBox runat="server" MaxLength="9" id="pricePostage" placeholder="Price" class="form-control"/>
                     <!-- Validators -->
                     <!-- Check if price is greater or equal to zero -->
                     <asp:CompareValidator Display="Dynamic" controlToValidate="pricePostage" runat="server" class="label-error" Operator="GreaterThanEqual" ValueToCompare="0" ErrorMessage="Price field is invalid, value must be greater or equal to zero"></asp:CompareValidator>
                     <!-- Check to see if field is empty -->
                     <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="pricePostage" class="label-error" ErrorMessage="Price field cannot be empty"/>
+                    <asp:RegularExpressionValidator Display="Dynamic" ID="regexPriceUpdate" CssClass="label-error" runat="server" ValidationExpression="^\$?(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$" ControlToValidate="pricePostage" ErrorMessage="Price must be a number "></asp:RegularExpressionValidator>
                 </div>
             </div>
         <div class="form-group">
@@ -34,11 +35,11 @@
             </div>
         <div class="form-group">
                     <div class="col-sm-12">
-                    <asp:TextBox textmode="number" MaxLength="5" ID="etaPostage" runat="server" class="form-control" placeholder="ETA"/>
+                    <asp:TextBox MaxLength="5" ID="etaPostage" runat="server" class="form-control" placeholder="ETA"/>
                     <!-- Check to see if field is empty -->
                     <asp:RequiredFieldValidator display="Dynamic" runat="server" ControlToValidate="etaPostage" class="label-error" ErrorMessage="ETA field cannot be empty"/>
                     <asp:CompareValidator Display="Dynamic" controlToValidate="etaPostage" runat="server" class="label-error" Operator="GreaterThanEqual" ValueToCompare="0" ErrorMessage="ETA field is invalid, value must be greater or equal to zero"></asp:CompareValidator>
-
+                    <asp:RegularExpressionValidator Display="Dynamic" ID="regexStockUpdate" CssClass="label-error" runat="server" ValidationExpression="^\d+$" ControlToValidate="etaPostage" ErrorMessage="Stock must be a number "></asp:RegularExpressionValidator>                   
                     </div>
             </div>
 

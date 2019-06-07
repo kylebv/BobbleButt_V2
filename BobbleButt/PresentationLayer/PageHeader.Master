@@ -40,16 +40,16 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="Main.aspx">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="Main">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Products.aspx">Products</a>
+        <a class="nav-link" href="Products">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Contact.aspx">Contact</a>
+        <a class="nav-link" href="Contact">Contact</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="About.aspx">About</a>
+        <a class="nav-link" href="About">About</a>
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0 mx-auto col-lg-6" style="float:left;">
@@ -72,26 +72,26 @@
             onmouseout="src='../img/user.png';"> 
         </asp:imagebutton>
   <div class="dropdown-content">
-      <a href="EditProfile.aspx">Edit Profile
+      <a href="EditProfile">Edit Profile
       </a>
       <%if (user.IsAdmin)
           { %>
-    <a href="ManageUsers.aspx">Manage Users</a>
-    <a href="ManageProducts.aspx">Manage Products</a>
-    <a href="ManageOrders.aspx">Manage Orders</a>
-      <a href="ManagePostage.aspx">Manage Postage</a>
+    <a href="ManageUsers">Manage Users</a>
+    <a href="ManageProducts">Manage Products</a>
+    <a href="ManageOrders">Manage Orders</a>
+      <a href="ManagePostage">Manage Postage</a>
       <%}
     else
     { %>
-      <a href="Orders.aspx?user=<%=user.Email %>">Order History</a>
+      <a href="Orders?user=<%=user.Email %>">Order History</a>
       <%} %>
-      <a href="SignOut.aspx">Sign Out</a>
+      <a href="SignOut">Sign Out</a>
   </div>
 </div>
     <% } else {%>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="Login_Register.aspx">Sign In / Register</a>
+                <a class="nav-link" href="Login_Register">Sign In / Register</a>
             </li>
         </ul>
 
@@ -160,7 +160,7 @@
                 } %>
     </ul>
 
-    <a href="Checkout.aspx" class="button">Checkout</a>
+    <a href="Checkout" class="button">Checkout</a>
   </div> <!--end shopping-cart -->
 </div> <!--end container -->
     

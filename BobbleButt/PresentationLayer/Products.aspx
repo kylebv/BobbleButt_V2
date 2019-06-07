@@ -11,7 +11,7 @@
                 <ul class="list-group category_block">
                     <%foreach (string s in categories)
                         { %>
-                    <li class="list-group-item"><a href="Products.aspx?category=<%=s %>"><%=s %></a></li>
+                    <li class="list-group-item"><a href="Products?category=<%=s %>"><%=s %></a></li>
                     <%} %>
                 </ul>
             </div>
@@ -29,7 +29,7 @@
                         <img class="product-list-img" src="<%=p.Image %>" alt="Card image cap">
                         <div class="card-body d-flex flex-column">
                            <!-- Name of product -->
-                           <h4 class="card-title"><a href="/PurchaseProduct.aspx?PassingValue=<%=p.ID %>" title="View Product"><%=p.Name %></a></h4>
+                           <h4 class="card-title"><a href="/PurchaseProduct?PassingValue=<%=p.ID %>" title="View Product"><%=p.Name %></a></h4>
                             <!-- Description of product -->
                             <p class="card-text"><%=p.Description %></p>
                             <div class="mt-auto">
@@ -39,7 +39,7 @@
                             <!-- Price of product -->
                             <p class="price-card">$<%=p.Price.ToString("F") %></p>
                             <!-- Add to cart Button -->
-                            <button type="submit"  value="Add to Cart" onclick="window.location.href='/Products.aspx?addItem=<%= p.ID %>'; return false" class="btn btn-success shadow btn-block">Add to Cart</button>
+                            <button type="submit"  value="Add to Cart" onclick="window.location.href='/Products?addItem=<%= p.ID %>'; return false" class="btn btn-success shadow btn-block">Add to Cart</button>
                                 <%}
                                     // Disable add to cart button if out of stock
                                     else

@@ -49,6 +49,15 @@ namespace BobbleButt {
         protected global::System.Web.UI.WebControls.CompareValidator stockValidator;
         
         /// <summary>
+        /// regexStockUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexStockUpdate;
+        
+        /// <summary>
         /// productUpdateDescription control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace BobbleButt {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CompareValidator priceValidator;
+        
+        /// <summary>
+        /// regexPriceUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexPriceUpdate;
         
         /// <summary>
         /// fileName control.

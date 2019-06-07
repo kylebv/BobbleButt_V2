@@ -20,7 +20,7 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], isDeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID where p.isDeleted = 0";
+                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], p.isDeleted as pisdeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID where p.isDeleted = 0";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
@@ -38,7 +38,7 @@ namespace BobbleButt.DataAccessLayer
                         productD.Price = Convert.ToDouble(reader["price"]);
                         productD.Image = reader["image"].ToString();
                         productD.ID = (int)reader["productID"];
-                        productD.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
+                        productD.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
                         productD.Quantity = 1;
                         productData.Add(productD);
                     }
@@ -56,7 +56,7 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], isDeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID";
+                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], p.isDeleted as pisdeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
@@ -74,7 +74,7 @@ namespace BobbleButt.DataAccessLayer
                         productD.Price = Convert.ToDouble(reader["price"]);
                         productD.Image = reader["image"].ToString();
                         productD.ID = (int)reader["productID"];
-                        productD.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
+                        productD.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
                         productD.Quantity = 1;
                         productData.Add(productD);
                     }
@@ -120,7 +120,7 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], isDeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID where pc.name like '%'+@s+'%' and p.isDeleted = 0";
+                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], p.isDeleted as pisDeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID where pc.name like '%'+@s+'%' and p.isDeleted = 0";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@s", s);
@@ -139,7 +139,7 @@ namespace BobbleButt.DataAccessLayer
                         productD.Price = Convert.ToDouble(reader["price"]);
                         productD.Image = reader["image"].ToString();
                         productD.ID = (int)reader["productID"];
-                        productD.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
+                        productD.IsDeleted = Convert.ToBoolean(reader["pisDeleted"]);
                         productD.Quantity = 1;
                         productData.Add(productD);
                     }
@@ -157,7 +157,7 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], isDeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID where (pc.name like '%'+@s+'%'  " +
+                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], p.isDeleted as pisdeleted FROM Product p JOIN ProductCategory pc ON p.productCategoryID=pc.productCategoryID where (pc.name like '%'+@s+'%'  " +
                     "or p.name like '%'+@s+'%' or p.description like '%'+@s+'%' ) and p.isDeleted = 0";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -177,7 +177,7 @@ namespace BobbleButt.DataAccessLayer
                         productD.Price = Convert.ToDouble(reader["price"]);
                         productD.Image = reader["image"].ToString();
                         productD.ID = (int)reader["productID"];
-                        productD.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
+                        productD.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
                         productD.Quantity = 1;
                         productData.Add(productD);
                     }
@@ -195,7 +195,7 @@ namespace BobbleButt.DataAccessLayer
             using (SqlConnection connection = new SqlConnection(m_connectionString))
             {
                 // Get all data about product with product category name
-                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], isDeleted FROM Product p join productcategory pc on p.productcategoryid = pc.productcategoryid where productID = " + id;
+                string sql = "SELECT p.name as pname, pc.name as pcname,[stock],p.description,[price],[image],[productID], p.isDeleted as pisdeleted FROM Product p join productcategory pc on p.productcategoryid = pc.productcategoryid where productID = " + id;
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     connection.Open();
@@ -211,7 +211,7 @@ namespace BobbleButt.DataAccessLayer
                     p.Price = Convert.ToDouble(reader["price"]);
                     p.Image = reader["image"].ToString();
                     p.ID = (int)reader["productID"];
-                    p.IsDeleted = Convert.ToBoolean(reader["isDeleted"]);
+                    p.IsDeleted = Convert.ToBoolean(reader["pisdeleted"]);
                     p.Quantity = 1;
                     connection.Close();
                 }

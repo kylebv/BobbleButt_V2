@@ -40,6 +40,15 @@ namespace BobbleButt {
         protected global::System.Web.UI.WebControls.TextBox pricePostage;
         
         /// <summary>
+        /// regexPriceUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexPriceUpdate;
+        
+        /// <summary>
         /// descriptionPostage control.
         /// </summary>
         /// <remarks>
@@ -56,5 +65,14 @@ namespace BobbleButt {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox etaPostage;
+        
+        /// <summary>
+        /// regexStockUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexStockUpdate;
     }
 }

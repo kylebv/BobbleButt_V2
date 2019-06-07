@@ -96,7 +96,7 @@ namespace BobbleButt
                     {
                         client.Send(msg);
                         //Send to main page with pop message about sent email
-                        Response.Redirect("Main.aspx?confirmAdmin=");
+                        Response.Redirect("Main?confirmAdmin=");
 
                     }
                     catch
@@ -120,7 +120,7 @@ namespace BobbleButt
                     QueryClass.AddUser(user);
                     Session.Add("user", user);
 
-                    Response.Redirect("Main.aspx");
+                    Response.Redirect("Main");
 
                 }
 

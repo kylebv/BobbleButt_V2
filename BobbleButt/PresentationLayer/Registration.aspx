@@ -23,29 +23,29 @@
                 <asp:Label ID="errorMessage" runat="server" Visible="false" class="label-error">Please enter all required fields</asp:Label>
                 <!-- First Name -->
                 <div class="col-sm-5">
-                    <asp:TextBox runat="server"  id="firstName" placeholder="First Name *" class="form-control" />
+                    <asp:TextBox runat="server"  id="firstName" placeholder="First Name *" class="form-control" MaxLength="30"/>
                     <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a first name" runat="server" controltovalidate="firstName"/>
                 </div>
             </div>
             <!-- Last Name -->
             <div class="form-group">
                 <div class="col-sm-5">
-                    <asp:TextBox runat="server"  id="lastName" placeholder="Last Name *" class="form-control"/>
-                                        <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a last name" runat="server" controltovalidate="lastName"/>
+                    <asp:TextBox runat="server"  id="lastName" placeholder="Last Name *" class="form-control" MaxLength="30"/>
+                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a last name" runat="server" controltovalidate="lastName"/>
                 </div>
             </div>
         <!-- Street Address -->
             <div class="form-group">
                 <div class="col-sm-9">
-                    <asp:TextBox runat="server"  id="streetAddress" placeholder="Street Address *" class="form-control"/>
-                                        <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a street address" runat="server" controltovalidate="streetAddress"/>
+                    <asp:TextBox runat="server"  id="streetAddress" placeholder="Street Address *" class="form-control" MaxLength="80"/>
+                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a street address" runat="server" controltovalidate="streetAddress"/>
                 </div>
             </div>
             <!-- Suburb -->
             <div class="form-group">
                 <div class="col-sm-4">
-                    <asp:TextBox runat="server" id="suburb" placeholder="Suburb *" class="form-control"/>
-                                        <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a suburb" runat="server" controltovalidate="suburb"/>
+                    <asp:TextBox runat="server" id="suburb" placeholder="Suburb *" class="form-control" MaxLength="30"/>
+                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="label-error" ErrorMessage="Please enter a suburb" runat="server" controltovalidate="suburb"/>
                 </div>
             </div>
             <!-- Postcode -->

@@ -12,11 +12,7 @@ namespace BobbleButt
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.Contents.Count == 0)
-            {
-                Session.Add("new session pls", "hooray");
-                Response.Redirect("Main.aspx?sessionTimeout=true");
-            }
+            
         }
 
         protected void btnLogin_Click(object sender, System.EventArgs e)
@@ -28,7 +24,7 @@ namespace BobbleButt
             {
                 //User logged in
                 Session.Add("user", u);
-                Response.Redirect("Main.aspx");
+                Response.Redirect("Main");
             }
             else
             {
@@ -56,7 +52,7 @@ namespace BobbleButt
                     u.Password = pword;
                     u.IsAdmin = isAdmin;
                     Session.Add("tempUser", u);
-                    Response.Redirect("Registration.aspx");
+                    Response.Redirect("Registration");
                 }
 
             }

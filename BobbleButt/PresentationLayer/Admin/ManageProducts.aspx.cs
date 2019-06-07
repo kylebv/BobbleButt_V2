@@ -56,7 +56,7 @@ namespace BobbleButt
         }
         protected void viewAddNewBtn_Clicked(object sender, System.EventArgs e)
         {
-              Response.Redirect("ManageItems.aspx");   
+              Response.Redirect("ManageItems");   
         }
 
     }

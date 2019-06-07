@@ -90,7 +90,7 @@ namespace BobbleButt.PresentationLayer
                 {
                     client.Send(msg);
                     //Send to main page with pop message about sent email
-                    Response.Redirect("Main.aspx?forgotEmail=");
+                    Response.Redirect("Main?forgotEmail=");
                 }
                 catch
                 {

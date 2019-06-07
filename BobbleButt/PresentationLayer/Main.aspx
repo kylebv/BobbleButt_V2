@@ -94,7 +94,7 @@ Date: 10/04019
       <!-- Coloumn 1 -->
     <div class="col-sm-4">
       <div class="card"> <!--card-primary-->
-            <a href="Products.aspx?category=dc">
+            <a href="Products?category=dc">
             <div class="card-header bg-secondary main-text-color main-text-hover">DC</div>
             <img src="../img/DCCategory.png" class="img-responsive main-height-img" style="width:100%;" alt="Image">
             </a>
@@ -103,7 +103,7 @@ Date: 10/04019
     <!-- Coloumn 2 -->
     <div class="col-sm-4"> 
       <div class="card"> 
-            <a href="Products.aspx?category=disney">
+            <a href="Products?category=disney">
             <div class="card-header bg-secondary main-text-color main-text-hover">Disney</div>
             <img src="../img/disneyCategory.png" class="img-responsive main-height-img" style="width:100%" alt="Image">
             </a>
@@ -112,7 +112,7 @@ Date: 10/04019
     <!-- Coloumn 3 -->
     <div class="col-sm-4"> 
       <div class="card">
-            <a href="Products.aspx?category=marvel">
+            <a href="Products?category=marvel">
             <div class="card-header bg-secondary main-text-color main-text-hover">Marvel</div>
             <img src="../img/marvelCategory.png" class="img-responsive main-height-img" style="width:100%" alt="Image">
             </a>
@@ -128,7 +128,7 @@ Date: 10/04019
     <!-- Coloumn 1 -->
     <div class="col-sm-4">
       <div class="card main-box-color">
-            <a href="Products.aspx?search=batman">
+            <a href="Products?search=batman">
             <div class="card-header bg-secondary main-text-color main-text-hover">Batman</div>
             <div class="card-body">
             <img src="../img/batman.png" class="img-responsive main-height-img-product" style="width:100%" alt="Image">
@@ -139,7 +139,7 @@ Date: 10/04019
       <!-- Coloumn 2 -->
     <div class="col-sm-4"> 
       <div class="card main-box-color">
-            <a href="Products.aspx?search=batwoman">
+            <a href="Products?search=batwoman">
             <div class="card-header bg-secondary main-text-color main-text-hover">Batwoman</div>
             <div class="card-body">
             <img src="../img/batwoman.png" class="img-responsive main-height-img-product" style="width:100%" alt="Image">
@@ -150,7 +150,7 @@ Date: 10/04019
       <!-- Coloumn 3 -->
     <div class="col-sm-4"> 
       <div class="card main-box-color">
-            <a href="Products.aspx?search=iron-man">
+            <a href="Products?search=iron-man">
             <div class="card-header bg-secondary main-text-color main-text-hover">Iron-man</div>
             <div class="card-body">
             <img src="../img/ironMan.png" class="img-responsive main-height-img-product" style="width:100%" alt="Image">

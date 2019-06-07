@@ -151,6 +151,7 @@
     <Content Include="PresentationLayer\Checkout_Info.aspx" />
     <Content Include="PresentationLayer\Contact.aspx" />
     <Content Include="PresentationLayer\EditProfile.aspx" />
+    <Content Include="PresentationLayer\ErrorPage.aspx" />
     <Content Include="PresentationLayer\ForgotPassword.aspx" />
     <Content Include="PresentationLayer\Login_Register.aspx" />
     <Content Include="PresentationLayer\Main.aspx" />
@@ -288,6 +289,13 @@
     </Compile>
     <Compile Include="PresentationLayer\EditProfile.aspx.designer.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="PresentationLayer\ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>

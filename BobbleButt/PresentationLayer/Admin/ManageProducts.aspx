@@ -8,7 +8,7 @@
     <script type="text/javascript">
         function addNew() {
               //Go to Insert new product page
-              window.location.href = 'AddProduct.aspx';
+              window.location.href = 'AddProduct';
         }
     </script>
   
@@ -84,7 +84,7 @@
 
                             <!-- Send product value back to ViewProduct so that product equals the value of current product  -->
                             <td class="text-left">
-                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdateProduct.aspx?&product=<%=p.ID%>'; return false" value="UPDATE"/>
+                                <input type="button" class="btn btn-success" onclick="window.location.href='UpdateProduct?&product=<%=p.ID%>'; return false" value="UPDATE"/>
                             </td>
                             
                             <!-- Send back product value to ViewProduct -->
@@ -96,7 +96,7 @@
                                         s = "RESTORE";
                                         cl = "btn-success";
                                     }%>
-                                <input type="button" onclick="window.location.href='ManageProducts.aspx?mode=toggleDelete&product=<%=p.ID%>'; return false" class="btn <%=cl%>" value="<%=s %>"/>
+                                <input type="button" onclick="window.location.href='ManageProducts?mode=toggleDelete&product=<%=p.ID%>'; return false" class="btn <%=cl%>" value="<%=s %>"/>
                                 
                             </td>
                      </tr>
