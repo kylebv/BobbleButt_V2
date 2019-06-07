@@ -221,6 +221,9 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BusinessLayer\basePageSessionExpire.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="BusinessLayer\GlobalData.cs" />
     <Compile Include="BusinessLayer\INFT3050PaymentFactory.cs" />
     <Compile Include="BusinessLayer\INFT3050PaymentSystem.cs" />

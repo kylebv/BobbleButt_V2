@@ -8,8 +8,9 @@ using System.Web.UI.WebControls;
 
 namespace BobbleButt
 {
-    public partial class PageHeader : System.Web.UI.MasterPage
+    public partial class PageHeader : basePageSessionExpire
     {
+        //System.Web.UI.MasterPage :
         protected List<Product> cart;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,7 +55,7 @@ namespace BobbleButt
             //{
             //  Response.Redirect("Main?sessionTimeout=true");
             //}
-            
+
             /*if (Context.Session != null)
             {
                 if (Session.IsNewSession)
@@ -66,6 +67,12 @@ namespace BobbleButt
                     }
                 }
             }*/
+            //if (Convert.ToString(Session["EmpID"]) == "")
+          
+              //  {
+                //    Session.Add("new session pls", "hooray");
+                  //  Response.Redirect("Main?sessionTimeout=true");
+                //}
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
