@@ -51,7 +51,7 @@
                                 if(orders.Count==1)
                                 { singleFlag = "&flagSingle=flagged"; }
                                    %>
-                            <td class="qty"><input type="button" onclick="window.location.href='ManageOrders?mode=toggleSent&order=<%=o.ID%><%=singleFlag%>'; return false" class="btn btn-success" value="<%=sent %>" /></td>
+                            <td class="qty"><input type="button" onclick="window.location.href='ManageOrders.aspx?mode=toggleSent&order=<%=o.ID%><%=singleFlag%>'; return false" class="btn btn-success" value="<%=sent %>" /></td>
                         </tr>
                         <%} %>
                     </tbody>

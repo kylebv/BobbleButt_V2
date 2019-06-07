@@ -37,15 +37,7 @@ namespace BobbleButt
                     //query for toggling sent
 
                     QueryClass.OrderToggleSent(orderID);
-                    if(Request.QueryString["flagSingle"]!=null)
-                    {
-                        orders = new List<Order>();
-                        orders.Add(QueryClass.GetOrder(orderID));
-                    }
-                    else
-                    {
-                        orders = QueryClass.GetOrders();
-                    }
+                    orders = QueryClass.GetOrders();
                 }
             }
             //populates a single order if order exists in url

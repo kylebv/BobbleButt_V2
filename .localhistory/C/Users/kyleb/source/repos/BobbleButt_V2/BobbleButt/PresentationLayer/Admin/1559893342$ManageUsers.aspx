@@ -41,7 +41,7 @@
                                         if (o.UserEmail.Equals(u.Email))
                                         {%>
                                <!-- Take user to a new page with the order details listed -->
-                               <a href="ManageOrders?order=<%=o.ID %>"><%=o.Date %></a><br />
+                               <a href="ManageOrders.aspx?order=<%=o.ID %>"><%=o.Date %></a><br />
                                 <%} } %>
 
                             </td>
@@ -61,9 +61,9 @@
                                     cl = "btn-success";
                                 }%>
                             <!-- Button to suspend a user with text value equalling above string -->
-                            <td class="unit"><input type="button" onclick="window.location.href='ManageUsers?mode=toggleSuspend&user=<%=u.Email%>'; return false" class="btn btn-success" value="<%=suspended %>" /></td>
+                            <td class="unit"><input type="button" onclick="window.location.href='ManageUsers.aspx?mode=toggleSuspend&user=<%=u.Email%>'; return false" class="btn btn-success" value="<%=suspended %>" /></td>
                             <!-- Button to delete a user -->
-                            <td class="qty"><input type="button" onclick="window.location.href='ManageUsers?mode=delete&user=<%=u.Email%>'; return false" class="btn <%=cl %>" value="<%=deleted %>" /></td>
+                            <td class="qty"><input type="button" onclick="window.location.href='ManageUsers.aspx?mode=delete&user=<%=u.Email%>'; return false" class="btn <%=cl %>" value="<%=deleted %>" /></td>
                         </tr>
                         <%} %>
                        

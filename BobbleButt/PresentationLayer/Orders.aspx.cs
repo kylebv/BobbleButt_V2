@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BobbleButt.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,24 +13,44 @@ namespace BobbleButt
         protected string mode;
         protected string order;
         protected string user;
+        protected List<Order> orders;
         protected void Page_Load(object sender, EventArgs e)
         {
             mode = Request.QueryString["mode"];
             order = Request.QueryString["order"];
             user = Request.QueryString["user"];
-                if (mode != null && order != null)
+            int i = 0;
+            try { Convert.ToInt32(order); }
+            catch { }
+            if(mode==null&&order!=null)
+            {
+                orders = new List<Order>();
+                orders.Add(QueryClass.GetOrder(i));
+            }
+            //if these are true, the user shouldnt be here
+            if(user==null&&order==null)
+            {
+                Response.Redirect("Main");
+            }
+            orders = QueryClass.GetOrdersByUser(user);
+            if (mode != null && order != null)
             {
                 if (mode.Equals("toggleSent"))
                 {
+                    try{ Convert.ToInt32(order); }
+                    catch { }
                     //Change status of order if admin changes the status
-                    if (GlobalData.Orders[Convert.ToInt32(order)].Status.Equals("Processing"))
-                    {
-                        GlobalData.Orders[Convert.ToInt32(order)].Status = "Sent";
-                    }
-                    else if (GlobalData.Orders[Convert.ToInt32(order)].Status.Equals("Sent"))
-                    {
-                        GlobalData.Orders[Convert.ToInt32(order)].Status = "Processing";
-                    }
+                    QueryClass.OrderToggleSent(i);
+                }
+                if(Request.QueryString["flagSingle"]==null)
+                {
+                    orders = QueryClass.GetOrdersByUser(user);
+                }
+                else
+                {
+
+                    orders = new List<Order>();
+                    orders.Add(QueryClass.GetOrder(i));
                 }
             }
         }
